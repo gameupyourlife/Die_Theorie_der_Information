@@ -1,4 +1,4 @@
-name: Assemble Round 2
+name: Compile Latex
 on: [push]
 jobs:
   build:
