@@ -306,3 +306,5 @@ TSWLatexianTemp*
 # Don't upload any secret key
 API_KEY
 __pycache__
+
+!/k2.6
