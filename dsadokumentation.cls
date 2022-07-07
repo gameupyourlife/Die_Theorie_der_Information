@@ -1,7 +1,7 @@
 % DO NOT CHANGE THIS FILE
 
-\def\dsafileversion{1.1}
-\def\dsafiledate{2022/06/14}
+\def\dsafileversion{1.3}
+\def\dsafiledate{2022/07/06}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dsadokumentation}[\dsafiledate\space Version \dsafileversion\space by Philipp Arras]
@@ -11,7 +11,7 @@
 % Layout and fonts
 \LoadClass[a4paper, twoside]{scrreprt}
 \RequirePackage{scrlayer-scrpage}
-\clearscrheadfoot{}
+\clearpairofpagestyles{}
 \RequirePackage{times}
 \KOMAoption{chapterprefix}{true}
 \renewcommand*\raggedchapter{\centering}
@@ -30,8 +30,6 @@
 }
 % /Layout and fonts
 
-\input{extrapreamble.tex}
-
 \RequirePackage[pdftex]{hyperref}
 
 % Bibliography
@@ -48,7 +46,10 @@ eprint=false,isbn=false,url=false,dashed=False]{biblatex}
 % /Bibliography
 
 % Better hyphenation
-% \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
+\RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
+
+% Math packages
+\RequirePackage{amsmath}
 
 % German references
 \RequirePackage[ngerman]{babel}
