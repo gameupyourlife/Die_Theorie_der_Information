@@ -15,6 +15,85 @@
 \kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{example-image-a}
 
 
+% ======================
+% Eigenwertproblem - Lara & Chuyang
+\section{Eigenwertproblem}
+\sectionauthor{Lara Müller, Chuyang Wang}
+
+\subsection{Definitionen}\label{k4.2.eigen.def}
+
+Ein Eigenvektor ist der Vektor, welcher nach Anwendung einer Matrix immer auf seinem eigenen Span liegt. Formal definiert sind die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ diejenige $\vec{v} \in \mathbb{R}^{x}, \vec{v} \neq \vec{0}$, mit denen $A \cdot \vec{v} = \lambda \cdot \vec{v}$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $\vec{v}$ zugehörigen Eigenwert. 
+
+Durch Äquivalenzumformung erhält man
+
+\begin{displaymath}
+  \begin{aligned}
+    && A \cdot \vec{v} &= \lambda \cdot \vec{v} && \\
+    &\Leftrightarrow& A \cdot \vec{v} &= \lambda E \cdot \vec{v} &\text{mit } \vec{v} = E\vec{v}& \\
+    &\Leftrightarrow& (A - \lambda E) \cdot \vec{v} &= 0 && \\
+    &\Leftrightarrow& B\vec{x} &= 0  \quad \quad &\text{mit } B = (A - \lambda E)&  \\ 
+  \end{aligned}
+\end{displaymath}
+
+Dieses lineare Gleichungssystem hat erst dann nicht-triviale Lösungen, wenn $B$ linear abhängig ist. Da die Determinante das von den Spaltenvektoren der Matrix aufgespannte Volumen beschreibt, ist die Determinante dann genau null, wenn mindestens zwei der Spaltenvektoren zueinander linear abhängig sind. Anschaulich bedeutet dass, dass dieses aufgespannte Volumen eine Komponente verliert und in eine niedrigere Dimension \enquote{gepresst} wird. Also gilt $\det (B) = \det (A - \lambda E) = 0$. 
+
+Bei dem Eigenwertproblem möchte man herausfinden, ob ein solcher Eigenwert $\lambda$ existiert. 
+
+
+\subsection{Das charakteristische Polynom}
+
+Im Allgemeinen wird das charakteristische Polynom definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} kann man schlussfolgern, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen. 
+
+Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
+  a & b \\
+  c & d
+\end{pmatrix}$, also gilt
+
+\begin{displaymath}
+  \begin{aligned}
+    0  
+    &= \chi_A (\lambda) \\
+    &= \det(A - \lambda E) \\
+    &= \det \begin{pmatrix}
+      a - \lambda & b \\
+      c & d-\lambda
+    \end{pmatrix} \\
+    &= (a - \lambda) \cdot (d - \lambda) - c \cdot b
+  \end{aligned}
+\end{displaymath}
+
+Als spezieller Fall gilt $\lambda = a \vee \lambda = b$, wenn $c \cdot b = 0$ gilt, also wenn z.B. $A$ eine Diagonalmatrix ist.
+
+
+\subsection{Power Iteration}\label{k4.2.eigen.powerit}
+
+Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen. Ab dem 5. Grad wird es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem 
+Dazu kann man den Power-Iteration-Algorithmus verwenden, welcher eine Annäherung zu dem höchsten Eigenwert berechnet. Mathematisch kann man den Algorithmus, mit einem am Anfang willkürlich gewählten $b_0 \in \mathbb{R}^n$, wie folgt darstellen: 
+
+\begin{displaymath}
+  \begin{aligned}
+    b_{k+1} = \frac{Ab_k}{\left\lVert Ab_k \right\rVert }
+  \end{aligned}
+\end{displaymath}
+
+Nach ausreichenden Iterationen kann man den größten Wert von $\lambda$ berechnen, indem die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst wird. 
+
+
+\subsection{Anwendungen}
+
+Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Rechnungen und Beweise. Es ist unter anderem möglich, die Konvergenz eines Verfahrens zu zeigen oder eine große Matrix zu reduzieren und vereinfachen. Im Folgenden werden ein Paar praktische Anwendungen vorgestellt: 
+
+\begin{itemize}
+  % https://math.stackexchange.com/questions/1497290/what-is-the-relationship-between-eigenvector-and-computing-pagerank
+  \item Der \enquote{Page Rank} Algorithmus von \textit{Google} stellt eine Adjazenzmatrix $P$ auf, die die Verlinkungen zwischen den Webseiten beschreibt. Es lässt sich zeigen, dass so ein Vektor $\pi$ existiert, dass $\pi = P \pi$ gilt. Somit ist $\pi$ der gesuchte PageRank-Vektor. Per Definition ist $\pi$ auch ein Eigenvektor von $P$. Also kann man $\pi$ mit \textit{Power Iteration} (\cref{k4.2.eigen.powerit}) berechnen und damit eine Rangfolge von Webseiten generieren. Mehr dazu findet man im Buch von \textcite{k4.2.langville}. 
+  \item Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird. 
+  % Notwendig?
+  \item Bei der \textit{Jacobi-Methode} wird nur der Fehler bei jeder Iteration verringert. Sei $\rho (A) = \max (|\lambda_{i}|)$, $\lambda_{i} := \text{Eigenwert von } A$, so wird die Jacobi-Methode nur konvergieren, wenn $\rho (A) < 1$ gilt. Andernfalls würde diese Komponente des Fehlers mit dem höchsten Eigenwert immer größer. 
+\end{itemize}
+
+% \  Eigenwertproblem - Lara & Chuyang
+% ======================
+
 
 % Bibliography
 \printbibliography{}
