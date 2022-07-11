@@ -18,6 +18,86 @@
 \sectionauthor{Mara Germann, Patricia Hackl}
 Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Das Cox's Theorem ist die logische Grundlage für diese.
 
+% ======================
+% Eigenwertproblem - Lara & Chuyang
+\section{Eigenwertproblem}
+\sectionauthor{Lara Müller, Chuyang Wang}
+
+\subsection{Definitionen}\label{k4.2.eigen.def}
+
+Ein Eigenvektor ist der Vektor, welcher nach Anwendung einer Matrix immer auf einem Vielfachen von sich selbst liegt. 
+Formal werden die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ definiert als $\vec{v} \in \mathbb{R}^{x}, \vec{v} \neq \vec{0}$, mit denen $A \cdot \vec{v} = \lambda \cdot \vec{v}$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $\vec{v}$ zugehörigen Eigenwert. 
+
+Durch Äquivalenzumformung erhält man
+
+\begin{equation}
+  \label{k4.2.eigen.def.lgs}
+  \begin{aligned}
+    && A \cdot \vec{v} &= \lambda \cdot \vec{v} && \\
+    &\Leftrightarrow& A \cdot \vec{v} &= \lambda E \cdot \vec{v} &\text{mit } \vec{v} = E\vec{v}& \\
+    &\Leftrightarrow& (A - \lambda E) \cdot \vec{v} &= 0 && \\
+    &\Leftrightarrow& B\vec{x} &= 0  \quad \quad &\text{mit } B = (A - \lambda E)&  \\ 
+  \end{aligned}
+\end{equation}
+
+Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Eigenschaft dieser Matrix beschreibt. Dieses lineare Gleichungssystem \cref{k4.2.eigen.def.lgs} hat erst dann nicht-triviale Lösungen ($\vec{x} = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$. 
+
+Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden. 
+
+
+\subsection{Das charakteristische Polynom}
+
+Im Allgemeinen wird das charakteristische Polynom definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen. 
+
+Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
+  a & b \\
+  c & d
+\end{pmatrix}$, so gilt
+
+\begin{equation}
+  \label{k4.2.eigen.charac.2d}
+  \begin{aligned}
+    0  
+    &= \chi_A (\lambda) \\
+    &= \det(A - \lambda E) \\
+    &= \det \begin{pmatrix}
+      a - \lambda & b \\
+      c & d-\lambda
+    \end{pmatrix} \\
+    &= (a - \lambda) \cdot (d - \lambda) - c \cdot b
+  \end{aligned}
+\end{equation}
+
+Eine allgemeine Lösung für \cref{k4.2.eigen.charac.2d} kann dann mithilfe der pq-Formel berechnet werden:
+
+\begin{equation}
+  \begin{aligned}
+    \lambda = \frac{a+d}{2} \pm \sqrt{\Big(\frac{(a+d)}{2}\Big)^2-ad+cb} 
+  \end{aligned}
+\end{equation}
+
+
+\subsection{Power Iteration}\label{k4.2.eigen.powerit}
+
+Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad wird es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem 
+Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt: 
+
+\begin{equation}
+  \begin{aligned}
+    b_{k+1} = \frac{Ab_k}{\left\lVert Ab_k \right\rVert }
+  \end{aligned}
+\end{equation}
+
+Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berechnen, indem die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst wird. 
+
+
+\subsection{Anwendungen}
+
+Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Rechnungen und Beweise. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird. 
+
+% \ Eigenwertproblem - Lara & Chuyang
+% ======================
+
 
 Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
 Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
