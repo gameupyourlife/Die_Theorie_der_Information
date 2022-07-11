@@ -3,16 +3,3 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 
-\usepackage{datetime}
-\usepackage[]{setspace}
-\usepackage{lineno}
-
-% Draft mode
-\KOMAoptions{draft=false}
-\makeatletter
-\@ifclasswith{dsadokumentation}{draft}{
-  \linenumbers
-  \setstretch{2}
-  \chead{\textit{Draft ver. \today \ \currenttime.}}
-}{}
-\makeatother

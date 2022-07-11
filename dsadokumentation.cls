@@ -1,7 +1,7 @@
 % DO NOT CHANGE THIS FILE
 
-\def\dsafileversion{1.3}
-\def\dsafiledate{2022/07/06}
+\def\dsafileversion{1.4}
+\def\dsafiledate{2022/07/11}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dsadokumentation}[\dsafiledate\space Version \dsafileversion\space by Philipp Arras]
@@ -76,3 +76,22 @@ eprint=false,isbn=false,url=false,dashed=False]{biblatex}
   \par\nobreak\vspace*{0.6em}}
   \@afterheading%
 }
+
+
+% Draft mode
+\RequirePackage{datetime}
+\RequirePackage{setspace}
+\RequirePackage{lineno}
+\RequirePackage{lastpage}
+
+\KOMAoption{draft}{false}
+\makeatletter
+\@ifclasswith{dsadokumentation}{draft}{
+  \setkeys{Gin}{draft=false}
+  \linenumbers
+  \setstretch{2}
+  \chead{\textit{Draft version \today \ \currenttime.}}
+  \cfoot*{\thepage{}/\pageref{LastPage}}
+}{}
+\makeatother
+% \Draft mode
