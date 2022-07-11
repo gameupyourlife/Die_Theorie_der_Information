@@ -14,12 +14,6 @@
 \begin{document}
 \kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{example-image-a}
 
-\section{Cox's Theorem}
-\sectionauthor{Mara Germann, Patricia Hackl}
-Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Das Cox's Theorem ist die logische Grundlage für diese.
-
-% ======================
-% Eigenwertproblem - Lara & Chuyang
 \section{Eigenwertproblem}
 \sectionauthor{Lara Müller, Chuyang Wang}
 
@@ -95,16 +89,6 @@ Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berech
 
 Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Rechnungen und Beweise. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird. 
 
-% \ Eigenwertproblem - Lara & Chuyang
-% ======================
-
-
-Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
-Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
-Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
-
-Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
-Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
 \section{Cox's Theorem}
 \sectionauthor{Mara Germann, Patricia Hackl}
 Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Das Cox's Theorem ist die logische Grundlage für diese.
@@ -225,14 +209,14 @@ Da die Radioastronomie große Wellenlängen im $cm-km$ Bereich verwendet, sind h
 
 \subsection{Radiointerferometrie}
 \begin{wrapfigure}{r}{5cm}
-\includegraphics[width=.4\textwidth]{baselineunterschied.jpg}
+\includegraphics[width=.4\textwidth]{k4.2/baselineunterschied.jpg}
 \caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
-\label{BILD_BASELINEUNTERSCHIED}
+\label{bildBaselineunterschied}
 \end{wrapfigure}
 
 Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um hieraus ein Signal zu erzeugen. Dieses Signal soll dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre, möglichst ähnlich sehen.
 
-Werden mehrere Teleskope in einem Verbund synchronisiert, ist nur die Laufzeitdifferenz im Vergleich zum Wellenberg bekannt, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{BILD_BASELINEUNTERSCHIED}, bei gleichen Abständen nicht zwischen den Gangdifferenzen $mod \lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt. Daher werden bei Antennengruppen möglichst unterschiedliche Abstände verwendet.
+Werden mehrere Teleskope in einem Verbund synchronisiert, ist nur die Laufzeitdifferenz im Vergleich zum Wellenberg bekannt, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{bildBaselineunterschied}, bei gleichen Abständen nicht zwischen den Gangdifferenzen $mod \lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt. Daher werden bei Antennengruppen möglichst unterschiedliche Abstände verwendet.
 
 Dieses Verfahren wurde beispielsweise auch \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung mehrerer Teleskope, wobei deren Abstand bis zu $10000km$ beträgt. Mit diesem Teleskop wurde das erste Foto eines Schwarzen Lochs erstellt.
 
