@@ -212,6 +212,35 @@ Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen 
 
 Mithilfe diesem Wissen über lineare Algebra und Abbildungen in Zusammenhang mit Vektorräumen, lassen sich lineare Abbildungen nun als strukturerhaltende Abbildungen zwischen Vektorräumen auffassen.
 
+\section{Radioastronomie}
+\sectionauthor{Constantin Burmeister, Ole Fleck}
+
+Radioastronomie dient der Beobachtung von Ereignissen und astrophysikalischen Prozessen, welche Wellen außerhalb des Frequenzbereichs des sichtbaren Lichts aussenden. Diese Signale werden mit Radiointerferometrie nachbehandelt und zusammengefügt.
+
+\subsection{Teleskope}
+
+Die Radioastronomie verwendet Radioteleskope, um Daten über astrophysikalische Prozesse aufzunehmen.
+Der minimal auflösbare Bildwinkel $\delta\theta$ ist abhängig von der Wellenlänge $\lambda$, welche gemessen werden soll, und dem Spiegeldurchmesser $D$ des Teleskops mit $\delta\theta\approx1,22\frac{\lambda}{D}$.
+Da die Radioastronomie große Wellenlängen im $cm-km$ Bereich verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich. Zur Erhöhung der Auflösung von Teleskopen können mehrere Antennen gleichzeitig verwendet werden.
+
+\subsection{Radiointerferometrie}
+\begin{wrapfigure}{r}{5cm}
+\includegraphics[width=.4\textwidth]{baselineunterschied.jpg}
+\caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
+\label{BILD_BASELINEUNTERSCHIED}
+\end{wrapfigure}
+
+Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um hieraus ein Signal zu erzeugen. Dieses Signal soll dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre, möglichst ähnlich sehen.
+
+Werden mehrere Teleskope in einem Verbund synchronisiert, ist nur die Laufzeitdifferenz im Vergleich zum Wellenberg bekannt, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{BILD_BASELINEUNTERSCHIED}, bei gleichen Abständen nicht zwischen den Gangdifferenzen $mod \lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt. Daher werden bei Antennengruppen möglichst unterschiedliche Abstände verwendet.
+
+Dieses Verfahren wurde beispielsweise auch \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung mehrerer Teleskope, wobei deren Abstand bis zu $10000km$ beträgt. Mit diesem Teleskop wurde das erste Foto eines Schwarzen Lochs erstellt.
+
+Die Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Nur dieses Verfahren ermöglicht die Ursprungsbestimmung eines Radiowellen Signals.
+
+\subsection{Zusammenfassung}
+Die Radioastronomie erstellt mithilfe von Teleskopen und Antennenarrays Bilder des Weltraums. Die Radiointerferometrie verarbeitet das Signal der Teleskope in Bilder.
+
 % Bibliography
 %\printbibliography{}
 \end{document}
