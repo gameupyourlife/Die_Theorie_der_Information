@@ -166,7 +166,7 @@ Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man ge
 
 Das Experiment kann mehrfach wiederholt werden, dabei werden die Daten angepasst. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von Daten d und aktualisieren unser Wissen über s.
 
-\section{Lineare Abbildungen zwischen Vektorräumen}
+\section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
 \sectionauthor{Lara Müller, Chuyang Wang}
 Der folgende Abschnitt wird sich mit den Grundlagen linearer algebraischer Berechungen befassen und in diesem Kontext lineare Abbildungen und zugehörige Vektorräume definieren.
 
@@ -360,9 +360,111 @@ Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um de
   \label{k4.2.tomo.ct.bp}
 \end{wrapfigure}
 
-
-
 Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
+\section{NumPy}\label{k4.2.ch.NumPy}
+\sectionauthor{Cedric Balzer}
+Numerisches Python (kurz. Numpy) ist ein auf in der Programmiersprache geschriebene Libary für Python. Sie ermöglicht das effiziente Rechnen mit Matrizen, mehrdimensionalen Arrays und Vektoren in Python.
+
+NumPy ist eine open-source Library welche auf den früheren Python-Modulen Numeric und Numarray basiert. Da Python nicht für numerische Rechnung optimiert ist, greift NumPy auf den schnelleren C Compiler zurück und ermöglicht damit das numerische Rechnen auch mit großen Datenmengen. Eine der Kernfunktionalitäten von NumPy ist das mehrdimensionale Array, das eine Matrix von Elementen repräsentieren kann. Ein zentraler Unterschied im Vergleich zu Python-Listen ist, dass alle im Array gespeicherte Elemente vom selben Datentyp sein müssen. Außerdem ist die Größe eines NumPy-Arrays statisch und jedes Element im Array muss einen Wert enthalten, sodass keine leeren Eintrage im Array erstehen. Dies liefert eine im Vergleich zu Listen eine schnellere Handhabung.
+Numpy ist nicht im Python3-Standard enthalten und muss daher separat installiert werden:
+
+\begin{verbatim}
+pip install numpy
+\end{verbatim}
+
+Möchte man ein Array aus einer Liste erstellen bietet sich folgender Code an:
+
+\begin{verbatim}
+>>> import numpy as np
+>>> nums = [1,2,3,4,5]
+>>> a = np.array(nums)
+>>> a
+array([1, 2, 3, 4, 5])
+\end{verbatim}
+
+Besteht eine übergebene Liste aus mehreren Teillisten wird ein mehrdimensionales Array erstellt:
+
+\begin{verbatim}
+>>> import numpy as np
+>>> m1 = np.array([ [1,2,3], [4,5,6], [7,8,9] ])
+>>> m1
+array([[1,2,3],
+       [4,5,6],
+       [7,8,9]])
+\end{verbatim}
+
+Möchte man auf ein Element eines eindimensionalen Arrays zugreifen, so funktioniert dies wie bei Listen. Um in mehrdimensionalen Numpy-Arrays Werte zu selektieren, wird folgende Syntax verwendet:
+
+\begin{verbatim}
+>>> import numpy as np
+>>> a = np.array([1,2,3,4,5,])
+>>> a[3]
+4
+
+>>> a[-1]
+5
+\end{verbatim}
+
+Auf Arrays können einfache Rechenoperatoren, wie Plus und Minus, angewandt werden. Diese Rechnungen werden elementweise ausgeführt, es werden stets neue Arrays erzeugt und die Original-Arrays bleiben unverändert.
+
+\begin{verbatim}
+>>> import numpy as np
+>>> r = np.arange(10)
+>>> r
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+>>> r+1
+array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+>>> r**2
+array([0, 1, 4, 9, 16, 25, 36, 49, 64, 81])
+\end{verbatim}
+
+Des Weiteren gibt es in Numpy Operationen speziell für Matrizen und Vektoren.
+Für Matrix-Arrays existieren zusätzlich die Numpy-Funktionen \verb|dot()|, \verb|inner()| und \verb|outer()|, mit deren Hilfe Multiplikationen von Matrizen beziehungsweise Vektoren durchgeführt werden können (siehe \cref{k4.2.ch.linalg}).
+
+\begin{verbatim}
+>>> import numpy as np
+>>> a = [[1, 0], [0, 1]]
+>>> b = [[4, 1], [2, 2]]
+>>> np.dot(a, b)
+array([[4, 1],
+       [2, 2]])
+\end{verbatim}
+
+Neben \verb|dot()| liefert NumPy den \verb|@| Operator (\verb|np.matmul()|) welcher ebenfalls Arrays und Matrizen multiplizieren kann.
+Bei einer Multiplikation von Vektoren und 2D Matrizen erzeugen diese Funktionen identischen Output:
+
+\begin{itemize}
+\item Skalarmultiplikation zweier Vektoren
+\begin{verbatim}
+>>> import numpy as np
+>>> a = np.array([1,2])
+>>> b = np.array([2,2])
+>>> np.dot(a,b)
+6
+
+>>> a@b
+6
+\end{verbatim}
+
+\item Multiplikatipon zweier Matrizen
+\begin{verbatim}
+>>> import numpy as np
+>>> a = np.array([[1,2],[5,3]])
+>>> b = np.array([[2,2],[8,1]])
+>>> np.dot(a,b)
+array([[18  4]
+       [34 13]])
+
+>>> a@b
+array([[18  4]
+       [34 13]])
+\end{verbatim}
+\end{itemize}
+
+Numpy ist ein nützliches und effizientes Tool, um mit großen Datenmengen zu arbeiten. Es liefert durch diese umfassende Funktionalität die Grundlagen für andere wissenschaftlich genutzten Libaries.
 
 \section{Objekt-Orientierte Programmierung}
 \sectionauthor{Alexander Gitnik, Clemens Ljungh}
