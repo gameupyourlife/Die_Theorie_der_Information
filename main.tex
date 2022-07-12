@@ -225,6 +225,96 @@ Die Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. N
 \subsection{Zusammenfassung}
 Die Radioastronomie erstellt mithilfe von Teleskopen und Antennenarrays Bilder des Weltraums. Die Radiointerferometrie verarbeitet das Signal der Teleskope in Bilder.
 
+\section{Pytest}
+\sectionauthor{Finia Hoffman}
+Pytest ist ein Testing-Framework für Python. Dabei wird die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisiert und somit effizienter als manuelles Testen. Anstatt sich an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden anwenden, um so komplexere Fehler zu beheben. Pytest überprüft synthetische Eingaben für die zu testende Funktion und vergleicht die Ausgabe mit der Erwartung.
+
+Dabei ist eine einfache Abfrage:
+
+\begin{verbatim}
+assert name_Funktion ({Eingabe}) == {gewünschte Ausgabe} 
+\end{verbatim}
+In einem konkreten Beispiel der Addition mit 2 kännte dies wie folgt aussehen: 
+\begin{verbatim}
+assert add_2(1) == 3 
+\end{verbatim}
+ Pytest bearbeitet nun die Methode mit den eingegebenen Werten und überprüft selbstständig die Ausgabe. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Bei automatisierter, zufälliger Testung wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
+
+Die zu testende Methode beginnt mit 'test\_'.
+
+ Mit dem Dekorator '@pytest.fixture' vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.  
+
+So können z.B. Eingabewerte zufällig generiert werden. 
+
+Auch kann man bewusst Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Dabei handelt es sich um eine †berprüfung, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl: 
+\begin{verbatim}
+with pytest.rises({FehlerTyp}) 
+\end{verbatim}
+ mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
+ 
+Zuletzt kann man noch mit eine Test-Methode durch den Dekorator  
+\begin{verbatim}
+@pytest.mark.parametrize({Eingabe})
+\end{verbatim}
+ kennzeichnen. Hierbei werden einige charakteristisch Eingaben ausprobiert.
+
+Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei kännen Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler kännen nicht vermieden werden.
+
+\section{Fourier-Transformation}
+\sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
+
+% Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur †bersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{k4.4/Fourier.png}
+	\caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: www.nti-audio.com)}
+\end{figure}
+
+Ein häufiges Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der Abbildung links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der Abbildung rechts), wodurch man das Frequenzspektrum erhält.
+
+Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden verschiedene Varianten der Fourier-Transformation Anwendung.
+
+Die kontinuierliche Fourier-Transformation (FT) benätigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)dt$ integriert wird. Diese Berechnung lässt sich nur auf kontinuierliche Werte anwenden und gibt eine kontinuierliche Funktion aus.
+
+Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da Computer grundsätzlich mit einzelnen Datenpunkten und nicht mit kontinuierlichen Werten arbeiten. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Da die Laufzeit der DFT quadratisch ist, wurde die Fast Fourier Transformation (FFT) entwickelt, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
+
+Manche Probleme, welche im Wertebereich nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich mit wenigen einfachen Operationen gel\"ost werden. Dazu transformiert man die Daten, führt die notwendigen Operationen im Bildbereich aus und transformiert die Läsung zurück in den Wertebereich. Mächte man beispielsweise eine Tonaufnahme von Stärsignalen bereinigen, wendet man die FFT an, bearbeitet das Frequenspektrum im Bildbereich und übersetzt es zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen.
+
+Das "Rückübersetzen" der Signale erfolgt mit der inversen (kontinuierlichen oder diskreten) Fourier-Transformation (IFT). Diese erzeugt die Funktion, welche aus einem gegebenen Spektrum entsteht. Dazu werden dieselben Operationen wie bei der Berechnung des Spektrums rückwärts angewandt.
+
+\section{Komplexe Zahlen}
+\sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
+
+Da bei der Radioastronomie komplexe Zahlen eine Rolle spielen, hat sich unser Kurs auch mit diesen beschäftigt.
+
+Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit mit $i^{2} = -1$. Ist $b = 0$, fällt der Imaginärteil weg und wir erhalten die bereits bekannten reellen Zahlen. $\mathbb{C}$ ist somit die Menge aus $\mathbb{R}$ und den imaginären Zahlen.
+
+Die konjugierte komplexe Zahl von $z=a+b\cdot i$ ist definiert über $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
+
+Bei der Addition und Subtraktion von komplexen Zahlen gibt es keine Besonderheiten zu beachten, die imaginäre Einheit i wird wie eine Konstante mitgenommen. Auch die Multiplikation verläuft wie gewohnt, nur sollte man stets daran denken, dass $i\cdot i=-1$.
+Die Division von komplexen Zahlen gestaltet sich etwas komplizierter, v. a. weil das Kürzen des Bruches meist nicht ohne Weiteres mäglich ist. Oft hilft es aber, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck erheblich vereinfacht wird. Mit diesem Wissen ist es uns mäglich, mathematische Operationen auf die komplexen Zahlen anzuwenden. 
+
+Die Menge $\mathbb{C}$ lässt sich geometrisch in ein einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a\\b
+\end{pmatrix}$. 
+Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben: 
+\begin{displaymath}
+z=r\cdot e^{i\cdot\phi}.
+\end{displaymath}
+Viele Operationen mit Vektoren kann man so viel einfacher ausführen. Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Eine konjugierte komplexe Zahl ist äquivalent zur Spiegelung des Vektors an der reellen Achse.
+
+\section{Git}
+\sectionauthor{Jonas Fiedler}
+Die Versionsmanagement Software Git ist ein in Software enthaltenes Tool, welches die koordinierte Kooperation zwischen mehreren Programmierern ermöglicht. Git beschäftigt sich hauptsächlich mit dem Verwalten der Versionen Code und der Zusammenführung von überlappendem Code. Dafür erstellt Git einen Versionsverlauf, welcher es ermöglicht, Versionen des Codes zurückrollen um Bugs zu identifizieren und das Nachverfolgen von Code-Änderungen von wichtigen Updates zu ermöglichen. Dabei wird zwischen lokaler Dateispeicherung und Speicherung im serverseitigen Bereich unterschieden. Der Server ermöglicht den Usern, Code herunterzuladen, ihn zu bearbeiten und letztendlich in überarbeiteter Version wieder an den Server zu übermitteln, wo er mit dem restlichen Code vereint wird.
+
+Generell ist es in Git möglich verschiedene Versionsstränge (Branches) aufzubauen. Diese Branches ermöglichen die Modifikation an verschiedenen Bereichen und ein strukturiertes Arbeiten. In diesen Branches können somit bspw. Bugs unabhängig gelöst werden und neue Funktionen getestet sowie implementiert werden. Sobald diese ordnungsgemäß funktionieren, werden sie auf den nächst höheren Brach geschoben (Merge) und somit mit dem Rest des Codes wieder vereint.
+
+In Git gibt es verschiedene Stadien der der Code „Verarbeitung“ um einen Code Versionen zu speichern. Dabei beschreibt Git Add den Vorgang wo die Datei von dem Working Directory (lokal), in die Staging Area (lokal) verschoben wird. Git Commit sorgt dafür das der Code danach auf eine lokales Verzeichnis, das Localrepo, des Users geschoben wird. Danach ermöglicht Git Push das Übertragen des Codes an den Server und der damit zusammenhängende Vereinen der Code Versionen, genannt Merge. Der Umkehrschritt ist Git Pull. stellt dem User die aktuellste (teil) Version des Codes zur Verfügung
+
+bzw. herunterzuladen. Als letzter Teil des Zyklus gilt Git Checkout, welcher den heruntergeladenen Code vom Localrepo in das Working Directory verschiebt und somit den Kreis schließt.
+
+Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses deshalb sowohl von äußerst vielen Programmierern, als auch in anderen Berufsfeldern wie zB. Von Schriftsteller benutzt.
+
 % Bibliography
 \printbibliography{}
 \end{document}
