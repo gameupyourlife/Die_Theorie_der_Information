@@ -204,7 +204,7 @@ Die resultierende $2 \times 2$-Matrix beinhaltet entsprechend der Matrix-Spalten
   f(\vec{x}) = A \cdot \vec{x}
 \end{equation}
 
-Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektorraum dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen unverändert. Im Gegensatz zur Drehung, Scherung und Projektion bei der Abbildung sind Krümmungen nicht möglich.
+Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektorraum dar. Diesen kann man also als ein Produkt von einer Matrix $A$ und einem Vektor $\vec{x}$ verstehen, wobei jede Zeile der Matrix mit dem Vektor multipliziert wird. Dabei bleiben Streckenverhältnisse und Lagebeziehungen unverändert. Im Gegensatz zur Drehung, Scherung und Projektion bei der Abbildung sind Krümmungen nicht möglich.
 
 Mithilfe dieses Wissens über lineare Algebra und Abbildungen in Zusammenhang mit Vektorräumen, lassen sich lineare Abbildungen nun als strukturerhaltende Abbildungen zwischen Vektorräumen auffassen.
 
@@ -388,7 +388,7 @@ Wie in der Betrachtung von eindimensionalen Funktionen, werden für die Bestimmu
 
 Darauf basiert der Gradient Descent Algorithmus, der das Ziel hat, das Minimum einer Funktion, also den Punkt, an dem $ f'(x) = 0 $ gilt, zu finden. Dies wird durch einen iterativen Ansatz erreicht: An einem zufällig gewählten Startpunkt wird zunächst der Gradient ermittelt. Danach wird als neuen Startpunkt derjenige definiert, der durch das Gehen in die entgegengesetzte Richtung des Gradienten erreicht wird. Die Länge des gegangenen Schrittes hängt von der Länge des Gradienten ab, die durch eine Konstante, die Learning Rate, skaliert wird. Der Algorithmus endet, wenn die davor definierte, maximale Anzahl an Durchläufen erreicht, oder wenn die Schrittlänge kleiner als eine davor definierte Toleranz ist. Der Gradient Descent ist also ein Näherungs-/Optimierungsalgorithmus.
 
-Vorausgesetzt wird, dass die Funktion differenzierbar und konvex ist, also ein Minimum besitzt. Auch Funktionen mit Sattelpunkt oder Durchführungen mit unpassenden Learning Rates können zu falschen Ergebnissen und langen Laufzeiten führen. Das liegt daran, dass bei zu großen Learning Rates das Minimum einfach übergangen wird, während bei zu kleinen Learning Rates der Algorithmus in kleinesten lokalen Minima „stecken“ bleibt, wobei das Programm dann ohne Fortschritt weiterläuft.\\
+Vorausgesetzt wird, dass die Funktion differenzierbar und konvex ist, also ein Minimum besitzt. Auch Funktionen mit Sattelpunkt oder Durchführungen mit unpassenden Learning Rates können zu falschen Ergebnissen und langen Laufzeiten führen. Das liegt daran, dass bei zu großen Learning Rates das Minimum einfach übergangen wird, während bei zu kleinen Learning Rates der Algorithmus in kleinesten lokalen Minima „stecken“ bleibt, wobei das Programm dann ohne Fortschritt weiterläuft.
 
 Um das zu verhindert existiert für lineare Funktionen ein weiterer Algorithmus namens Conjugate Gradient. Auch er basiert auf der Minimabestimmung, um ein lineares Gleichungssystem (LGS) zu lösen.
 
