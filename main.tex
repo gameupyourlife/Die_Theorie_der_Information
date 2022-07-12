@@ -400,6 +400,28 @@ Ein LGS wird durch die Formel $A\vec{x} = \vec{b}$ dargestellt, wobei A eine $ n
 Algorithmisch: Conjugate Gradient läuft das Residuum (welches der Vektor ist, der entgegengesetzt zum oben erwähnten Gradienten, also additiv invers verläuft) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal n-Schritten am Ziel ankommen, da wir dann alle n Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Endbedingungen, zum einen, wenn n Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also das $ f'(x) = 0 $ gilt, klein genug ist.
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung  $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
 
+\section{Wiener Filter}
+\sectionauthor{Constantin Burmeister, Clemens Ljungh, Natalie Teplitska}
+Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten verlässliche Informationen zu gewinnen. Allerdings können Messungen nur mit einer endlichen Genauigkeit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen nicht vermeiden; zudem sind die Daten unvollständig. Die damit gegebene Unsicherheit soll minimiert werden. Eine dafür verwendete Methode ist der Wiener Filter.
+Dieses mathematische Verfahren basiert auf dem Bayes'schen Theorem,
+% ref Bays
+ welches uns sagt, wie das Wissen über die Welt verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl der Prior als auch die Likelihood normalverteilt sind.
+
+Dem Modell werden zwei Annahmen zugrunde gelegt.
+Zum Einen setzt man voraus, dass das untersuchte Signal eine Normalverteilung mit $P(s) = \mathcal{G}(s,S)$ ist.
+Zum Anderen soll für den Wiener Filter gelten, dass die Daten aus Art der Messung, Ursprungssignal und Rauschen zusammengesetzt sind.
+\begin{eqnarray}
+	d = R(s) + n
+\end{eqnarray}
+In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen. Als Letztes bezeichnet $n$ die Ungenauigkeit bzw. das Rauschen in den Daten. Für dieses Rauschen wird eine Normalverteilung $P(n) = \mathcal{G}(n,N)$ angenommen.
+
+Unter Einbezug von Bayes definiert sich der Filter wie folgt:
+\begin{eqnarray}
+P(s|d) = \mathcal{G}(s-m,D)\\
+D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
+\end{eqnarray}
+Die Variable $m$ in der Formel legt den Erwartungswert der Gaußverteilung fest. Der Wiener Filter hat einige vorteilhafte Eigenschaften. Unter andrem kann er beliebige Datenmengen verarbeiten und ist dabei auch noch stets konsistent.
+
 % Bibliography
 \printbibliography{}
 \end{document}
