@@ -315,6 +315,44 @@ bzw. herunterzuladen. Als letzter Teil des Zyklus gilt Git Checkout, welcher den
 
 Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses deshalb sowohl von äußerst vielen Programmierern, als auch in anderen Berufsfeldern wie zB. Von Schriftsteller benutzt.
 
+\section{Computertomographie}
+
+\sectionauthor{Aaron Gschwendt}
+
+\subsection{Tomographie}
+
+Die Tomographie ist ein bildgebendes Verfahren im dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu bestimmen beobachtet man Strahlen die durch das Objekt in einer Ebene gehen. Die Menge an Licht die auf der Strecke absorbiet wurde entspricht dem Linienintegral:
+
+$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
+
+$$p\in \mathbb{R}^2$$
+
+$d$ ist hier die Menge an Licht die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt. Gesucht ist $s(p)$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Strecken im Bild, kann man mithilfe vom bayesschen Verfahren mit hoher Auflösung und Sicherheit $s(p)$ bestimmen.
+
+\subsection{Astronomie}
+
+In der Astronomie wird die Tomographie verwendet um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz man kennt und um bzw. in der Wolke liegen beobachtet. Man vergleicht deren scheinbare Helligkeit mit deren zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. Daraus kann man $s(p)$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen
+
+\subsection{CT}
+
+Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie, kurz CT.
+
+Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projektiert. Der Nachteil dieser Methode ist das sich Teile vom Objekt überlagern können und man nicht erkennen kann, ob es sich um ein Objekt mit hoher Absorption oder mehrer Objekte mit geringer Absorption handelt.
+
+Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nimmt dabei in kleinen Abständen Messpunkte auf. Dieses wird für einige Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl ist breit genug damit bei jedem Messpunkt die ganze breite des Körperteils in einem Streifen ergriffen wird aber sehr dünn, um die Verticale auflösung zu erhöhen.
+
+\begin{wrapfigure}{r}{0.4\linewidth}
+
+\includegraphics[width=0.4\textwidth]{backprojektion.png}
+
+\caption{Sinogram}
+
+\end{wrapfigure}
+
+
+
+Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1) bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
 % Bibliography
 \printbibliography{}
 \end{document}
