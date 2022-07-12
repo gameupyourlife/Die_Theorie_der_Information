@@ -1,7 +1,10 @@
 % DO NOT CHANGE THIS FILE
 
-\def\dsafileversion{1.4}
-\def\dsafiledate{2022/07/11}
+% Maintainer: Philipp Arras (c@philipp-arras.de)
+% Contributors: Philipp Arras (c@philipp-arras.de), Chuyang Wang (mail@chuyang-wang.de)
+
+\def\dsafileversion{1.5}
+\def\dsafiledate{2022/07/12}
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dsadokumentation}[\dsafiledate\space Version \dsafileversion\space by Philipp Arras]
@@ -33,7 +36,7 @@
 \RequirePackage[pdftex]{hyperref}
 
 % Bibliography
-\usepackage[style=authoryear,citestyle=authoryear-comp,
+\RequirePackage[style=authoryear,citestyle=authoryear-comp,
 giveninits=true,
 sorting=nyvt,
 alldates=year,
@@ -41,7 +44,7 @@ uniquename=false,
 doi=false,
 eprint=false,isbn=false,url=false,dashed=False]{biblatex}
 \DeclarePrintbibliographyDefaults{heading=subbibliography}
-\DeclareNameAlias{sortname}{last-first}
+\DeclareNameAlias{sortname}{family-given}
 \renewbibmacro{in:}{}
 % /Bibliography
 
