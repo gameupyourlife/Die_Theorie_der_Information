@@ -371,6 +371,22 @@ Daten sind bei der Objekt-Orientierten Programmierung zwar besser strukturiert, 
 
 Heutzutage ist die Funktionale Programmierung weitestgehend von der Objekt-Orientierten Programmierung verdrängt worden. Für unsere Kursarbeit brauchen wir oft die Funktionale Programmierung, da wir Datensätze rein mathematisch verarbeiten. Außerdem ist Python gut für die Funktionale Programmierung geeignet.
 
+\section{Conjugate Gradient/Gradient Decent – LGS-Lösungsalgorithmen}
+\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann}
+
+Wie in der Betrachtung von eindimensionalen Funktionen, werden für die Bestimmung der Extrema auch bei mehrdimensionalen Funktionen Ableitungen eingesetzt. Diese werden nicht mehr durch reelle Zahlen, sondern durch Vektoren ausgedrückt. Gegeben sei die eine differenzierbare Funktion $ f:\mathbb{R}^n \rightarrow \mathbb{R}, x \rightarrow f(x). $ Die Ableitung von f an einem Punkt entspricht einem N-Dimensionalen Vektor. Dieser heißt Gradient und seine Spitze zeigt immer in Richtung des stärksten Anstiegs, wobei dessen Länge der Steigung entspricht.
+
+Darauf basiert der Gradient Descent Algorithmus, der das Ziel hat, das Minimum einer Funktion, also den Punkt, an dem $ f‘(x) = 0 $ gilt, zu finden. Dies wird durch einen iterativen Ansatz erreicht: An einem zufällig gewählten Startpunkt wird zunächst der Gradient ermittelt. Danach wird als neuen Startpunkt derjenige definiert, der durch das Gehen in die entgegengesetzte Richtung des Gradienten erreicht wird. Die Länge des gegangenen Schrittes hängt von der Länge des Gradienten ab, die durch eine Konstante, die Learning Rate, skaliert wird. Der Algorithmus endet, wenn die davor definierte, maximale Anzahl an Durchläufen erreicht, oder wenn die Schrittlänge kleiner als eine davor definierte Toleranz ist. Der Gradient Descent ist also ein Näherungs-/Optimierungsalgorithmus. 
+
+Vorausgesetzt wird, dass die Funktion differenzierbar und konvex ist, also ein Minimum besitzt. Auch Funktionen mit Sattelpunkt oder Durchführungen mit unpassenden Learning Rates können zu falschen Ergebnissen und langen Laufzeiten führen. Das liegt daran, dass bei zu großen Learning Rates das Minimum einfach übergangen wird, während bei zu kleinen Learning Rates der Algorithmus in kleinesten lokalen Minima „stecken“ bleibt, wobei das Programm dann ohne Fortschritt weiterläuft.\\
+
+Um das zu verhindert existiert für lineare Funktionen ein weiterer Algorithmus namens Conjugate Gradient. Auch er basiert auf der Minimabestimmung, um ein lineares Gleichungssystem (LGS) zu lösen. 
+
+Ein LSG wird durch die Formel $ Ax = b$ dargestellt, wobei A eine $ n \times n $-Matrix (invariant unter Transposition) und $ b,x $ Vektoren sind und kann durch die Ableitung gelöst werden. Das geht, indem eine quadratische Funktion nach dem Schema $ f(x) = 1/2xAx-bx+c $ notiert wird, (mit selben A,b und x), dessen komponentenweise Ableitung genau dann null ist, wenn das ursprüngliche lineare Gleichungssystem nach x gelöst ist, da gilt: $f‘(x) = Ax-b = 0$ . Daher ist das Optimieren der dem LGS entsprechenden Funktion äquivalent zum Lösen ebenjenes. 
+
+Algorithmisch: Conjugate Gradient läuft das Residuum (welches der Vektor ist, der entgegengesetzt zum oben erwähnten Gradienten, also additiv invers verläuft) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal n-Schritten am Ziel ankommen, da wir dann alle n Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Endbedingungen, zum einen, wenn n Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also das $ f‘(x) = 0 $ gilt, klein genug ist. 
+Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung  $ D^{-1} m = j $, auf die im Kapitel „Wiener Filter“ eingegangen wird.
+
 % Bibliography
 \printbibliography{}
 \end{document}
