@@ -350,6 +350,26 @@ Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um de
 
 Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1) bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
 
+\section{Objekt-Orientierte Programmierung}
+\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+Die Objekt-Orientierte Programmierung ist der heute am weitesten verbreitete Programmierstil. Beim Objekt-Orientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code in sinnvolle Bausteine zerlegt - dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte darstellen.
+
+Dabei ist eine Klasse eine allgemeine Vorlage, aus der einzelne Objekte, die \emph{Klasseninstanzen}, initialisiert werden können. Folglich besitzen genannte Klassen zum einen Eigenschaften, \emph{Attribute} genannt, und zum anderen Handlungsmöglichkeiten, welche \emph{Methoden} genannt werden. Jede Klasse besitzt einen Konstruktor, welcher bei jeder Erstellung einer \emph{Instanz} der Klasse automatisch aufgerufen wird, und an welchen gegebenenfalls auch die zum Erstellen einer Klasse benötigten Anfangsparameter übergeben werden. Objekte initialisiert man durch Zuweisung des Konstruktoraufrufs der jeweiligen Klasse an eine Variable, welche nun zu einem Objekt des Klassentyps wird. Da es vorkommt, dass sich Klassen ähneln, kann man \emph{Attribute} und \emph{Methoden} von einer \emph{Superklasse} an eine \emph{Unterklasse} vererben, sodass all jener Klasseninhalt an die \emph{Unterklasse} weitergegeben wird.
+
+Allgemein gilt bei der Objekt-Orientierten Programmierung die Konvention, dass \emph{Attribute} lediglich über \emph{Getter- und Setter-Methoden} abgefragt und verändert werden. Dies hat den Grund, dass man nicht versehentlich einen Fehler in den inneren Zustand des Objekts einbaut. Nutzt man nämlich eine \emph{Settermethode}, kann man überprüfen welche Werte ein Attribut annimmt. Weiterhin existiert regulär auch die Limitation des ausschließlichen Aufrufs eines beliebigen Klasseninhalts über eine bereits initialisierte Instanz jener Klasse, welche jedoch durch Nutzung eines Dekorators, der die Methode statisch macht, aufgehoben werden kann, sodass eine Mathode über die allgemeine Klasse aufgerufen werden kann.
+
+\section{Funktionale Programmierung}
+\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+Die Funktionale Programmierung ist ein gänzlich anderes Konzept als die Objekt-Orientierte Programmierung. Ihren Ursprung hat die Funktionale Programmierung im Lambda-Kalkül. Das Lambda-Kalkül kommt aus der Mathematik und ist eine formale Sprache, um logische Systeme darzustellen. Außerdem ist das Lambda-Kalkül Turing-vollständig, dies bedeutet, dass man jedes Programm damit ausdrücken kann.
+
+Anders als bei der Objekt-Orientiertem Programmierung werden Daten bei der Funktionalen Programmierung nicht in Objekten gespeichert, sondern hauptsächlich über einzelne Funktionen ausgewertet. Diese Funktionen müssen dabei \emph{pur} sein. \emph{Pure Funktionen} ähneln mathematischen Funktionen: Sie geben bei gleicher Eingabe immer die gleiche Ausgabe, da sie keinen inneren Zustand haben, welcher die Eingabe manipulieren oder verändern könnte. Weiterhin ändern die puren Funktionen auch nichts außerhalb der eigenen Funktion
+
+Üblich ist es auch, dass Funktionen als Parameter eine weitere Funktion entgegennehmen können, sodass jene über ihre Rückgabewerte ineinander verschachtelt werden. Dies endet darin, dass bei der Funktionalen Programmierung eine Kette aus Befehlen entstehen kann. Häufig wird in der Funktionalen Programmierung die \emph{Rekursion} verwendet, was bedeutet, dass Funktionen sich selber aufrufen können.
+
+Daten sind bei der Objekt-Orientierten Programmierung zwar besser strukturiert, dafür sind gerade die puren Funktionen der Funktionalen Programmierung einfacher für Entwickler zu verstehen, da die puren Funktionen keinen komplexen inneren Zustand haben. Wichtig für die Funktionale Programmierung ist das Konzept der \emph{Lazy Evaluations}. Dies bedeutet, dass Ausdrücke, welche nicht direkt für das Endergebnis benötigt werden gar nicht erst ausgerechnet werden oder zumindest erst wenn sie gebraucht werden. Dadurch kann die Laufzeit eines Programmes verringert werden, was vorteilhaft ist.
+
+Heutzutage ist die Funktionale Programmierung weitestgehend von der Objekt-Orientierten Programmierung verdrängt worden. Für unsere Kursarbeit brauchen wir oft die Funktionale Programmierung, da wir Datensätze rein mathematisch verarbeiten. Außerdem ist Python gut für die Funktionale Programmierung geeignet.
+
 % Bibliography
 \printbibliography{}
 \end{document}
