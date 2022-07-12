@@ -19,8 +19,8 @@
 
 \subsection{Definitionen}\label{k4.2.eigen.def}
 
-Ein Eigenvektor ist der Vektor, welcher nach Anwendung einer Matrix immer auf einem Vielfachen von sich selbst liegt. 
-Formal werden die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ definiert als $\vec{v} \in \mathbb{R}^{x}, \vec{v} \neq \vec{0}$, mit denen $A \cdot \vec{v} = \lambda \cdot \vec{v}$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $\vec{v}$ zugehörigen Eigenwert. 
+Ein Eigenvektor ist der Vektor, welcher nach Anwendung einer Matrix immer auf einem Vielfachen von sich selbst liegt.
+Formal werden die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ definiert als $\vec{v} \in \mathbb{R}^{x}, \vec{v} \neq \vec{0}$, mit denen $A \cdot \vec{v} = \lambda \cdot \vec{v}$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $\vec{v}$ zugehörigen Eigenwert.
 
 Durch Äquivalenzumformung erhält man
 
@@ -30,18 +30,18 @@ Durch Äquivalenzumformung erhält man
     && A \cdot \vec{v} &= \lambda \cdot \vec{v} && \\
     &\Leftrightarrow& A \cdot \vec{v} &= \lambda E \cdot \vec{v} &\text{mit } \vec{v} = E\vec{v}& \\
     &\Leftrightarrow& (A - \lambda E) \cdot \vec{v} &= 0 && \\
-    &\Leftrightarrow& B\vec{x} &= 0  \quad \quad &\text{mit } B = (A - \lambda E)&  \\ 
+    &\Leftrightarrow& B\vec{x} &= 0  \quad \quad &\text{mit } B = (A - \lambda E)&  \\
   \end{aligned}
 \end{equation}
 
-Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Eigenschaft dieser Matrix beschreibt. Dieses lineare Gleichungssystem \cref{k4.2.eigen.def.lgs} hat erst dann nicht-triviale Lösungen ($\vec{x} = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$. 
+Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Eigenschaft dieser Matrix beschreibt. Dieses lineare Gleichungssystem \cref{k4.2.eigen.def.lgs} hat erst dann nicht-triviale Lösungen ($\vec{x} = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
 
-Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden. 
+Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden.
 
 
 \subsection{Das charakteristische Polynom}
 
-Im Allgemeinen wird das charakteristische Polynom definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen. 
+Im Allgemeinen wird das charakteristische Polynom definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen.
 
 Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
   a & b \\
@@ -51,7 +51,7 @@ Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
 \begin{equation}
   \label{k4.2.eigen.charac.2d}
   \begin{aligned}
-    0  
+    0
     &= \chi_A (\lambda) \\
     &= \det(A - \lambda E) \\
     &= \det \begin{pmatrix}
@@ -66,15 +66,15 @@ Eine allgemeine Lösung für \cref{k4.2.eigen.charac.2d} kann dann mithilfe der 
 
 \begin{equation}
   \begin{aligned}
-    \lambda = \frac{a+d}{2} \pm \sqrt{\Big(\frac{(a+d)}{2}\Big)^2-ad+cb} 
+    \lambda = \frac{a+d}{2} \pm \sqrt{\Big(\frac{(a+d)}{2}\Big)^2-ad+cb}
   \end{aligned}
 \end{equation}
 
 
 \subsection{Power Iteration}\label{k4.2.eigen.powerit}
 
-Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad wird es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem 
-Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt: 
+Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad wird es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem
+Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt:
 
 \begin{equation}
   \begin{aligned}
@@ -82,12 +82,12 @@ Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchs
   \end{aligned}
 \end{equation}
 
-Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berechnen, indem die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst wird. 
+Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berechnen, indem die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst wird.
 
 
 \subsection{Anwendungen}
 
-Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Rechnungen und Beweise. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird. 
+Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Rechnungen und Beweise. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird.
 
 \section{Cox's Theorem}
 \sectionauthor{Mara Germann, Patricia Hackl}
@@ -101,7 +101,7 @@ Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahr
 {
 \begin{itemize}
  \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
- 
+
  \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
  \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
 \end{itemize}
@@ -110,49 +110,49 @@ Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrschei
 
 \subparagraph{Produktregel}
 
-Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$, 
-entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$, 
+Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
+entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
 multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(c|AB)$:
 
-\begin {displaymath}
+\begin {equation}
 w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
-\end{displaymath}
+\end{equation}
 
 \noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
-\begin {displaymath}
+\begin {equation}
 P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
-\end{displaymath}
+\end{equation}
 Unter $P(B \wedge C|A)$ versteht man die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
 
 Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses stehen.
 
 \subparagraph{Summenregel}
-\begin{displaymath}
-w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1 
-\end{displaymath}
+\begin{equation}
+w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
+\end{equation}
 
-Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$ 
+Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
 und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
 
-                                                                                  
+
 Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen. Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung
 
 \section{Wahrscheinlichkeitstheorie}
 \sectionauthor{Mara Germann, Patricia Hackl}
 
 Die Bayes'sche Statistik beruht auf bedingten Wahrscheinlichkeiten. Darunter versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist.
-\begin{displaymath}
+\begin{equation}
 P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}
-\end{displaymath}
+\end{equation}
 Obige Gleichung wird auch Satz von Bayes genannt. Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
-\begin{displaymath}
+\begin{equation}
 \int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
-\end{displaymath}
+\end{equation}
 
  Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
-\begin{displaymath}
+\begin{equation}
 P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
-\end{displaymath}
+\end{equation}
 
 \begin{itemize}
  \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
@@ -183,7 +183,7 @@ Jede Darstellung, deren Additivität ebenso gegeben ist, wird als lineare Abbild
 \begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
 
 \subsection{Eigenschaften von Vektorräumen}
-Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $ker(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($ker(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($\vec{o} \in ker(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss. 
+Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $ker(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($ker(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($\vec{o} \in ker(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.
 
 \subsection{Darstellung linearer Abbildungen durch Matrizen}
 Lineare Abbildungen lassen sich auch über Matrizen darstellen. Dementsprechend gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
@@ -232,27 +232,27 @@ Pytest ist ein Testing-Framework für Python. Dabei wird die Fehlerbehebung und 
 Dabei ist eine einfache Abfrage:
 
 \begin{verbatim}
-assert name_Funktion ({Eingabe}) == {gewünschte Ausgabe} 
+assert name_Funktion ({Eingabe}) == {gewünschte Ausgabe}
 \end{verbatim}
-In einem konkreten Beispiel der Addition mit 2 kännte dies wie folgt aussehen: 
+In einem konkreten Beispiel der Addition mit 2 kännte dies wie folgt aussehen:
 \begin{verbatim}
-assert add_2(1) == 3 
+assert add_2(1) == 3
 \end{verbatim}
  Pytest bearbeitet nun die Methode mit den eingegebenen Werten und überprüft selbstständig die Ausgabe. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Bei automatisierter, zufälliger Testung wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
 
 Die zu testende Methode beginnt mit 'test\_'.
 
- Mit dem Dekorator '@pytest.fixture' vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.  
+ Mit dem Dekorator '@pytest.fixture' vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.
 
-So können z.B. Eingabewerte zufällig generiert werden. 
+So können z.B. Eingabewerte zufällig generiert werden.
 
-Auch kann man bewusst Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Dabei handelt es sich um eine †berprüfung, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl: 
+Auch kann man bewusst Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Dabei handelt es sich um eine †berprüfung, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl:
 \begin{verbatim}
-with pytest.rises({FehlerTyp}) 
+with pytest.rises({FehlerTyp})
 \end{verbatim}
  mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
- 
-Zuletzt kann man noch mit eine Test-Methode durch den Dekorator  
+
+Zuletzt kann man noch mit eine Test-Methode durch den Dekorator
 \begin{verbatim}
 @pytest.mark.parametrize({Eingabe})
 \end{verbatim}
@@ -293,14 +293,14 @@ Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$. Dabei wird $a$
 Die konjugierte komplexe Zahl von $z=a+b\cdot i$ ist definiert über $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
 
 Bei der Addition und Subtraktion von komplexen Zahlen gibt es keine Besonderheiten zu beachten, die imaginäre Einheit i wird wie eine Konstante mitgenommen. Auch die Multiplikation verläuft wie gewohnt, nur sollte man stets daran denken, dass $i\cdot i=-1$.
-Die Division von komplexen Zahlen gestaltet sich etwas komplizierter, v. a. weil das Kürzen des Bruches meist nicht ohne Weiteres mäglich ist. Oft hilft es aber, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck erheblich vereinfacht wird. Mit diesem Wissen ist es uns mäglich, mathematische Operationen auf die komplexen Zahlen anzuwenden. 
+Die Division von komplexen Zahlen gestaltet sich etwas komplizierter, v. a. weil das Kürzen des Bruches meist nicht ohne Weiteres mäglich ist. Oft hilft es aber, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck erheblich vereinfacht wird. Mit diesem Wissen ist es uns mäglich, mathematische Operationen auf die komplexen Zahlen anzuwenden.
 
 Die Menge $\mathbb{C}$ lässt sich geometrisch in ein einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a\\b
-\end{pmatrix}$. 
-Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben: 
-\begin{displaymath}
+\end{pmatrix}$.
+Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben:
+\begin{equation}
 z=r\cdot e^{i\cdot\phi}.
-\end{displaymath}
+\end{equation}
 Viele Operationen mit Vektoren kann man so viel einfacher ausführen. Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Eine konjugierte komplexe Zahl ist äquivalent zur Spiegelung des Vektors an der reellen Achse.
 
 \section{Git}
