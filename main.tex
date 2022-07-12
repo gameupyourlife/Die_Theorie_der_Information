@@ -346,7 +346,7 @@ $d$ ist hier die Menge an Licht die zwischen dem Sender und dem Empfänger absor
 
 In der Astronomie wird die Tomographie verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz man kennt und um bzw. in der Wolke liegen beobachtet. Man vergleicht deren scheinbare Helligkeit mit deren zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. Daraus kann man $s(p)$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen
 
-\subsection{CT}
+\subsection{CT}\label{k4.2.comptomo.ct}
 
 Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie, kurz CT.
 
@@ -399,6 +399,25 @@ Ein LGS wird durch die Formel $A\vec{x} = \vec{b}$ dargestellt, wobei A eine $ n
 
 Algorithmisch: Conjugate Gradient läuft das Residuum (welches der Vektor ist, der entgegengesetzt zum oben erwähnten Gradienten, also additiv invers verläuft) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal n-Schritten am Ziel ankommen, da wir dann alle n Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Endbedingungen, zum einen, wenn n Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also das $ f'(x) = 0 $ gilt, klein genug ist.
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung  $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
+
+
+\section{CT}
+
+CT (Computertomografie) wurde bereits im \cref{k4.2.comptomo.ct} kurz aufgegriffen. Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
+
+\begin{equation}
+  \begin{aligned}
+    d = Rs + n
+  \end{aligned}
+\end{equation}
+
+, wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. 
+
+\subsection{Line-Of-Sight Response}
+\sectionauthor{Finja Hoffman, Chuyang Wang}
+
+Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. Um dies zu berechnen, könnte man die Schnittpunkten mit den x-, y- und z-Achsenebenen jeweils einzeln berechnen und am Ende sortiert zusammenfügen. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird. 
+
 
 % Bibliography
 \printbibliography{}
