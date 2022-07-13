@@ -100,16 +100,16 @@ Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Re
 Wie berechnet man die Wahrscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zugrunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Das Cox's Theorem ist die logische Grundlage für diese.
 
 
-Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
+Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
 Aus dem Cox's Theorem lässt sich herleiten, dass man Wahrscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
 Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
 
 
 \begin{itemize}
-  \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+  \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf{universellen} Vergleich voneinander unabhängiger Plausibilitäten.
 
   \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
-  \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
+  \item[(3.)] Es müssen \textbf{alle} verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf{Konsistenz} gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
 \end{itemize}
 
 Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten, wobei $A$, $B$ und $C$ drei Ereignisse sind.
@@ -118,10 +118,10 @@ Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrschei
 
 Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
 entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
-multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(c|AB)$:
+multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
 
 \begin {equation}
-w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
+w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\})
 \end{equation}
 
 \noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
@@ -171,7 +171,7 @@ Das Experiment kann mehrfach wiederholt werden, dabei werden die Daten angepasst
 
 \section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
 \sectionauthor{Lara Müller, Chuyang Wang}
-Der folgende Abschnitt wird sich mit den Grundlagen linearer algebraischer Berechungen befassen und in diesem Kontext lineare Abbildungen und zugehörige Vektorräume definieren.
+Der folgende Abschnitt wird sich mit den Grundlagen linearer algebraischer Berechnungen befassen und in diesem Kontext lineare Abbildungen und zugehörige Vektorräume definieren.
 
 \subsection{Grundlagen linearer Algebra}
 Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge $V$, die zusammen mit einer Addition, sowie einer skalaren Vervielfachung auftritt. Für die Vektoren jedes linearen Vektorraums müssen folgende grundlegende Rechenregeln gelten:
@@ -181,7 +181,7 @@ Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge $
   \item Distributivgesetz: $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$
 \end{itemize}
 
-Der Gegenvektor eines Vektors $a$ ist definiert als $b = -a$, sodass gilt $a + b = 0$. Eine skalare Vervielfachung beschreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ (hier: dreidimensional) variiert werden kann. Gilt $\lambda < 0$, so wird zudem die Richtung des Vektors umgekehrt:
+Der Gegenvektor eines Vektors $a$ ist definiert als $\vec{b} = -\vec{a}$, sodass gilt $\vec{a} + \vec{b} = 0$. Eine skalare Vervielfachung beschreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ (hier: dreidimensional) variiert werden kann. Gilt $\lambda < 0$, so wird zudem die Richtung des Vektors umgekehrt:
 \begin{equation}
   \begin{aligned}
     \vec{a} \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right)
@@ -199,18 +199,21 @@ Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{
 
 \subsection{Darstellung linearer Abbildungen durch Matrizen}
 Lineare Abbildungen lassen sich auch über Matrizen darstellen. Dementsprechend gilt für eine lineare Abbildung in dem zweidimensionalen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
+
 \begin{equation}
+  \label{k4.2.linabb.matrix.eq}
   \begin{aligned}
     x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right)
   \end{aligned}
 \end{equation}
 
 Die resultierende $2 \times 2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A definieren:
+
 \begin{equation}
   f(\vec{x}) = A \cdot \vec{x}
 \end{equation}
 
-Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektorraum dar. Diesen kann man also als ein Produkt von einer Matrix $A$ und einem Vektor $\vec{x}$ verstehen, wobei jede Zeile der Matrix mit dem Vektor multipliziert wird. Dabei bleiben Streckenverhältnisse und Lagebeziehungen unverändert. Im Gegensatz zur Drehung, Scherung und Projektion bei der Abbildung sind Krümmungen nicht möglich.
+Man sieht, dass die lineare Abbildung als ein Produkt der Matrix-Vektor-Multiplikation dargestellt werden kann. Hierbei bildet man das Skalarprodukt von jedem Zeilenvektor $r_i$ der Matrix und dem Vektor $\vec{x}$, welches die $i$-te Komponente des resultierenden Vektors ist (vgl. \cref{k4.2.linabb.matrix.eq}). Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektorraum dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen unverändert. Im Gegensatz zur Drehung, Scherung und Projektion bei der Abbildung sind Krümmungen nicht möglich.
 
 Mithilfe dieses Wissens über lineare Algebra und Abbildungen in Zusammenhang mit Vektorräumen, lassen sich lineare Abbildungen nun als strukturerhaltende Abbildungen zwischen Vektorräumen auffassen.
 
@@ -245,7 +248,7 @@ Die Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. N
 Die Radioastronomie erstellt mithilfe von Teleskopen und Antennenarrays Bilder des Weltraums. Die Radiointerferometrie verarbeitet das Signal der Teleskope in Bilder.
 
 \section{Pytest}
-\sectionauthor{Finia Hoffman}
+\sectionauthor{Finja Hoffman}
 Pytest ist ein Testing-Framework für Python. Dabei wird die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisiert und somit effizienter als manuelles Testen. Anstatt sich an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden anwenden, um so komplexere Fehler zu beheben. Pytest überprüft synthetische Eingaben für die zu testende Funktion und vergleicht die Ausgabe mit der Erwartung.
 
 Dabei ist eine einfache Abfrage:
@@ -440,8 +443,8 @@ Neben \verb|dot()| liefert NumPy den \verb|@| Operator (\verb|np.matmul()|) welc
 Bei einer Multiplikation von Vektoren und 2D Matrizen erzeugen diese Funktionen identischen Output:
 
 \begin{itemize}
-\item Skalarmultiplikation zweier Vektoren
-\begin{verbatim}
+  \item Skalarmultiplikation zweier Vektoren
+        \begin{verbatim}
 >>> import numpy as np
 >>> a = np.array([1,2])
 >>> b = np.array([2,2])
@@ -452,8 +455,8 @@ Bei einer Multiplikation von Vektoren und 2D Matrizen erzeugen diese Funktionen 
 6
 \end{verbatim}
 
-\item Multiplikatipon zweier Matrizen
-\begin{verbatim}
+  \item Multiplikatipon zweier Matrizen
+        \begin{verbatim}
 >>> import numpy as np
 >>> a = np.array([[1,2],[5,3]])
 >>> b = np.array([[2,2],[8,1]])
@@ -520,7 +523,7 @@ Dem Modell werden zwei Annahmen zugrunde gelegt.
 Zum Einen setzt man voraus, dass das untersuchte Signal eine Normalverteilung mit $P(s) = \mathcal{G}(s,S)$ ist.
 Zum Anderen soll für den Wiener Filter gelten, dass die Daten aus Art der Messung, Ursprungssignal und Rauschen zusammengesetzt sind.
 \begin{eqnarray}
-	d = R(s) + n
+  d = R(s) + n
 \end{eqnarray}
 In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal.
 $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen.
@@ -529,8 +532,8 @@ Für dieses Rauschen wird eine Normalverteilung $P(n) = \mathcal{G}(n,N)$ angeno
 
 Unter Einbezug von Bayes definiert sich der Filter wie folgt:
 \begin{eqnarray}
-P(s|d) = \mathcal{G}(s-m,D)\\
-D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
+  P(s|d) = \mathcal{G}(s-m,D)\\
+  D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
 Die Variable $m$ in der Formel legt den Erwartungswert der Gaußverteilung fest.
 Der Wiener Filter hat einige vorteilhafte Eigenschaften.
