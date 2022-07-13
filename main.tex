@@ -465,16 +465,16 @@ array([[18  4]
 NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes‘sche Bildgebungsalgorithmen zu implementieren.
 
 
-\section{Objektorientierte Programmierung}
+\section{Programmierparadigmen}
 \sectionauthor{Alexander Gitnik, Clemens Ljungh}
+\subsection{Objektorientierte Programmierung}
 Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
 
 Eine Klasse ist eine allgemeine Vorlage, aus der einzelne Objekte, die \emph{Klasseninstanzen}, initialisiert werden können. Diese Klassen besitzen zum einen Eigenschaften, \emph{Attribute} genannt, und zum anderen Handlungsmöglichkeiten, welche \emph{Methoden} genannt werden. Jede Klasse besitzt einen Konstruktor, welcher bei der Erstellung einer \emph{Instanz} der Klasse aufgerufen wird und an welchen gegebenenfalls die zum Erstellen einer Klasse benötigten Parameter übergeben werden. Objekte werden initialisiert durch Zuweisung des Konstruktoraufrufs der jeweiligen Klasse an eine Variable, welche nun zu einem Objekt des Klassentyps wird. Wenn sich Klassen ähneln, können \emph{Attribute} und \emph{Methoden} von einer \emph{Superklasse} an eine \emph{Unterklasse} vererbt werden, sodass all jener Klasseninhalt in der \emph{Unterklasse} verfügbar ist.
 
 Typischerweise werden \emph{Attribute} lediglich über \emph{Getter-} und \emph{Setter-Methoden} abgefragt und verändert, damit der Zustand des Objekts immer nur kontrolliert verändert werden kann. Dies hat den Grund, dass man nicht versehentlich einen Fehler in den inneren Zustand des Objekts einbauen möchte. Eine \emph{Setter-Methode}, kann nämlich überprüfen, welche Werte ein Attribut annimmt. Um eine Methode aufrufen zu können ist es im Normalfall nötig dies über eine bereits initialisierte Instanz der Klasse zu tun. Ein spezieller Dekorator macht die Methode statisch, was bedeutet, dass die Methode über die Klasse aufgerufen werden kann. Dies hat den Vorteil, dass man nicht erst ein Objekt initialisieren muss un die Methode nutzen zu können.
 
-\section{Funktionale Programmierung}
-\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+\subsection{Funktionale Programmierung}
 Die Funktionale Programmierung ist ein gänzlich anderes Konzept als die objektorientierte Programmierung. Ihren Ursprung hat die Funktionale Programmierung im Lambda-Kalkül. Das Lambda-Kalkül kommt aus der Mathematik und ist eine formale Sprache, um logische Systeme darzustellen. Außerdem ist das Lambda-Kalkül Turing-vollständig, dies bedeutet, dass man jedes Programm damit ausdrücken kann.
 
 Anders als bei der objektorientiertem Programmierung werden Daten bei der Funktionalen Programmierung nicht in Objekten gespeichert, sondern hauptsächlich über einzelne Funktionen ausgewertet. Diese Funktionen müssen dabei \emph{pur} sein. \emph{Pure Funktionen} ähneln mathematischen Funktionen: Sie geben bei gleicher Eingabe immer die gleiche Ausgabe, da sie keinen inneren Zustand haben, welcher die Eingabe manipulieren oder verändern könnte. Weiterhin ändern die puren Funktionen auch nichts außerhalb der eigenen Funktion
