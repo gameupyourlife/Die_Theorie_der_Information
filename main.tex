@@ -716,26 +716,78 @@ Damit ein erstes Bild des Schwarzen Lochs generiert werden kann, ist es notwendi
 Aufgrund unvollständiger Informationen, die durch die Distanz der Antennen des Event-Horizon-Telescopes entstehen, muss zur Bilderstellung Bayes'sche Statistik angewandt werden.Im Gegensatz zu NumPy stellt NIFTy entsprechende Funktionen bereit, die dies ermöglichen. Um vom Signalraum $I$ (Signal des betrachteten Objekts) in den Datenraum $d$ (empfangene Daten) zu gelangen, nutzt man in NIFTy die Funktion $dirty2vis$ aus der Python-Bibliothek $ducc0$. Die adjungierte Abbildung $vis2dirty$ ermöglicht es, aus dem bekannten Datenraum auf den Signalraum zu schließen.\\
 Um diese Funktionen in NIFTy wiederholt anwenden zu können, werden sie in eine Klasse verpackt. Es handelt sich dabei um eine Klasse, die von \verb|ift.LinearOperator| - einem NIFTy-Operator - erbt. Dazu müssen unter Anderem \verb|domain| und \verb|target| initialisiert werden. Der Signalraum wird über \verb|domain| beschrieben, der Datenraum über \verb|target|. In der Klasse werden die Funktionen $dirty2vis$ und $vis2dirty$ durch die Methoden $TIMES$ und $ADJOINT \_ TIMES$ ersetzt.
 
+
+
 \section{Radio Gruppe B}
-\sectionauthor{Benjamin}
-Die Aufgabe diese Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 nämlich durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil mit sich zieht, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
-
+\sectionauthor{Benjamin Knöbel del Olmo, Ole Fleck, Aaron Gschwendt, Mara Germann}
+Die Aufgabe dieses Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays (Cluster aus mehreren Radioantennen) aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil hat, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
 Grundsätzlich möchten wir unsere Parameter, mit der Gruppe A Daten simuliert hat, so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
-
-Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch eine langsamere Geschwindigkeit eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
-
-Diese Störungen lassen sich durch die Formel dabt$\lambda$$\to$gat$\lambda$ * g*bt$\lambda$ dab$\lambda$  t$\forall$                 darstellen, wobei a und b für ein betrachtetes Antennenpaar (also Antenne a und Antenne b) steht und g*at$\lambda$,  $g \cdot bt \lambda$ zwei für die jeweiligen Antennen Störung beschreibende komplexe Zahlen sind: Der reele Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
-
-Um diese Effekte zu annulieren bestimmen wir die Closure Quantitie eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion d(0)t$\lambda$=f(dabt$\lambda$$\forall$a,b) gefunden werden, sodass die Transformationd abt$\lambda$$\to$exp(i$\phi$at) exp($-i \phi$bt)dabt$\lambda$ d(0) invariant lässt (Phases) bzw invariant unter dabt$\lambda$$\to$|gat$\lambda$||gbt$\lambda$|dabt$\lambda$ sind (Amplitudes), das heißt, die Störung keine Rolle mehr spielt.
-Closure Phases:
-
-Formel
-
-Closure Amplitudes:
-
-Formel
-
+Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch die Bremsung der Radiowelle eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
+Diese Störungen lassen sich durch die Formel
+$$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}{bt\lambda}d{abt\lambda} $$
+darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) steht und $\bar{g}{at\lambda}$,  $\bar{g}{bt\lambda}$ zwei für die jeweiligen Antennenstörung beschreibende komplexe Zahlen sind: Der reelle Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
+Um diese Effekte zu annullieren bestimmen wir die Closure Quantity, eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion $$d^0_{t\lambda}=f(d_{abt\lambda}\forall a,b)$$ gefunden werden, sodass die Transformationen
+\begin{align*}
+d_{abt\lambda} &\rightarrow e^{i \phi at} e^{-i\pi bt} d_{abt\lambda } \\
+d_{abt\lambda}&\rightarrow|g_{at\lambda}||g_{bt\lambda}|d_{abt\lambda}|\\
+\end{align*}
+konstant sind, das heißt dass, die Störung keine Rolle mehr spielen.
+Die erste Funktion kürzt die Phasenverschiebungen heraus:
+\emph{Closure Phases}:
+$$\psi_n = e^{i \phi_{n,t}}$$
+\begin{align*}
+f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&\overset{!}{=}f(d_{a,b},d_{b,c},d_{a,c})\\
+f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=\psi_1\bar{\psi_b}d_{a,b}&&+\psi_b\bar{\psi_c}d_{b,c}&&-\psi_a \bar{\psi_c} d_{a,c}\\
+&=e^{i \phi_{a,t}-i\phi_{b,t}}d_{a,b}&&+e^{i \phi_{b,t}-i\phi_{c,t}}d_{b,c}&&-e^{i \phi_{a,t}-i\phi_{c,t}}d_{a,c}\\
+&=d_{a,b}+d_{b,c}-d_{a,c}\\
+\Rightarrow f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=f(d_{a,b},d_{b,c},d_{a,c})
+\end{align*}
+Die zweite Funktion negiert die Amplitudenverschiebung:
+\emph{Closure Amplitudes}:
+\begin{align*}
+f(|z_a||z_b|d_{a, b}, |z_a||z_c|d_{a, c}, |z_a||z_d|d_{a, d}, |z_b||z_c|d_{b, c}, |z_b||z_d|d_{b, d}, |z_c||z_d|d_{c, d})\overset{!}{=}f(d_{a, b}, d_{a, b}, d_{a, b})
+\end{align*}
 Dabei ist wichtig, dass die Antennenpaarungen jeweils in dreier-/vierergruppen aufgeteilt werden. Die Vorgehensweise ist folgende: Es werden aus allen Antennen 3 bzw 4 gewählt und die Closure Quantities der Gruppe berechnet. Dieser Prozess wird solange wiederholt, bis keine neuen Werte entstehen, das heißt die Gruppe durch lineare Kombination der Rechnungen anderer Gruppen beschrieben werden kann. Alle relevanten Rechenprozesse werden in einer Matrix gespeichert, die der gesuchten Transformation entspricht.
+\begin{gather*}
+\begin{pmatrix}
+1&-1&0&1&0&0 \\
+1&0&-1&0&1&0 \\
+0&1&-1&0&0&1 \\
+\end{pmatrix}\\
+\end{gather*}
+Die Matrix hat 6 Spalten, da der Binomialkoeffizient (n über k) = n! / k! * (n-k)! für n = 4 und k =2 6 ergibt. Der Outputvektor ist eine Liste aller unterschiedlichen Closure Phases. Selbes gilt für Closure Amplitudes:
+\begin{gather*}
+\begin{pmatrix}
+1&-1&0&0&0&-1&0&1&0&0 \\
+0&-1&1&0&1&-1&0&0&0&0 \\
+1&-1&0&0&0&0&-1&0&1&0 \\
+0&-1&0&1&1&0&-1&0&0&0 \\
+1&0&-1&0&0&0&-1&0&0&1 \\
+\end{pmatrix}
+\end{gather*}
+
+Um am Ende ein Bild zu erzeugen, benötigen wir den Posterior des Bayes Theorem, welches uns ermöglicht, fehlende Daten durch wahrscheinlich passende zu ersetzt. Um auf diesen zu schließen, setzen wir ein:
+
+\begin{displaymath}
+P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
+\end{displaymath}
+\begin{displaymath}
+P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}
+\end{displaymath}
+Die Likelihood $P(d|\xi)$ besteht aus zwei Teilen: $P(dph|\xi)$, der Warscheinlichkeit der Closure Phases unter der Bedingung $\xi$ und $P(dam| \xi)$, der Wahrscheinlichkeit der Closure Amplitudes unter der Bedingung $\xi$.
+\begin{align}
+ -\log {P(\xi|d)} &=
+ \mathcal{H} (\xi|d) = \mathcal{H} (d_{ph}|\xi)+\mathcal{H} (d_{amp}|\xi)+\mathcal{H} (\xi) \\
+&= \frac {1}{2}\cdot \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]^\dagger N^{-1}_{ph} \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]  
+\\  & + \frac {1}{2}\cdot \Bigg[d_{amp} - f_{amp}(R(sky(\xi))) \Bigg]^\dagger N_{amp}^{-1}\Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]
+\\ & +  \frac {1}{2} \cdot \xi^\dagger \xi
+\end{align}
+Der Logarithmus, also $H(\xi|d)$ muss hier minimiert werden, um den Posterior, also die Wahrscheinlichkeit, dass der gewählte Parameter $\xi$ gut zu den gemessenen Daten passt, zu maximieren.
+Der Parameter $\xi$ wird im Folgenden Optimiert. Das geschieht dadurch, dass eine durch $\xi$ definierte (also simulierte) Normalverteilung über die errechneten Daten gelegt wird und so lange angepasst wird, bis der Unterschied möglichst gering resultiert (s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
+Dadurch erhält man am Ende folgendes Bild:
+(Hier wird das Schwarze Loch Foto eingefügt)
+
+
 
 \section{Walnuss CT}\label{k4.2.ch.walnussct}
 \sectionauthor{Leo Bergmann, Cedric Balzer}
