@@ -54,274 +54,39 @@
 
 \kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{example-image-a}
 
-\section{Eigenwertproblem}
-\sectionauthor{Lara Müller, Chuyang Wang}
+\section{Git}
+\sectionauthor{Jonas Fiedler}
 
-\subsection{Definitionen}\label{k4.2.eigen.def}
+Mit der Versionsmanagement-Software Git kann Kooperation zwischen mehreren Programmierern ermöglicht werden. Git beschäftigt sich hauptsächlich mit dem Verwalten von Versionen des Codes und der Zusammenführung von Code Änderungen. Dafür erstellt Git einen Versionsverlauf, welcher es ermöglicht, Versionen des Codes zurückrollen um Bugs zu identifizieren und das Nachverfolgen von Code-Änderungen von wichtigen Updates zu ermöglichen. Dabei wird zwischen lokaler Dateispeicherung und Speicherung im serverseitigen Bereich unterschieden. Der Server ermöglicht den Nutzern, Code herunterzuladen, ihn zu bearbeiten und letztendlich in überarbeiteter Version wieder an den Server zu übermitteln, wo dieser dann mit anderen Nutzern ausgetauscht werden kann.
 
-Die Eigenvektoren einer Matrix sind diejenigen Vektoren, welche nach Anwendung dieser Matrix immer auf einem Vielfachen von sich selbst liegen.
-Formal werden die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ definiert als $v \in \mathbb{R}^{x}, v \neq 0$, sodass $A \cdot v = \lambda \cdot v$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $v$ zugehörigen Eigenwert.
+Generell ist es in Git möglich verschiedene Versionsstränge (Branches) aufzubauen. Diese Branches ermöglichen die Modifikation an verschiedenen Bereichen und ein strukturierte Entwicklung von Features. In diesen Branches können somit bspw. Bugs unabhängig gelöst werden und neue Funktionen getestet sowie implementiert werden. Sobald diese ordnungsgemäß funktionieren, werden sie auf den nächst höheren Branch, eine in der Hierarchie übergeordnete Ebene, geschoben (Merge) und somit mit dem Rest des Codes wieder vereint.
 
-Durch Äquivalenzumformung erhält man
+In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Codeversion zu speichern. Dabei beschreibt \verb|git add| den Vorgang wo die Datei von dem Working-Directory (lokal), in die Staging Area (auch lokal) verschoben wird. Der wichtigste Befehl in Git ist \verb|git commit|, dieser hält den aktuellen Zustand des gesamten Projektes fest und speichert diesen im Localrepo. Danach ermöglicht \verb|git push| das Übertragen des Codes an den Server. Der umgekehrte Schritt dazu ist \verb|git pull|. Dies lädt die aktuellste Version des Projektes vom Remoterepo in das Localrepo des Users.
 
-\begin{equation}
-  \label{k4.2.eigen.def.lgs}
-  \begin{aligned}
-     &                 & A \cdot v               & = \lambda \cdot v   &                                 & \\
-     & \Leftrightarrow & A \cdot v               & = \lambda E \cdot v & \text{mit } v = Ev              & \\
-     & \Leftrightarrow & (A - \lambda E) \cdot v & = 0                 &                                 & \\
-     & \Leftrightarrow & Bx                      & = 0  \quad \quad    & \text{mit } B = (A - \lambda E) & \\
-  \end{aligned}
-\end{equation}
+Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool von vielen Software-Developern, sowie Unternehmen verwendet.
 
-Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
+\section{Programmierparadigmen}
+\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+\subsection{Objektorientierte Programmierung}
+Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
 
-Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden.
+Eine Klasse ist eine allgemeine Vorlage, aus der einzelne Objekte, die \emph{Klasseninstanzen}, initialisiert werden können. Diese Klassen besitzen zum einen Eigenschaften, \emph{Attribute} genannt, und zum anderen Handlungsmöglichkeiten, welche \emph{Methoden} genannt werden. Jede Klasse besitzt einen Konstruktor, welcher bei der Erstellung einer \emph{Instanz} der Klasse aufgerufen wird und an welchen gegebenenfalls die zum Erstellen einer Klasse benötigten Parameter übergeben werden. Objekte werden initialisiert durch Zuweisung des Konstruktoraufrufs der jeweiligen Klasse an eine Variable, welche nun zu einem Objekt des Klassentyps wird. Wenn sich Klassen ähneln, können \emph{Attribute} und \emph{Methoden} von einer \emph{Superklasse} an eine \emph{Unterklasse} vererbt werden, sodass all jener Klasseninhalt in der \emph{Unterklasse} verfügbar ist.
 
+Typischerweise werden \emph{Attribute} lediglich über \emph{Getter-} und \emph{Setter-Methoden} abgefragt und verändert, damit der Zustand des Objekts immer nur kontrolliert verändert werden kann. Dies hat den Grund, dass man nicht versehentlich einen Fehler in den inneren Zustand des Objekts einbauen möchte. Eine \emph{Setter-Methode}, kann nämlich überprüfen, welche Werte ein Attribut annimmt. Um eine Methode aufrufen zu können ist es im Normalfall nötig dies über eine bereits initialisierte Instanz der Klasse zu tun. Ein spezieller Dekorator macht die Methode statisch, was bedeutet, dass die Methode über die Klasse aufgerufen werden kann. Dies hat den Vorteil, dass man nicht erst ein Objekt initialisieren muss un die Methode nutzen zu können.
 
-\subsection{Das charakteristische Polynom}
+\subsection{Funktionale Programmierung}
+Die funktionale Programmierung ist ein gänzlich anderes Konzept als die objektorientierte Programmierung. Funktionale Programmierung hat ihren Ursprung im Lambda-Kalkül. Das Lambda-Kalkül ist eine formale Sprache, um logische Systeme darzustellen. Es ist Turing-vollständig, dies bedeutet, dass man jedes Programm damit ausdrücken kann.
 
-Im Allgemeinen wird das charakteristische Polynom der Matrix $A$ definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen.
+Anders als bei der objektorientierten Programmierung werden Daten bei der funktionalen Programmierung nicht in Objekten gespeichert, sondern ausschließlich durch einzelne Funktionen verarbeitet. Diese Funktionen müssen dabei \emph{pur} sein. \emph{Pure Funktionen} definieren sich dadurch, dass sie bei gleicher Eingabe immer die gleiche Ausgabe geben, da sie keinen inneren Zustand haben, welcher die Eingabe verändern könnte. Weiterhin ändern die puren Funktionen auch nichts außerhalb der eigenen Funktion.
 
-Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
-    a & b \\
-    c & d
-  \end{pmatrix}$, so gilt
+Funktionen können als Parameter eine weitere Funktion nehmen, sodass jene über ihre Rückgabewerte ineinander verschachtelt werden. So entsteht, in der funktionalen Programmierung natürlicherweise eine Kette aus verschachtelten Befehlen. Häufig wird in der funktionalen Programmierung \emph{Rekursion} verwendet, also Funktionen, die sich selbst aufrufen.
 
-\begin{equation}
-  \label{k4.2.eigen.charac.2d}
-  \begin{aligned}
-    0
-     & = \chi_A (\lambda)                              \\
-     & = \det(A - \lambda E)                           \\
-     & = \det \begin{pmatrix}
-                a - \lambda & b         \\
-                c           & d-\lambda
-              \end{pmatrix}                  \\
-     & = (a - \lambda) \cdot (d - \lambda) - c \cdot b
-  \end{aligned}
-\end{equation}
+Daten sind bei der objektorientierten Programmierung zwar besser strukturiert, dafür sind gerade die puren Funktionen der funktionalen Programmierung einfacher für Entwickler zu verstehen, da die puren Funktionen keinen möglicherweise komplizierten inneren Zustand haben. Wichtig für die funktionale Programmierung ist das Konzept der \emph{Lazy Evaluations}. Dies bedeutet, dass Ausdrücke, erst dann ausgerechnet werden, wenn sie für ein Ergebnis benötigt werden. Dadurch kann in manchen Fällen die Laufzeit eines Programmes verringert werden, was vorteilhaft ist.
 
-Eine allgemeine Lösung für \cref{k4.2.eigen.charac.2d} kann dann mithilfe der pq-Formel berechnet werden:
+Für unsere Kursarbeit verwenden wir oft funktionale Programmierung, da wir Datensätze und probabilistische Modelle rein mathematisch verarbeiten. Außerdem ist Python gut für die funktionale Programmierung geeignet.
 
-\begin{equation}
-  \begin{aligned}
-    \lambda = \frac{a+d}{2} \pm \sqrt{\Big(\frac{(a+d)}{2}\Big)^2-ad+cb}
-  \end{aligned}
-\end{equation}
-
-
-\subsection{Power Iteration}\label{k4.2.eigen.powerit}
-
-Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad ist es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem
-Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt:
-
-\begin{equation}
-  \begin{aligned}
-    b_{k+1} = \frac{Ab_k}{\left\lVert Ab_k \right\rVert }
-  \end{aligned}
-\end{equation}
-
-Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berechnen, indem man die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst.
-
-
-\subsection{Anwendungen}
-
-Eigenwerte und Eigenvektoren sind wichtig in der Mathematik. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird.
-
-\section{Cox's Theorem}
-\sectionauthor{Mara Germann, Patricia Hackl}
-Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
-
-
-Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen und boolsche Logik über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
-Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
-Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
-
-{
-\begin{itemize}
- \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
-
- \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
- \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
-\end{itemize}
-}
-Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten. Im Folgenden sind $A$, $B$ und $C$ drei Ereignisse.
-
-\subsection{Produktregel}
-
-Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
-entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
-multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
-
-\begin {displaymath}
-w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
-\end{displaymath}
-
-\noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
-\begin {displaymath}
-P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
-\end{displaymath}
-Unter $P(B \wedge C|A)$ versteht man die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
-
-Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses stehen.
-
-\subsection{Summenregel}
-\begin{displaymath}
-w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
-\end{displaymath}
-
-Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
-und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
-
-% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen.
-Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die essentiell für die Wahrscheinlichkeitsrechnung sind, aus einfachen Axiomen folgern.
-Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
-
-\section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
-\sectionauthor{Mara Germann, Patricia Hackl}
-
-Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
-\begin{displaymath}
-P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}.
-\end{displaymath}
-Obige Gleichung wird auch Satz von Bayes genannt.
-
-Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
-\begin{displaymath}
-\int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
-\end{displaymath}
-
-
-\subsection{Von Daten lernen}
- Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
-\begin{displaymath}
-P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
-\end{displaymath}
-
-\begin{itemize}
- \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
- \item $P(d|I)$ ist der Normierungsparameter (Evidenz).
- \item $P(d|s,I)$ beschreibt die Wahrscheinlichkeit für die Messdaten, mit gegebenem Parameter (Likelihood).
- \item $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters unter Einbezug der Daten und Hintergrundinformationen (Posterior).
-\end{itemize}
-
-Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von neuen Daten $d$ und aktualisieren unser Wissen über $s$.
-
-\section{Normalverteilung}
-\sectionauthor{Patricia Hackl, Lara Müller}
-
-Im Hinblick auf die Bayes'sche Wahrscheinlichkeitstheorie ist die Gauß'sche Normalverteilung (auch: Gauß'sche Glockenkurve) von Bedeutung.
-Es lässt sich zeigen, dass die Summe von identisch verteilten und voneinander unabhängigen Zufallszahlen im Limes (Anzahl Wiederholungen $\rightarrow \infty$) zur Normalverteilung konvergiert.
-Die einem Zufallsexperiment zugehörige Gauß'sche Normalverteilung ist vollständig definiert über ihren Erwartungswert $\bar{x}$ und die Varianz $\sigma^{2}$:
-\[ \mathcal{G} (x - \bar{x}, \sigma^{2}) = \displaystyle\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp \left(- \displaystyle\frac{1}{2} \cdot (x - \bar{x}) \cdot (\sigma^{2})^{-1} \cdot (x - \bar{x}) \right) \]
-Analog zur Summenregel gilt auch für das Integral über die Normalverteilung:
-\begin{center} $\int_{- \infty}^{\infty} \mathcal{G} (x - \bar{x}, \sigma _x ^{2}) dx = 1$ \end{center}
-
-\subsection{Erwartungswert}
-Der Erwartungswert selbst ist definiert als die gewichtete Summe aus den Wahrscheinlichkeiten für die Zufallsvariable $x _i$ und bestimmt in spezifischen Fall der Normalverteilung, an welcher Stelle das Maximum auftritt (Verschiebung der Glockenkurve entlang der x-Achse). Dieser Wert muss nicht zwangsweise realisierbar sein. In der Formel entspricht $\chi$ dem Raum, auf dem $P(x)$ definiert ist:
-\begin{center} $\mathbb{E} _{P(x)} [x] = \sum x _i P(x _i) = \int_{\chi} x P(x) dx$ \end{center}
-
-\subsection{Varianz und Standardabweichung}
-Genauer betrachtet stellt die Varianz die Streuung um den Erwartungswert dar und entspricht somit der Abweichung vom Mittelwert. Diese ist immer strikt positiv.
-\begin{center} $\mathrm{Var} _{P(x)} [x] = \mathbb{E} _{P(x)} [x^{2}] - (\mathbb{E} _{P(x)} [x])^{2} = \int_ {\chi} (x - \mathbb{E} _{P(x)} [x])^{2} P(x) dx \geq 0$ \end{center}
-Für die Standardabweichung $\sigma$, die das Maß der Streubreite beschreibt, ergibt sich folgende Formel, wodurch eine direkte Abhängigkeit von der Varianz deutlich wird:
-\begin{center} $\sigma _{P(x)} [x] = \sqrt{\mathrm{Var} _{P(x)} [x]}$ \end{center}
-
-Mithilfe der Gauß'schen Glockenkurve lassen sich nun vielfältige Zufallsexperimente beschreiben und entsprechende Wahrscheinlichkeitsverteilungen konstruieren. In Bezug auf den Wiener Filter wird die Normalverteilung nicht nur als Prior, sondern auch als Likelihood benötigt, um Datenlücken zu füllen, die aufgrund des Abstands der Antennen des Radioteleskops auftreten. Zudem ist das Rauschen, also die Ungenauigkeit in den Messdaten, normalverteilt und kann so aus den Daten extrahiert werden.
-
-\section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
-\sectionauthor{Lara Müller, Chuyang Wang}
-Der folgende Abschnitt befasst sich mit den Grundlagen linearer algebraischer Berechungen und definiert in diesem Kontext lineare Abbildungen und zugehörige Vektorräume.
-
-\subsection{Grundlagen linearer Algebra}
-Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge von Vektoren $V$, die einen entsprechenden Vektorraum beschreiben. Für die Vektoren $a$, $b$ und $c$ eines linearen Vektorraums müssen folgende grundlegende Rechenregeln gelten:
-\begin{itemize}
-\item Kommutativgesetz: $a + b = b + a$
-\item Assoziativgesetz: $a + b + c = (a + b) + c = a + (b + c)$
-\item Distributivgesetz: $a \cdot (b + c) = a \cdot b + a \cdot c$
-\end{itemize}
-
-Der Gegenvektor eines Vektors $a$ ist definiert als $z = -a$, sodass gilt $a + z = 0$. Eine skalare Vervielfachung bechreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ skaliert werden kann. Für $\lambda < 0$ wird zudem die Richtung des Vektors umgekehrt. Im Beispiel eines dreidimensionalen Vektors $\vec{a}$ ergibt sich dementsprechend:
-\[ a \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right) \]
-
-
-\subsubsection{Vektor-Matrix-Multiplikation}
-
-Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ und den Vektor $x \in \mathbb{R}^M$ wie folgt definiert:
-
-\begin{equation}
-  \begin{aligned}
-    Ax &= \begin{pmatrix}
-      a_{11} & a_{12} & ... & a_{1M} \\ 
-      a_{21} & a_{22} & ... & a_{2M} \\ 
-      ... & ... & ... & ... \\ 
-      a_{N1} & a_{N2} & ... & a_{NM} \\ 
-    \end{pmatrix}
-    \cdot 
-    \begin{pmatrix}
-      x_1 \\ x_2 \\ ... \\ x_M
-    \end{pmatrix} \\[2ex]
-    &=  \begin{pmatrix}
-      a_{11}x_1 + a_{12}x_2 +... + a_{1M}x_M \\ 
-      a_{21}x_1 + a_{22}x_2 + ... + a_{2M}x_M \\ 
-      ... + ... + ... + ... \\ 
-      a_{N1}x_1 + a_{N2}x_2 + ... + a_{NM}x_M \\ 
-    \end{pmatrix}
-  \end{aligned}
-\end{equation}
-
-Dabei wird jede Zeile der Matrix mit dem Vektor elementweise multipliziert. Die Summe der Produkte bildet die Komponente des resultierenden Vektors.  
-
-\subsection{Lineare Abbildungen}
-Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als lineare Abbildung definiert. Bezüglich der zwei $K$-Vektorräume $V$ und $W$ ist die Abbildung $f: V \rightarrow W$ linear, sofern gilt:
-\begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
-
-\subsection{Eigenschaften von Vektorräumen}
-Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.\\
-
-\subsection{Darstellung linearer Abbildungen durch Matrizen}
-Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K²$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
-\[x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right) \]
-
-Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A darstellen:
-\[ f(\vec{x}) = A \cdot \vec{x} \]
-
-Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektor dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen der Vektoren zueinander unverändert. Im Gegensatz zur Drehung, Scherung und Projektion sind Krümmungen bei einer linearen Abbildung nicht möglich. Daher werden diese Abbildungen auch als strukturerhaltende Abbildungen zwischen Vektorräumen bezeichnet.
-
-\section{Radioastronomie}
-\sectionauthor{Constantin Burmeister, Ole Fleck}
-
-Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
-
-Allgemein ist der minimal auflösbare Bildwinkel $\delta\theta$ eines Teleskops abhängig von der Wellenlänge $\lambda$, des beobachteten Lichts, und dem Spiegeldurchmesser $D$ des Teleskops mit \begin{eqnarray}
-\delta\theta\approx1,22\frac{\lambda}{D}
-\end{eqnarray}
-Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich.
-
-\subsection{Radiointerferometrie}
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.4\textwidth]{k4.2/baselineunterschied.png}
-\caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
-\label{bild-baselineunterschied}
-\end{figure}
-
-Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um eine höhere Auflösung zu erzielen als es mit einer einzelnen Antenne möglich wäre.
-
-Dieses hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
-
-Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{bild-baselineunterschied}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
-
-Für die Messung des Radiosignals gilt:
-\begin{eqnarray}
-d_{uv\lambda} =\int\int I(l,m)e^{-2\pi i \frac{1}{\lambda}(lu-mv)dldm}
-\end{eqnarray}
-Es wird die Intensität in bestimmten Bereichen des Himmels bestimmt, wobei l die Nord-Süd-Achse und m die Ost-West-Achse bezeichnet.
-
-Dieses Verfahren wurde beispielsweise auch beim \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung von elf Teleskopen, wobei deren Abstand bis zu $10000\,km$ beträgt. Mit diesem Teleskop wurde das erste Mal der Schatten eines Schwarzen Lochs beobachtet.
-
-Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das Verfahren ermöglicht die Ursprungsbestimmung eines Radiosignals von astrophysikalischen Prozessen bei hoher Auflösung.
+\subsection{Gegenüberstellung}
+Insgesamt unterscheidet sich damit die objektorientierte Programmierung von der funktionalen Programmierung einerseits in ihrem Ansatz, realtitätsbezogen zu sein, wohingegen die während die funktionalen Programmierung lediglich an der Programmeffektivität orientiert ist. Die Umsetzung ist daher sehr verschieden, sodass in der objektorientierten Programmierung Klassen und globale Variablen gefordert werden, während die funktionale Programmierung ebendiese verbietet, und mittels puren Funktionen den Code in kleinstmögliche und unabhängige Abschnitte unterteilt.
 
 \section{Pytest}
 \sectionauthor{Finja Hoffmann}
@@ -364,147 +129,6 @@ Zuletzt kann man noch mit eine Test-Methode durch den Dekorator
 kennzeichnen. Hierbei werden einige typischerweise fehlerbringenden Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben.
 
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
-
-\section{Fourier-Transformation}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
-Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.6\textwidth]{k4.2/fourier.png}
-    \caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: www.nti-audio.com)}
-    \label{k4.2.fourier}
-\end{figure}
-Ein anschauliches Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der \cref{k4.2.fourier} links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der \cref{k4.2.fourier} rechts), wodurch man das Frequenzspektrum erhält.
-
-Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden geht man bei der Anwendung der Fourier-Transformation unterschiedlich vor.
-
-Die kontinuierliche Fourier-Transformation (FT) benötigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)\ dt$ integriert wird. Diese Transformation lässt sich nur auf kontinuierliche Funktionen anwenden und gibt eine kontinuierliche Funktion aus.
-
-Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da die Eingabesignale meinstens aus einzelnen Datenpunkten und nicht aus kontinuierlichen Funktionen bestehen. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Die DFT ist mit einer quadratischen Laufzeit allerdings vergleichsweise rechenintensiv. Stattdessen wird in der Signalverarbeitung meist die Fast Fourier Transformation (FFT) verwendet, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
-
-Manche Probleme, welche im Wertebereich, den eigentlichen Signalen, nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich, dem durch die Fourier-Analyse berechneten Frequenzspektrum, mit wenigen einfachen Operationen gel\"ost werden. Dazu wendet man die Fourier-Analyse auf die Daten an, führt die notwendigen Operationen im Bildbereich aus und transformiert die Lösung zurück in den Wertebereich. Möchte man beispielsweise eine Tonaufnahme von Störsignalen bereinigen, wendet man die FFT an, löscht die unerwünschten Frequenzen im Bildbereich und übersetzt das Ergebnis zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen, da an einer Tonaufnahme über der Zeit nicht direkt das Störsignal ablesbar ist.
-
-Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierlichen oder diskreten) Fourier-Transformation (IFT). Diese erzeugt die Funktion oder eine Menge von Datenpunkten, welche aus einem gegebenen Spektrum entsteht. Dazu werden dieselben Operationen wie bei der Berechnung des Spektrums lediglich mit anderen Faktoren angewandt.
-
-\section{Komplexe Zahlen}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
-Da in der Radioastronomie die Messdaten komplexe Zahlen sind, hat sich unser Kurs auch mit diesen beschäftigt.
-
-Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$ für $a, b \in \mathbb{R}$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit und definiert über die Eigenschaft: $i^{2} = -1$. Für $b = 0$ erhalten wir die bereits bekannten reellen Zahlen. Man kann $\mathbb{C}$ somit als zweidimensionalen reellen Vektorraum interpretieren.
-
-Die komplex konjugierte von $z=a+b\cdot i$ ist definiert als $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
-
-Zwei komplexe Zahlen werden addiert, indem ihre Real- und Imaginärteile separat addiert bzw. subtrahiert werden. Auch die Multiplikation funktioniert ähnlich wie in $\mathbb{R}$, nur sollte man stets daran denken, dass $i\cdot i=-1$.Die Division von komplexen Zahlen gestaltet sich etwas komplizierter. Hier hilft es oft, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck sich so erheblich vereinfacht.
-
-Die Menge $\mathbb{C}$ lässt sich geometrisch in ein einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a\\b
-\end{pmatrix}$.
-Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben:
-\begin{displaymath}
-z=r\cdot e^{i\cdot\phi}.
-\end{displaymath}
-Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der Multiplikation solcher Vektoren werden Winkel addiert und Längen multipliziert. Eine konjugierte komplexe Zahl ist dadurch äquivalent zur Spiegelung des Vektors an der reellen Achse.
-
-\section{Git}
-\sectionauthor{Jonas Fiedler}
-
-Mit der Versionsmanagement-Software Git kann Kooperation zwischen mehreren Programmierern ermöglicht werden. Git beschäftigt sich hauptsächlich mit dem Verwalten von Versionen des Codes und der Zusammenführung von Code Änderungen. Dafür erstellt Git einen Versionsverlauf, welcher es ermöglicht, Versionen des Codes zurückrollen um Bugs zu identifizieren und das Nachverfolgen von Code-Änderungen von wichtigen Updates zu ermöglichen. Dabei wird zwischen lokaler Dateispeicherung und Speicherung im serverseitigen Bereich unterschieden. Der Server ermöglicht den Nutzern, Code herunterzuladen, ihn zu bearbeiten und letztendlich in überarbeiteter Version wieder an den Server zu übermitteln, wo dieser dann mit anderen Nutzern ausgetauscht werden kann.
-
-Generell ist es in Git möglich verschiedene Versionsstränge (Branches) aufzubauen. Diese Branches ermöglichen die Modifikation an verschiedenen Bereichen und ein strukturierte Entwicklung von Features. In diesen Branches können somit bspw. Bugs unabhängig gelöst werden und neue Funktionen getestet sowie implementiert werden. Sobald diese ordnungsgemäß funktionieren, werden sie auf den nächst höheren Branch, eine in der Hierarchie übergeordnete Ebene, geschoben (Merge) und somit mit dem Rest des Codes wieder vereint.
-
-In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Codeversion zu speichern. Dabei beschreibt \verb|git add| den Vorgang wo die Datei von dem Working-Directory (lokal), in die Staging Area (auch lokal) verschoben wird. Der wichtigste Befehl in Git ist \verb|git commit|, dieser hält den aktuellen Zustand des gesamten Projektes fest und speichert diesen im Localrepo. Danach ermöglicht \verb|git push| das Übertragen des Codes an den Server. Der umgekehrte Schritt dazu ist \verb|git pull|. Dies lädt die aktuellste Version des Projektes vom Remoterepo in das Localrepo des Users.
-
-Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool von vielen Software-Developern, sowie Unternehmen verwendet.
-
-\section{Computertomographie}\label{k4.2.comptomo.ct}
-\sectionauthor{Aaron Gschwendt}
-\subsection{Tomographie}
-
-Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
-
-$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
-
-$d$ ist das Linienintegral von jedem $s(p)$ entlang des Pfades $\gamma$. $d$ entspricht die Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt. \#Noch nicht gut formuliert%definition von anderen buchstaben
-
-Gesucht ist die Funktion $s$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
-
-\subsection{Astronomie}
-
-In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Daraus kann man $s$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
-
-\subsection{CT}
-
-Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
-
-Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projeziert. Der Nachteil dieser Methode ist, dass sich Teile vom Objekt überlagern können und nicht erkannt werden kann, ob es sich um ein Objekt mit hoher Absorption oder mehrer Objekte mit geringer Absorption handelt.
-
-Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
-
-\begin{wrapfigure}{r}{0.4\linewidth}
-  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
-  \caption{Sinogram}
-  \label{k4.2.tomo.ct.bp}
-\end{wrapfigure}
-
-Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
-
-\subsection{CT in 3D}
-\sectionauthor{Finja Hoffmann, Chuyang Wang}
-
-Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
-
-\begin{equation}
-  \begin{aligned}
-    d = Rs + n,
-  \end{aligned}
-\end{equation}
-
-wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
-% TODO: ref to Wiener Filter
-
-\subsection{Line-Of-Sight Response}
-\sectionauthor{Finja Hoffmann, Chuyang Wang}
-
-Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
-
-\subsubsection{Algorithmus von Siddon}
-
-Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
-
-\begin{equation}
-  P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
-\end{equation}
-
-\begin{equation}
-  P_{end} = \begin{pmatrix}x_{end} \\ y_{end} \\ z_{end}\end{pmatrix}
-\end{equation}
-
-Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit sei $x_{start} < x_{end}$. Man rundet die x-Koordinate des Startpunktes in die Richtung der Strecke auf und berechnet die Differenz $x^{\ast}$. Um die y- und z-Koordinaten dieses ersten Schnittpunkts herauszufinden, muss man noch die Steigungen gegenüber dieser beiden Achsen $m_{yx} = \frac{y_{end} - y_{start}}{x_{start} - x_{end}}$ und $m_{zx} = \frac{z_{end} - z_{start}}{x_{start} - x_{end}}$ berechnen. Somit erhält man den ersten Schnittpunkt
-
-\begin{equation}
-  S_{x,0} = \begin{pmatrix}
-    x_{start} + x^{\ast} \\
-    y_{start} + x^{\ast} \cdot m_{yx} \\
-    z_{start} + x^{\ast} \cdot m_{zx} \\
-  \end{pmatrix}
-\end{equation}
-
-Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
-
-\begin{equation}
-  S_{x,i} = S_{x,i-1} + \begin{pmatrix}
-    1 \\
-    1 \cdot m_{yx} \\
-    1 \cdot m_{zx} \\
-  \end{pmatrix}
-\end{equation}
-
- Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog.
-
-Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel.
-
-Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null.
-
-Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
 \section{NumPy}\label{k4.2.ch.NumPy}
 \sectionauthor{Cedric Balzer}
@@ -598,30 +222,6 @@ array([[18  4]
 
 NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes'sche Bildgebungsalgorithmen zu implementieren.
 
-
-\section{Programmierparadigmen}
-\sectionauthor{Alexander Gitnik, Clemens Ljungh}
-\subsection{Objektorientierte Programmierung}
-Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
-
-Eine Klasse ist eine allgemeine Vorlage, aus der einzelne Objekte, die \emph{Klasseninstanzen}, initialisiert werden können. Diese Klassen besitzen zum einen Eigenschaften, \emph{Attribute} genannt, und zum anderen Handlungsmöglichkeiten, welche \emph{Methoden} genannt werden. Jede Klasse besitzt einen Konstruktor, welcher bei der Erstellung einer \emph{Instanz} der Klasse aufgerufen wird und an welchen gegebenenfalls die zum Erstellen einer Klasse benötigten Parameter übergeben werden. Objekte werden initialisiert durch Zuweisung des Konstruktoraufrufs der jeweiligen Klasse an eine Variable, welche nun zu einem Objekt des Klassentyps wird. Wenn sich Klassen ähneln, können \emph{Attribute} und \emph{Methoden} von einer \emph{Superklasse} an eine \emph{Unterklasse} vererbt werden, sodass all jener Klasseninhalt in der \emph{Unterklasse} verfügbar ist.
-
-Typischerweise werden \emph{Attribute} lediglich über \emph{Getter-} und \emph{Setter-Methoden} abgefragt und verändert, damit der Zustand des Objekts immer nur kontrolliert verändert werden kann. Dies hat den Grund, dass man nicht versehentlich einen Fehler in den inneren Zustand des Objekts einbauen möchte. Eine \emph{Setter-Methode}, kann nämlich überprüfen, welche Werte ein Attribut annimmt. Um eine Methode aufrufen zu können ist es im Normalfall nötig dies über eine bereits initialisierte Instanz der Klasse zu tun. Ein spezieller Dekorator macht die Methode statisch, was bedeutet, dass die Methode über die Klasse aufgerufen werden kann. Dies hat den Vorteil, dass man nicht erst ein Objekt initialisieren muss un die Methode nutzen zu können.
-
-\subsection{Funktionale Programmierung}
-Die funktionale Programmierung ist ein gänzlich anderes Konzept als die objektorientierte Programmierung. Funktionale Programmierung hat ihren Ursprung im Lambda-Kalkül. Das Lambda-Kalkül ist eine formale Sprache, um logische Systeme darzustellen. Es ist Turing-vollständig, dies bedeutet, dass man jedes Programm damit ausdrücken kann.
-
-Anders als bei der objektorientierten Programmierung werden Daten bei der funktionalen Programmierung nicht in Objekten gespeichert, sondern ausschließlich durch einzelne Funktionen verarbeitet. Diese Funktionen müssen dabei \emph{pur} sein. \emph{Pure Funktionen} definieren sich dadurch, dass sie bei gleicher Eingabe immer die gleiche Ausgabe geben, da sie keinen inneren Zustand haben, welcher die Eingabe verändern könnte. Weiterhin ändern die puren Funktionen auch nichts außerhalb der eigenen Funktion.
-
-Funktionen können als Parameter eine weitere Funktion nehmen, sodass jene über ihre Rückgabewerte ineinander verschachtelt werden. So entsteht, in der funktionalen Programmierung natürlicherweise eine Kette aus verschachtelten Befehlen. Häufig wird in der funktionalen Programmierung \emph{Rekursion} verwendet, also Funktionen, die sich selbst aufrufen.
-
-Daten sind bei der objektorientierten Programmierung zwar besser strukturiert, dafür sind gerade die puren Funktionen der funktionalen Programmierung einfacher für Entwickler zu verstehen, da die puren Funktionen keinen möglicherweise komplizierten inneren Zustand haben. Wichtig für die funktionale Programmierung ist das Konzept der \emph{Lazy Evaluations}. Dies bedeutet, dass Ausdrücke, erst dann ausgerechnet werden, wenn sie für ein Ergebnis benötigt werden. Dadurch kann in manchen Fällen die Laufzeit eines Programmes verringert werden, was vorteilhaft ist.
-
-Für unsere Kursarbeit verwenden wir oft funktionale Programmierung, da wir Datensätze und probabilistische Modelle rein mathematisch verarbeiten. Außerdem ist Python gut für die funktionale Programmierung geeignet.
-
-\subsection{Gegenüberstellung}
-Insgesamt unterscheidet sich damit die objektorientierte Programmierung von der funktionalen Programmierung einerseits in ihrem Ansatz, realtitätsbezogen zu sein, wohingegen die während die funktionalen Programmierung lediglich an der Programmeffektivität orientiert ist. Die Umsetzung ist daher sehr verschieden, sodass in der objektorientierten Programmierung Klassen und globale Variablen gefordert werden, während die funktionale Programmierung ebendiese verbietet, und mittels puren Funktionen den Code in kleinstmögliche und unabhängige Abschnitte unterteilt.
-
 \section{Conjugate Gradient}
 \sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann}
 
@@ -632,6 +232,394 @@ Ein LGS hat die Formel $Ax = b$, wobei A eine $ n \times n $-Matrix (invariant u
 Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Residuum (der dem Gradienten entgegengesetzte Vektor, $ r = b-Ax $) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate, def.: $x^TAy = 0, x,y$ A-orthogonal) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal $n$-Schritten am Ziel ankommen, da wir dann alle $n$ Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Abbruchbedingungen, zum einen, wenn $n$ Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also dass $ f''(x) = 0 $ gilt, klein genug ist.
 
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
+
+\section{Eigenwertproblem}
+\sectionauthor{Lara Müller, Chuyang Wang}
+
+\subsection{Definitionen}\label{k4.2.eigen.def}
+
+Die Eigenvektoren einer Matrix sind diejenigen Vektoren, welche nach Anwendung dieser Matrix immer auf einem Vielfachen von sich selbst liegen.
+Formal werden die Eigenvektoren einer quadratischen Matrix $A \in \mathbb{R}^{x \times x}$ definiert als $v \in \mathbb{R}^{x}, v \neq 0$, sodass $A \cdot v = \lambda \cdot v$ erfüllt ist. Man nennt das Skalar $\lambda$ den zu $v$ zugehörigen Eigenwert.
+
+Durch Äquivalenzumformung erhält man
+
+\begin{equation}
+  \label{k4.2.eigen.def.lgs}
+  \begin{aligned}
+     &                 & A \cdot v               & = \lambda \cdot v   &                                 & \\
+     & \Leftrightarrow & A \cdot v               & = \lambda E \cdot v & \text{mit } v = Ev              & \\
+     & \Leftrightarrow & (A - \lambda E) \cdot v & = 0                 &                                 & \\
+     & \Leftrightarrow & Bx                      & = 0  \quad \quad    & \text{mit } B = (A - \lambda E) & \\
+  \end{aligned}
+\end{equation}
+
+Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
+
+Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden.
+
+
+\subsection{Das charakteristische Polynom}
+
+Im Allgemeinen wird das charakteristische Polynom der Matrix $A$ definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen.
+
+Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix}$, so gilt
+
+\begin{equation}
+  \label{k4.2.eigen.charac.2d}
+  \begin{aligned}
+    0
+     & = \chi_A (\lambda)                              \\
+     & = \det(A - \lambda E)                           \\
+     & = \det \begin{pmatrix}
+                a - \lambda & b         \\
+                c           & d-\lambda
+              \end{pmatrix}                  \\
+     & = (a - \lambda) \cdot (d - \lambda) - c \cdot b
+  \end{aligned}
+\end{equation}
+
+Eine allgemeine Lösung für \cref{k4.2.eigen.charac.2d} kann dann mithilfe der pq-Formel berechnet werden:
+
+\begin{equation}
+  \begin{aligned}
+    \lambda = \frac{a+d}{2} \pm \sqrt{\Big(\frac{(a+d)}{2}\Big)^2-ad+cb}
+  \end{aligned}
+\end{equation}
+
+
+\subsection{Power Iteration}\label{k4.2.eigen.powerit}
+
+Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad ist es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem
+Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt:
+
+\begin{equation}
+  \begin{aligned}
+    b_{k+1} = \frac{Ab_k}{\left\lVert Ab_k \right\rVert }
+  \end{aligned}
+\end{equation}
+
+Nach ausreichenden Iterationen kann man den größten Eigenwert $\lambda$ berechnen, indem man die Gleichung $B b_{k} = \lambda b_{k}$ nach $\lambda$ auflöst.
+
+\subsection{Anwendungen}
+
+Eigenwerte und Eigenvektoren sind wichtig in der Mathematik. Ein Beispiel dafür ist die Drehung durch eine Matrix: Wenn die Matrix $A$ eine Drehung um einen bestimmten Winkel beschreibt, dann ist der Eigenvektor die Drehachse, da seine Richtung durch die Drehung nicht verändert wird.
+
+
+
+\section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
+\sectionauthor{Lara Müller, Chuyang Wang}
+Der folgende Abschnitt befasst sich mit den Grundlagen linearer algebraischer Berechungen und definiert in diesem Kontext lineare Abbildungen und zugehörige Vektorräume.
+
+\subsection{Grundlagen linearer Algebra}
+Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge von Vektoren $V$, die einen entsprechenden Vektorraum beschreiben. Für die Vektoren $a$, $b$ und $c$ eines linearen Vektorraums müssen folgende grundlegende Rechenregeln gelten:
+\begin{itemize}
+\item Kommutativgesetz: $a + b = b + a$
+\item Assoziativgesetz: $a + b + c = (a + b) + c = a + (b + c)$
+\item Distributivgesetz: $a \cdot (b + c) = a \cdot b + a \cdot c$
+\end{itemize}
+
+Der Gegenvektor eines Vektors $a$ ist definiert als $z = -a$, sodass gilt $a + z = 0$. Eine skalare Vervielfachung bechreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ skaliert werden kann. Für $\lambda < 0$ wird zudem die Richtung des Vektors umgekehrt. Im Beispiel eines dreidimensionalen Vektors $\vec{a}$ ergibt sich dementsprechend:
+\[ a \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right) \]
+
+
+\subsubsection{Vektor-Matrix-Multiplikation}
+
+Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ und den Vektor $x \in \mathbb{R}^M$ wie folgt definiert:
+
+\begin{equation}
+  \begin{aligned}
+    Ax &= \begin{pmatrix}
+      a_{11} & a_{12} & ... & a_{1M} \\ 
+      a_{21} & a_{22} & ... & a_{2M} \\ 
+      ... & ... & ... & ... \\ 
+      a_{N1} & a_{N2} & ... & a_{NM} \\ 
+    \end{pmatrix}
+    \cdot 
+    \begin{pmatrix}
+      x_1 \\ x_2 \\ ... \\ x_M
+    \end{pmatrix} \\[2ex]
+    &=  \begin{pmatrix}
+      a_{11}x_1 + a_{12}x_2 +... + a_{1M}x_M \\ 
+      a_{21}x_1 + a_{22}x_2 + ... + a_{2M}x_M \\ 
+      ... + ... + ... + ... \\ 
+      a_{N1}x_1 + a_{N2}x_2 + ... + a_{NM}x_M \\ 
+    \end{pmatrix}
+  \end{aligned}
+\end{equation}
+
+Dabei wird jede Zeile der Matrix mit dem Vektor elementweise multipliziert. Die Summe der Produkte bildet die Komponente des resultierenden Vektors.  
+
+\subsection{Lineare Abbildungen}
+Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als lineare Abbildung definiert. Bezüglich der zwei $K$-Vektorräume $V$ und $W$ ist die Abbildung $f: V \rightarrow W$ linear, sofern gilt:
+\begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
+
+\subsection{Eigenschaften von Vektorräumen}
+Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.\\
+
+\subsection{Darstellung linearer Abbildungen durch Matrizen}
+Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K²$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
+\[x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right) \]
+
+Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A darstellen:
+\[ f(\vec{x}) = A \cdot \vec{x} \]
+
+Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektor dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen der Vektoren zueinander unverändert. Im Gegensatz zur Drehung, Scherung und Projektion sind Krümmungen bei einer linearen Abbildung nicht möglich. Daher werden diese Abbildungen auch als strukturerhaltende Abbildungen zwischen Vektorräumen bezeichnet.
+
+\section{Cox's Theorem}
+\sectionauthor{Mara Germann, Patricia Hackl}
+Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
+
+
+Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen und boolsche Logik über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
+Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
+Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
+
+{
+\begin{itemize}
+ \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+
+ \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
+ \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
+\end{itemize}
+}
+Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten. Im Folgenden sind $A$, $B$ und $C$ drei Ereignisse.
+
+\subsection{Produktregel}
+
+Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
+entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
+multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
+
+\begin {displaymath}
+w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
+\end{displaymath}
+
+\noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
+\begin {displaymath}
+P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
+\end{displaymath}
+Unter $P(B \wedge C|A)$ versteht man die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
+
+Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses stehen.
+
+\subsection{Summenregel}
+\begin{displaymath}
+w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
+\end{displaymath}
+
+Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
+und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
+
+% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen.
+Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die essentiell für die Wahrscheinlichkeitsrechnung sind, aus einfachen Axiomen folgern.
+Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
+
+\section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
+\sectionauthor{Mara Germann, Patricia Hackl}
+
+Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
+\begin{displaymath}
+P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}.
+\end{displaymath}
+Obige Gleichung wird auch Satz von Bayes genannt.
+
+Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
+\begin{displaymath}
+\int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
+\end{displaymath}
+
+
+\subsection{Von Daten lernen}
+ Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
+\begin{displaymath}
+P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
+\end{displaymath}
+
+\begin{itemize}
+ \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
+ \item $P(d|I)$ ist der Normierungsparameter (Evidenz).
+ \item $P(d|s,I)$ beschreibt die Wahrscheinlichkeit für die Messdaten, mit gegebenem Parameter (Likelihood).
+ \item $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters unter Einbezug der Daten und Hintergrundinformationen (Posterior).
+\end{itemize}
+
+Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von neuen Daten $d$ und aktualisieren unser Wissen über $s$.
+
+
+
+\section{Komplexe Zahlen}
+\sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
+Da in der Radioastronomie die Messdaten komplexe Zahlen sind, hat sich unser Kurs auch mit diesen beschäftigt.
+
+Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$ für $a, b \in \mathbb{R}$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit und definiert über die Eigenschaft: $i^{2} = -1$. Für $b = 0$ erhalten wir die bereits bekannten reellen Zahlen. Man kann $\mathbb{C}$ somit als zweidimensionalen reellen Vektorraum interpretieren.
+
+Die komplex konjugierte von $z=a+b\cdot i$ ist definiert als $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
+
+Zwei komplexe Zahlen werden addiert, indem ihre Real- und Imaginärteile separat addiert bzw. subtrahiert werden. Auch die Multiplikation funktioniert ähnlich wie in $\mathbb{R}$, nur sollte man stets daran denken, dass $i\cdot i=-1$.Die Division von komplexen Zahlen gestaltet sich etwas komplizierter. Hier hilft es oft, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck sich so erheblich vereinfacht.
+
+Die Menge $\mathbb{C}$ lässt sich geometrisch in ein einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a\\b
+\end{pmatrix}$.
+Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben:
+\begin{displaymath}
+z=r\cdot e^{i\cdot\phi}.
+\end{displaymath}
+Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der Multiplikation solcher Vektoren werden Winkel addiert und Längen multipliziert. Eine konjugierte komplexe Zahl ist dadurch äquivalent zur Spiegelung des Vektors an der reellen Achse.
+
+
+
+\section{Fourier-Transformation}
+\sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
+Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{k4.2/fourier.png}
+    \caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: www.nti-audio.com)}
+    \label{k4.2.fourier}
+\end{figure}
+Ein anschauliches Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der \cref{k4.2.fourier} links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der \cref{k4.2.fourier} rechts), wodurch man das Frequenzspektrum erhält.
+
+Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden geht man bei der Anwendung der Fourier-Transformation unterschiedlich vor.
+
+Die kontinuierliche Fourier-Transformation (FT) benötigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)\ dt$ integriert wird. Diese Transformation lässt sich nur auf kontinuierliche Funktionen anwenden und gibt eine kontinuierliche Funktion aus.
+
+Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da die Eingabesignale meinstens aus einzelnen Datenpunkten und nicht aus kontinuierlichen Funktionen bestehen. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Die DFT ist mit einer quadratischen Laufzeit allerdings vergleichsweise rechenintensiv. Stattdessen wird in der Signalverarbeitung meist die Fast Fourier Transformation (FFT) verwendet, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
+
+Manche Probleme, welche im Wertebereich, den eigentlichen Signalen, nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich, dem durch die Fourier-Analyse berechneten Frequenzspektrum, mit wenigen einfachen Operationen gel\"ost werden. Dazu wendet man die Fourier-Analyse auf die Daten an, führt die notwendigen Operationen im Bildbereich aus und transformiert die Lösung zurück in den Wertebereich. Möchte man beispielsweise eine Tonaufnahme von Störsignalen bereinigen, wendet man die FFT an, löscht die unerwünschten Frequenzen im Bildbereich und übersetzt das Ergebnis zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen, da an einer Tonaufnahme über der Zeit nicht direkt das Störsignal ablesbar ist.
+
+Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierlichen oder diskreten) Fourier-Transformation (IFT). Diese erzeugt die Funktion oder eine Menge von Datenpunkten, welche aus einem gegebenen Spektrum entsteht. Dazu werden dieselben Operationen wie bei der Berechnung des Spektrums lediglich mit anderen Faktoren angewandt.
+
+
+
+
+\section{Radioastronomie}
+\sectionauthor{Constantin Burmeister, Ole Fleck}
+
+Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
+
+Allgemein ist der minimal auflösbare Bildwinkel $\delta\theta$ eines Teleskops abhängig von der Wellenlänge $\lambda$, des beobachteten Lichts, und dem Spiegeldurchmesser $D$ des Teleskops mit \begin{eqnarray}
+\delta\theta\approx1,22\frac{\lambda}{D}
+\end{eqnarray}
+Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich.
+
+\subsection{Radiointerferometrie}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.4\textwidth]{k4.2/baselineunterschied.png}
+\caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
+\label{bild-baselineunterschied}
+\end{figure}
+
+Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um eine höhere Auflösung zu erzielen als es mit einer einzelnen Antenne möglich wäre.
+
+Dieses hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
+
+Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{bild-baselineunterschied}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
+
+Für die Messung des Radiosignals gilt:
+\begin{eqnarray}
+d_{uv\lambda} =\int\int I(l,m)e^{-2\pi i \frac{1}{\lambda}(lu-mv)dldm}
+\end{eqnarray}
+Es wird die Intensität in bestimmten Bereichen des Himmels bestimmt, wobei l die Nord-Süd-Achse und m die Ost-West-Achse bezeichnet.
+
+Dieses Verfahren wurde beispielsweise auch beim \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung von elf Teleskopen, wobei deren Abstand bis zu $10000\,km$ beträgt. Mit diesem Teleskop wurde das erste Mal der Schatten eines Schwarzen Lochs beobachtet.
+
+Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das Verfahren ermöglicht die Ursprungsbestimmung eines Radiosignals von astrophysikalischen Prozessen bei hoher Auflösung.
+
+
+
+
+\section{Computertomographie}\label{k4.2.comptomo.ct}
+\sectionauthor{Aaron Gschwendt}
+\subsection{Tomographie}
+
+Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
+
+$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
+
+$d$ ist das Linienintegral von jedem $s(p)$ entlang des Pfades $\gamma$. $d$ entspricht die Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt. \#Noch nicht gut formuliert%definition von anderen buchstaben
+
+Gesucht ist die Funktion $s$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
+
+\subsection{Astronomie}
+
+In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Daraus kann man $s$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
+
+\subsection{CT}
+
+Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
+
+Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projeziert. Der Nachteil dieser Methode ist, dass sich Teile vom Objekt überlagern können und nicht erkannt werden kann, ob es sich um ein Objekt mit hoher Absorption oder mehrer Objekte mit geringer Absorption handelt.
+
+Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
+
+\begin{wrapfigure}{r}{0.4\linewidth}
+  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
+  \caption{Sinogram}
+  \label{k4.2.tomo.ct.bp}
+\end{wrapfigure}
+
+Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
+\subsection{CT in 3D}
+\sectionauthor{Finja Hoffmann, Chuyang Wang}
+
+Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
+
+\begin{equation}
+  \begin{aligned}
+    d = Rs + n,
+  \end{aligned}
+\end{equation}
+
+wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+% TODO: ref to Wiener Filter
+
+\subsection{Line-Of-Sight Response}
+\sectionauthor{Finja Hoffmann, Chuyang Wang}
+
+Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
+
+\subsubsection{Algorithmus von Siddon}
+
+Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
+
+\begin{equation}
+  P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  P_{end} = \begin{pmatrix}x_{end} \\ y_{end} \\ z_{end}\end{pmatrix}
+\end{equation}
+
+Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit sei $x_{start} < x_{end}$. Man rundet die x-Koordinate des Startpunktes in die Richtung der Strecke auf und berechnet die Differenz $x^{\ast}$. Um die y- und z-Koordinaten dieses ersten Schnittpunkts herauszufinden, muss man noch die Steigungen gegenüber dieser beiden Achsen $m_{yx} = \frac{y_{end} - y_{start}}{x_{start} - x_{end}}$ und $m_{zx} = \frac{z_{end} - z_{start}}{x_{start} - x_{end}}$ berechnen. Somit erhält man den ersten Schnittpunkt
+
+\begin{equation}
+  S_{x,0} = \begin{pmatrix}
+    x_{start} + x^{\ast} \\
+    y_{start} + x^{\ast} \cdot m_{yx} \\
+    z_{start} + x^{\ast} \cdot m_{zx} \\
+  \end{pmatrix}
+\end{equation}
+
+Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
+
+\begin{equation}
+  S_{x,i} = S_{x,i-1} + \begin{pmatrix}
+    1 \\
+    1 \cdot m_{yx} \\
+    1 \cdot m_{zx} \\
+  \end{pmatrix}
+\end{equation}
+
+ Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog.
+
+Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel.
+
+Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null.
+
+Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
 \section{Wiener Filter}\label{k4.2.wiener.filter}
 \sectionauthor{Constantin Burmeister, Clemens Ljungh, Natalie Teplitska}
@@ -659,6 +647,32 @@ mit:
 D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
 Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter hat einige vorteilhafte Eigenschaften. Unter andrem kann er beliebige Datenmengen verarbeiten und ist dabei auch noch stets konsistent, da er auch grobe Fehler ausgleichen kann.
+
+
+
+\section{Normalverteilung}
+\sectionauthor{Patricia Hackl, Lara Müller}
+
+Im Hinblick auf die Bayes'sche Wahrscheinlichkeitstheorie ist die Gauß'sche Normalverteilung (auch: Gauß'sche Glockenkurve) von Bedeutung.
+Es lässt sich zeigen, dass die Summe von identisch verteilten und voneinander unabhängigen Zufallszahlen im Limes (Anzahl Wiederholungen $\rightarrow \infty$) zur Normalverteilung konvergiert.
+Die einem Zufallsexperiment zugehörige Gauß'sche Normalverteilung ist vollständig definiert über ihren Erwartungswert $\bar{x}$ und die Varianz $\sigma^{2}$:
+\[ \mathcal{G} (x - \bar{x}, \sigma^{2}) = \displaystyle\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp \left(- \displaystyle\frac{1}{2} \cdot (x - \bar{x}) \cdot (\sigma^{2})^{-1} \cdot (x - \bar{x}) \right) \]
+Analog zur Summenregel gilt auch für das Integral über die Normalverteilung:
+\begin{center} $\int_{- \infty}^{\infty} \mathcal{G} (x - \bar{x}, \sigma _x ^{2}) dx = 1$ \end{center}
+
+\subsection{Erwartungswert}
+Der Erwartungswert selbst ist definiert als die gewichtete Summe aus den Wahrscheinlichkeiten für die Zufallsvariable $x _i$ und bestimmt in spezifischen Fall der Normalverteilung, an welcher Stelle das Maximum auftritt (Verschiebung der Glockenkurve entlang der x-Achse). Dieser Wert muss nicht zwangsweise realisierbar sein. In der Formel entspricht $\chi$ dem Raum, auf dem $P(x)$ definiert ist:
+\begin{center} $\mathbb{E} _{P(x)} [x] = \sum x _i P(x _i) = \int_{\chi} x P(x) dx$ \end{center}
+
+\subsection{Varianz und Standardabweichung}
+Genauer betrachtet stellt die Varianz die Streuung um den Erwartungswert dar und entspricht somit der Abweichung vom Mittelwert. Diese ist immer strikt positiv.
+\begin{center} $\mathrm{Var} _{P(x)} [x] = \mathbb{E} _{P(x)} [x^{2}] - (\mathbb{E} _{P(x)} [x])^{2} = \int_ {\chi} (x - \mathbb{E} _{P(x)} [x])^{2} P(x) dx \geq 0$ \end{center}
+Für die Standardabweichung $\sigma$, die das Maß der Streubreite beschreibt, ergibt sich folgende Formel, wodurch eine direkte Abhängigkeit von der Varianz deutlich wird:
+\begin{center} $\sigma _{P(x)} [x] = \sqrt{\mathrm{Var} _{P(x)} [x]}$ \end{center}
+
+Mithilfe der Gauß'schen Glockenkurve lassen sich nun vielfältige Zufallsexperimente beschreiben und entsprechende Wahrscheinlichkeitsverteilungen konstruieren. In Bezug auf den Wiener Filter wird die Normalverteilung nicht nur als Prior, sondern auch als Likelihood benötigt, um Datenlücken zu füllen, die aufgrund des Abstands der Antennen des Radioteleskops auftreten. Zudem ist das Rauschen, also die Ungenauigkeit in den Messdaten, normalverteilt und kann so aus den Daten extrahiert werden.
+
+
 
 \section{Inferenz - Lernen aus Daten}
 \sectionauthor{Natalie Teplitska, Clemens Ljungh, Constantin Burmeister}
