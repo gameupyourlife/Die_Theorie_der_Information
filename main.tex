@@ -89,30 +89,30 @@ Für unsere Kursarbeit verwenden wir oft funktionale Programmierung, da wir Date
 Insgesamt unterscheidet sich damit die objektorientierte Programmierung von der funktionalen Programmierung einerseits in ihrem Ansatz, realtitätsbezogen zu sein, wohingegen die während die funktionalen Programmierung lediglich an der Programmeffektivität orientiert ist. Die Umsetzung ist daher sehr verschieden, sodass in der objektorientierten Programmierung Klassen und globale Variablen gefordert werden, während die funktionale Programmierung ebendiese verbietet, und mittels puren Funktionen den Code in kleinstmögliche und unabhängige Abschnitte unterteilt.
 
 \section{Pytest}
-\sectionauthor{Finja Hoffmann}
-Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
+\sectionauthor{Finja Hoffmann, (Alexander Gitnik)}
+Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase in der Softwareentwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese manuell zu überprüfen, kann man Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
 
-Das Überprüfen implmentiert man durch:
+Das Überprüfen implementiert man durch:
 
 \begin{verbatim}
 assert f(A) == B
 \end{verbatim}
 
-Hierbei wird die Funktion f getestet. Als Eingabe definiert man A und b ist die Erwartete Ausgabe
+Hierbei wird die Funktion \texttt{f} mit Eingabe \texttt{A} und Erwartungswert \texttt{B} getestet. 
 
-In einem konkreten Beispiel addiert eine Funktion den eigegebenen Wert mit 2. Hier wird 1 eingegeben und der Erwartungswert ist 3:
+In einem konkreten Beispiel addiert eine Funktion den eingegebenen Wert mit 2. Hier wird 1 eingegeben und der Erwartungswert ist 3:
 
 \begin{verbatim}
 assert add_2(1) == 3
 \end{verbatim}
 
-Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das asset wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
+Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das \texttt{assert} wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
 
-Die zu testende Methode beginnt mit test\_ .
+Die zu testende Methode beginnt mit \texttt{test\_}.
 
-Mit dem Dekorator @pytest.fixture vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.
+Mit dem Dekorator \texttt{@pytest.fixture} vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.
 
-Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl:
+Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl
 
 \begin{verbatim}
 with pytest.raises({FehlerTyp})
@@ -120,13 +120,13 @@ with pytest.raises({FehlerTyp})
 
 mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
 
-Zuletzt kann man noch mit eine Test-Methode durch den Dekorator
+Zuletzt kann man noch mit einer Test-Methode durch den Dekorator
 
 \begin{verbatim}
 @pytest.mark.parametrize({Eingabe})
 \end{verbatim}
 
-kennzeichnen. Hierbei werden einige typischerweise fehlerbringenden Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben.
+kennzeichnen. Hierbei werden einige Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben.
 
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
 
@@ -583,7 +583,7 @@ Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bil
 
 \subsection{Algorithmus von Siddon}
 
-Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
+Siddons Ansatz nach könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
 
 \begin{equation}
   P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
