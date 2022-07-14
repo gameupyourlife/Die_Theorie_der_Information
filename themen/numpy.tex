@@ -1,10 +1,9 @@
-
 \section{NumPy}\label{k4.2.ch.NumPy}
 \sectionauthor{Cedric Balzer, (Leo Bergmann)}
 
 Numerisches Python (kurz NumPy) ist eine in der Programmiersprache C geschriebene Libary für Python. Sie ermöglicht das effiziente Rechnen mit Matrizen, mehrdimensionalen Arrays und Vektoren in Python.
 
-NumPy ist eine open-source Library, welche auf den früheren Python-Modulen Numeric und Numarray basiert. Da Python nicht für numerische Rechnung optimiert ist, greift NumPy auf C-Code zurück. Eine der Kernfunktionalitäten von NumPy ist das sogenannte \verb|np.ndarray()|, das ein beliebig-dimensionales Array repräsentiert. Im Gegensatz zu Python-Listen müssen alle im Array gespeicherte Elemente vom selben Datentyp sein, zudem ist die Größe eines NumPy-Arrays statisch. Dies ermöglicht eine im Vergleich zu Listen eine schnellere Handhabung.
+NumPy ist eine open-source Library, welche auf den früheren Python-Modulen Numeric und Numarray basiert. Da Python nicht für numerische Rechnung optimiert ist, greift NumPy auf C-Code zurück. Eine der Kernfunktionalitäten von NumPy ist das sogenannte \verb|np.ndarray()|, das ein beliebig-dimensionales Array repräsentiert. Im Gegensatz zu Python-Listen müssen alle im Array gespeicherten Elemente vom selben Datentyp sein, zudem ist die Größe eines NumPy-Arrays statisch. Dies ermöglicht im Vergleich zu Listen eine schnellere Handhabung.
 
 NumPy ist nicht im Python3-Standard enthalten und muss daher separat installiert werden:
 
@@ -59,7 +58,7 @@ array([[4, 1],
        [2, 2]])
 \end{verbatim}
 
-Neben \verb|np.dot()| liefert NumPy den \verb|@| Operator (und alternativ \verb|np.matmul()|), welcher ebenfalls Arrays und Matrizen multipliziert.
+Neben \verb|np.dot()| liefert NumPy den Operator \verb|@| (und alternativ \verb|np.matmul()|), welcher ebenfalls Arrays und Matrizen multipliziert.
 Bei einer Multiplikation von Vektoren und 2D Matrizen erzeugen diese Funktionen identischen Output:
 
 \begin{itemize}
