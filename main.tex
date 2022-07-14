@@ -253,7 +253,7 @@ Durch Äquivalenzumformung erhält man
   \end{aligned}
 \end{equation}
 
-Die \textit{Determinante} einer Matrix ist ein skalarer Wert, welche die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
+Die \emph{Determinante} einer Matrix ist ein skalarer Wert, welche die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
 
 Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden.
 
@@ -360,7 +360,7 @@ Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als linea
 Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.
 
 \subsection{Darstellung linearer Abbildungen durch Matrizen}
-Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K²$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
+Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
 \[x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right) \]
 
 Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A darstellen:
@@ -377,14 +377,14 @@ Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleit
 Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
 Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
 
-{
-\begin{itemize}
- \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
 
- \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
- \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
-\end{itemize}
-}
+\begin{enumerate}
+ \item Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf{reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+
+ \item Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf{Verstandes} und durch logische Schlussfolgerungen erzielt.
+ \item Es müssen \textbf{alle} verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf{Konsistenz} gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
+\end{enumerate}
+
 Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten. Im Folgenden sind $A$, $B$ und $C$ drei Ereignisse.
 
 \subsection{Produktregel}
@@ -469,22 +469,32 @@ Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der 
 
 
 
-\section{Fourier-Transformation}
+\section{Fourier-Transformation}\label{k4.2.fourier}
 \sectionauthor{Natalie Teplitska, Ole Fleck, (Constantin Burmeister)}
-Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
-\begin{figure}[h!]
+Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Dank ihrer sehr allgemeinen und umfassenden Formulierung findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{k4.2/fourier.png}
     \caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: www.nti-audio.com)}
-    \label{k4.2.fourier}
+    \label{k4.2.fourier.img}
 \end{figure}
-Ein anschauliches Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der \cref{k4.2.fourier} links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der \cref{k4.2.fourier} rechts), wodurch man das Frequenzspektrum erhält.
 
-Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden geht man bei der Anwendung der Fourier-Transformation unterschiedlich vor.
+Ein anschauliches Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der \cref{k4.2.fourier.img} links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der \cref{k4.2.fourier.img} rechts), wodurch man das Frequenzspektrum erhält.
 
-Die kontinuierliche Fourier-Transformation (FT) benötigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)\ dt$ integriert wird. Diese Transformation lässt sich nur auf kontinuierliche Funktionen anwenden und gibt eine kontinuierliche Funktion aus.
+Je nachdem, welche Art von Rohdaten man erhält und welche Ausgabe erwünscht ist, nimmt die Fourier-Transformation eine leicht andere Form an.
 
-Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da die Eingabesignale meinstens aus einzelnen Datenpunkten und nicht aus kontinuierlichen Funktionen bestehen. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Die DFT ist mit einer quadratischen Laufzeit allerdings vergleichsweise rechenintensiv. Stattdessen wird in der Signalverarbeitung meist die Fast Fourier Transformation (FFT) verwendet, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
+Die kontinuierliche Fourier-Transformation (FT) benötigt als Eingabe eine Funktion, über die mit
+\begin{displaymath}
+\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)\ dt
+\end{displaymath}
+integriert wird. Diese Transformation lässt sich nur auf kontinuierliche Funktionen anwenden und gibt eine kontinuierliche Funktion aus.
+
+Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da die Eingabesignale meinstens aus einzelnen Datenpunkten und nicht aus kontinuierlichen Funktionen bestehen. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: 
+\begin{displaymath}
+\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j.
+\end{displaymath}
+Die DFT ist mit einer quadratischen Laufzeit allerdings vergleichsweise rechenintensiv. Stattdessen wird in der Signalverarbeitung meist die Fast Fourier Transformation (FFT) verwendet, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
 
 Manche Probleme, welche im Wertebereich, den eigentlichen Signalen, nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich, dem durch die Fourier-Analyse berechneten Frequenzspektrum, mit wenigen einfachen Operationen gel\"ost werden. Dazu wendet man die Fourier-Analyse auf die Daten an, führt die notwendigen Operationen im Bildbereich aus und transformiert die Lösung zurück in den Wertebereich. Möchte man beispielsweise eine Tonaufnahme von Störsignalen bereinigen, wendet man die FFT an, löscht die unerwünschten Frequenzen im Bildbereich und übersetzt das Ergebnis zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen, da an einer Tonaufnahme über der Zeit nicht direkt das Störsignal ablesbar ist.
 
@@ -499,9 +509,9 @@ Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierl
 Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
 
 Allgemein ist der minimal auflösbare Bildwinkel $\delta\theta$ eines Teleskops abhängig von der Wellenlänge $\lambda$, des beobachteten Lichts, und dem Spiegeldurchmesser $D$ des Teleskops mit \begin{eqnarray}
-\delta\theta\approx1,22\frac{\lambda}{D}
+\delta\theta\approx1.22\frac{\lambda}{D}
 \end{eqnarray}
-Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich.
+Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100\text{m}$ nur geringe Auflösungen möglich.
 
 \subsection{Radiointerferometrie}
 \begin{figure}[htb]
@@ -513,17 +523,17 @@ Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Telesk
 
 Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um eine höhere Auflösung zu erzielen als es mit einer einzelnen Antenne möglich wäre.
 
-Dieses hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
+Das hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
 
-Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{bild-baselineunterschied}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
+Ein Interferometer kann nur die Laufzeitdifferenz zwischen Wellen bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \cref{bild-baselineunterschied}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen modulo der Wellenlänge, welche im Beispiel $\lambda = 3$ beträgt, unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1 = 7$ Gangunterschied handelt, sondern jedes $n\in \mathbb{N}$ in $n\cdot\lambda+1$ ist möglich. Die Differenz könnte also immer auch um vielfache von 3 Längeneinheiten verschieden sein. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $\mathrm{mod}\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
 
 Für die Messung des Radiosignals gilt:
 \begin{eqnarray}
 d_{uv\lambda} =\int\int I(l,m)e^{-2\pi i \frac{1}{\lambda}(lu-mv)dldm}
 \end{eqnarray}
-Es wird die Intensität in bestimmten Bereichen des Himmels bestimmt, wobei l die Nord-Süd-Achse und m die Ost-West-Achse bezeichnet.
+Hier bezeichnet $l$ die Nord-Süd-Achse und $m$ die Ost-West-Achse, $\lambda$ bezeichnet die Beobachtungswellenlänge, und $u$ und $v$ ist der Verbindungsvektor zwischen zwei Antennen. Zusätzlich bezeichnet $n_{uv\lambda}$ ein additives Rauschen. Diese Messgleichung hat große Ähnlichkeit zur Fourier-Transformation (siehe \cref{k4.2.fourier}) und kann als nicht-äquidistante Fourier-Transformation interpretiert werden.
 
-Dieses Verfahren wurde beispielsweise auch beim \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung von elf Teleskopen, wobei deren Abstand bis zu $10000\,km$ beträgt. Mit diesem Teleskop wurde das erste Mal der Schatten eines Schwarzen Lochs beobachtet.
+Dieses Verfahren wurde beispielsweise auch beim \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung von elf Teleskopen, wobei deren Abstand bis zu $10000\,\text{km}$ beträgt. Mit diesem Teleskop wurde das erste Mal der Schatten eines Schwarzen Lochs beobachtet.
 
 Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das Verfahren ermöglicht die Ursprungsbestimmung eines Radiosignals von astrophysikalischen Prozessen bei hoher Auflösung.
 
@@ -565,7 +575,7 @@ Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der ei
 \subsection{CT in 3D}
 \sectionauthor{Finja Hoffmann, Chuyang Wang}
 
-Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
+Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\emph{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
 
 \begin{equation}
   \begin{aligned}
@@ -573,7 +583,7 @@ Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des S
   \end{aligned}
 \end{equation}
 
-wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \emph{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
 % TODO: ref to Wiener Filter
 
 \subsection{Line-Of-Sight Response}
@@ -667,20 +677,19 @@ Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset geliefert
 \section{Wiener Filter}\label{k4.2.wiener.filter}
 \sectionauthor{Constantin Burmeister, Clemens Ljungh, Natalie Teplitska}
 
-Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das unterliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Genauigkeit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen nicht vermeiden; zudem sind die Daten unvollständig. Die damit gegebene Unsicherheit soll minimiert werden. Eine dafür verwendete Methode ist der Wiener Filter.
+Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das zugrundeliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Sicherheit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen sowie eine gewisse Ungenauigkeit in der Messung nicht vermeiden; zudem sind die Daten unvollständig. Um solche Probleme zu lösen, brauchen wir den Wiener Filter.
 Dieses mathematische Verfahren basiert auf dem Bayes'schen Theorem
 (\ref{k4.2.bayes})
-, welches mathematisch beschreibt wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl Prior als auch Likelihood Gauß-Verteilungen sind.
+, welches mathematisch beschreibt, wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl der Prior als auch die Likelihood normalverteilt sind.
 
-Der WF kann verwndet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
+Der Wiener Filter kann verwendet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Aus der Normalverteilung des Rauschens sowie unter Einbezug der Messgleichung ergibt sich auch eine Normalverteilung für die Likelihood. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
 \begin{eqnarray}
 d = Rs + n
 \end{eqnarray}
-In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen. Die Wahrscheinlichkeit die Daten $d$ für das Signal $s$ zu erhalten ist eine Gauß-Verteilung.
+In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Abbildung des Signals in den Datenraum. Die Wahrscheinlichkeit, die Daten $d$ für das Signal $s$ zu erhalten, ist eine Gauß-Verteilung.
 \begin{eqnarray}
 P(d|s) = \mathcal{G}(d-Rs,N)
 \end{eqnarray}
-%Als Letztes bezeichnet $n$ die Ungenauigkeit bzw. das Rauschen in den Daten. Für dieses Rauschen wird eine Normalverteilung $P(n) = \mathcal{G}(n,N)$ angenommen.
 Setzen wir $P(s)$ und $P(d|s)$ in Bayes ein \cref{k4.2.bayes} erhalten wir:
 \begin{eqnarray}
 P(s|d) = \mathcal{G}(s-m,D)
@@ -689,8 +698,11 @@ mit:
 \begin{eqnarray}
 D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
-Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter hat einige vorteilhafte Eigenschaften. Unter andrem kann er beliebige Datenmengen verarbeiten und ist dabei auch noch stets konsistent, da er auch grobe Fehler ausgleichen kann.
-
+und
+\begin{eqnarray}
+m = D R^{\dagger} N^{-1}d
+\end{eqnarray}
+Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter ist insofern vorteilhaft, als dass er mit beliebig wenigen Daten fehlerfrei funktioniert, und ist daher eine wichtige Methode der IFT.
 
 
 \section{Normalverteilung}
@@ -741,84 +753,73 @@ Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei min
 Zur Rekonstruktion eines Bildes des Schwarzen Lochs M87* muss basierend auf den Daten des Event-Horizon-Telescopes zunächst eine Response-Funktion implementiert werden, um die Informationen vom Signal- in den Datenraum zu transferieren $s \mapsto d$. Mit der entsprechenden Implementierung wird sich der nachfolgende Abschnitt befassen.
 
 Es werden Daten in Form von acht csv-Dateien verwendet, die im April 2017 aufgenommen wurden. Diese stammen von mehreren Messreihen und wurden zur weiteren Verarbeitung in Form von csv-Dateien gespeichert.
-Um mit den Messwerten in Python arbeiten zu können, werden die csv-Dateien mittels einer $for$-Schleife in NumPy-Arrays konvertiert. Durch das NumPy-Array werden die Daten aus den csv-Dateien auf einem zweidimensionalen Gitter abgebildet.
+Um mit den Messwerten in Python arbeiten zu können, werden die csv-Dateien in NumPy-Arrays konvertiert. Durch das NumPy-Array werden die Daten aus den csv-Dateien auf einem zweidimensionalen Gitter abgebildet.
 
-Zunächst müssen die Frequenzen der Radiowellen ausgelesen werden. Diese elektromagnetischen Wellen werden in unmittelbarer Nähe des Schwarzen Lochs ausgesandt. Es wurden die beiden Frequenzen $f_1 = 227,0707 \mathrm{GHz}$ und $f_2 = 229,0707 \mathrm{GHz}$ betrachtet. Zusätzlich werden auch die Verbindungsvektoren zwischen den Antennen $uvw$ ausgelesen.
+Zunächst müssen die Frequenzen der Radiowellen ausgelesen werden. Diese elektromagnetischen Wellen werden in unmittelbarer Nähe des Schwarzen Lochs ausgesandt. Es wurden die beiden Frequenzen $f_1 = 227,0707$ GHz und $f_2 = 229,0707$ GHz betrachtet. Darüber hinaus werden auch die Verbindungsvektoren zwischen den Antennen $uvw$ ausgelesen.
 
-Um aus den Messwerten ein Bild erstellen zu können, wird die Anzahl der Pixel sowohl in x-, als auch in y-Richtung auf zunächst $100$ festgelegt, wobei dieser Wert variabel ist. Zudem muss die Pixelgröße über den kleinstmöglich auflösbaren Winkel $\delta \theta$ berechnet werden. Da es sich bei dem Event Horizon Telescope um einen Zusammenschluss von Antennen auf der ganzen Welt handelt, ergibt sich ein Durchmesser von $D_{EHT} \approx D_{Erde} \approx 10.000km$. Desweiteren beschreibt $\lambda$ die Wellenlänge der Radiowellen und $c$ deren Ausbreitungsgeschwindigkeit, die der Lichtgeschwindigkeit entspricht. Aus der zugehörigen Formel erhält man:
-\[ \delta \theta = 1,22 \cdot \displaystyle\frac{\lambda}{D} = 1,22 \cdot \displaystyle\frac{c}{f \cdot D} = 1,22 \cdot \displaystyle\frac{3 \cdot 10^{8} \displaystyle\frac{m}{s}} {229,0707 GHz \cdot 10.000 km} = (1,598 \cdot 10^{-10}) \mu as \]
+Um aus den Messwerten ein Bild erstellen zu können, wird die Anzahl der Pixel sowohl in x-, als auch in y-Richtung auf zunächst $100$ festgelegt, wobei dieser Wert variabel ist. Die Größe der Pixel ergibt sich für $\delta \theta$:
+\[ \delta \theta = 1.22 \cdot \displaystyle\frac{\lambda}{D} = 1.22 \cdot \displaystyle\frac{c}{f \cdot D} \]
 
-Damit ein erstes Bild des Schwarzen Lochs generiert werden kann, ist es notwendig, die Daten $d$ mittels folgender Formel zu beschreiben. Die Werte für $I_{Amplitude}$ und $I_{Phase}$ erhält man aus den csv-Dateien:
+Da es sich bei dem Event Horizon Telescope um einen Zusammenschluss von Antennen auf der ganzen Welt handelt, ergibt sich ein Durchmesser von $D_{EHT} \approx D_{Erde} \approx 10.000km$. Desweiteren beschreibt $\lambda$ die Wellenlänge der Radiowellen und $c$ deren Ausbreitungsgeschwindigkeit, die der Lichtgeschwindigkeit entspricht. In die Formel eingesetzt erhält man:
+\[ \delta \theta = 1.22 \cdot \displastyle\frac{3 \cdot 10^{8} \displaystyle\frac{\text{m}}{\text{s}}} {229.0707 \text{GHz} \cdot 10.000 \text{km}} = (1,598 \cdot 10^{-10}) \mu \text{as} \]
+
+Damit ein erstes Bild des Schwarzen Lochs generiert werden kann, ist es notwendig, die Daten $d$ mittels folgender Formel zu beschreiben. Die Werte für $I_{Amplitude}$ und $I_{Phase}$ sind in den csv-Dateien gegeben:
 \[ d = I_{Amplitude} \cdot e^{i \cdot I_{Phase}} \]
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.7\textwidth]{k4.2/unkalibrierte-daten.png}
-\end{figure}
-
-Aufgrund unvollständiger Informationen, die durch die Distanz der Antennen des Event-Horizon-Telescopes entstehen, muss zur Bilderstellung Bayes'sche Statistik angewandt werden.Im Gegensatz zu NumPy stellt NIFTy entsprechende Funktionen bereit, die dies ermöglichen. Um vom Signalraum $I$ (Signal des betrachteten Objekts) in den Datenraum $d$ (empfangene Daten) zu gelangen, nutzt man in NIFTy die Funktion $dirty2vis$ aus der Python-Bibliothek $ducc0$. Die adjungierte Abbildung $vis2dirty$ ermöglicht es, aus dem bekannten Datenraum auf den Signalraum zu schließen.
-
-Um diese Funktionen in NIFTy wiederholt anwenden zu können, werden sie in eine Klasse verpackt. Es handelt sich dabei um eine Klasse, die von \verb|ift.LinearOperator| - einem NIFTy-Operator - erbt. Dazu müssen unter Anderem \verb|domain| und \verb|target| initialisiert werden. Der Signalraum wird über \verb|domain| beschrieben, der Datenraum über \verb|target|. In der Klasse werden die Funktionen $dirty2vis$ und $vis2dirty$ durch die Methoden $TIMES$ und $ADJOINT \_ TIMES$ ersetzt.
+Aufgrund unvollständiger Informationen, die durch die Distanz der Antennen des Event-Horizon-Telescopes entstehen, muss zur Bilderstellung Bayes'sche Statistik angewandt werden.Im Gegensatz zu NumPy stellt NIFTy entsprechende Funktionen bereit, die dies ermöglichen. Um vom Signalraum $I$ (Signal des betrachteten Objekts) in den Datenraum $d$ (empfangene Daten) zu gelangen, nutzt man in NIFTy die Funktion \verb|dirty2vis| aus der Python-Bibliothek \verb|ducc0|. Die adjungierte Abbildung \verb|vis2dirty| ermöglicht es, aus dem bekannten Datenraum auf den Signalraum zu schließen.\\
+Um diese Funktionen in NIFTy wiederholt anwenden zu können, werden sie in eine Klasse verpackt. Es handelt sich dabei um eine Klasse, die von \verb|ift.LinearOperator| - einem NIFTy-Operator - erbt. Dazu müssen unter Anderem \verb|domain| und \verb|target| initialisiert werden. Der Signalraum wird über \verb|domain| beschrieben, der Datenraum über \verb|target|. In der Klasse werden die Funktionen \verb|dirty2vis| und \verb|vis2dirty| durch die Methoden \verb|TIMES| und \verb|ADJOINT_TIMES| ersetzt.
 
 
 
 \section{Kalibrierung der Radiointerferometriedaten}
 \sectionauthor{Benjamin Knöbel del Olmo, Ole Fleck, Aaron Gschwendt, Mara Germann}
-Die Aufgabe dieses Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays (Cluster aus mehreren Radioantennen) aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil hat, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
-Grundsätzlich möchten wir unsere Parameter, mit der Gruppe A Daten simuliert hat, so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
+Die Aufgabe dieses Projektteils war es, Daten, die Teil A (Ref!) simuliert, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays (Gruppen aus mehreren Radioantennen) in verschiedensten Ländern (Chile, Spanien, Hawaii etc.), was den Vorteil hat, dass der Durchmesser der Beobachtung  ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
+Grundsätzlich möchten wir unsere Simulationsparameter so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
 Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch die Bremsung der Radiowelle eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
 Diese Störungen lassen sich durch die Formel
 $$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}{bt\lambda}d{abt\lambda} $$
 darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) steht und $\bar{g}{at\lambda}$,  $\bar{g}{bt\lambda}$ zwei für die jeweiligen Antennenstörung beschreibende komplexe Zahlen sind: Der reelle Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
-Um diese Effekte zu annullieren bestimmen wir die Closure Quantity, eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion $$d^0_{t\lambda}=f(d_{abt\lambda}\forall a,b)$$ gefunden werden, sodass die Transformationen
-\begin{align*}
-d_{abt\lambda} &\rightarrow e^{i \phi at} e^{-i\pi bt} d_{abt\lambda } \\
-d_{abt\lambda}&\rightarrow|g_{at\lambda}||g_{bt\lambda}|d_{abt\lambda}|\\
-\end{align*}
-konstant sind, das heißt dass, die Störung keine Rolle mehr spielen.
-Die erste Funktion kürzt die Phasenverschiebungen heraus:
-\emph{Closure Phases}:
-$$\psi_n = e^{i \phi_{n,t}}$$
-\begin{align*}
-f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&\overset{!}{=}f(d_{a,b},d_{b,c},d_{a,c})\\
-f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=\psi_1\bar{\psi_b}d_{a,b}&&+\psi_b\bar{\psi_c}d_{b,c}&&-\psi_a \bar{\psi_c} d_{a,c}\\
-&=e^{i \phi_{a,t}-i\phi_{b,t}}d_{a,b}&&+e^{i \phi_{b,t}-i\phi_{c,t}}d_{b,c}&&-e^{i \phi_{a,t}-i\phi_{c,t}}d_{a,c}\\
+Um diese Effekte zu annullieren bestimmen wir die Closure Quantity, eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion
+\begin{equation}d^0_{t\lambda}=f(d_{abt\lambda}\forall a,b)\end{equation}
+gefunden werden, sodass die Transformationen
+\begin{align}
+d_{abt\lambda} &\rightarrow e^{i \phi at} e^{-i\pi bt} d_{abt\lambda }d(0)\\
+d_{abt\lambda}&\rightarrow|g_{at\lambda}||g_{bt\lambda}|d_{abt\lambda}|
+\end{align}
+konstant sind, das heißt dass, die Störung keine Rolle mehr spielen. In der ersten Funktion werden die Verschiebungen in der Phase rausgekürtzt, in der zweiten die Amplitudenverschiebung.
+Für die Closure Phases lautet die gesuchte Funktion
+\begin{equation}f(d_{a,b},d_{b,c},d_{a,c})=d_{a,b}+d_{b,c}-d_{a,c}\end{equation}
+Unter der Anahme, dass $\psi_n = e^{i \phi_{n,t}}$ gilt, kann man zeigen, dass durch Einsetzen in die Funktion die Verschiebung der Daten herausgerechnet wird.
+\begin{align}
+f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=\psi_1\bar{\psi_b}d_{a,b}+\psi_b\bar{\psi_c}d_{b,c}-\psi_a \bar{\psi_c} d_{a,c}\\
+&=e^{i \phi_{a,t}-i\phi_{b,t}}d_{a,b}+e^{i \phi_{b,t}-i\phi_{c,t}}d_{b,c}-e^{i \phi_{a,t}-i\phi_{c,t}}d_{a,c}\\
 &=d_{a,b}+d_{b,c}-d_{a,c}\\
-\Rightarrow f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=f(d_{a,b},d_{b,c},d_{a,c})
-\end{align*}
-Die zweite Funktion negiert die Amplitudenverschiebung:
-\emph{Closure Amplitudes}:
-\begin{align*}
-f(|z_a||z_b|d_{a, b}, |z_a||z_c|d_{a, c}, |z_a||z_d|d_{a, d}, |z_b||z_c|d_{b, c}, |z_b||z_d|d_{b, d}, |z_c||z_d|d_{c, d})\overset{!}{=}f(d_{a, b}, d_{a, b}, d_{a, b})
-\end{align*}
-Dabei ist wichtig, dass die Antennenpaarungen jeweils in dreier-/vierergruppen aufgeteilt werden. Die Vorgehensweise ist folgende: Es werden aus allen Antennen 3 bzw 4 gewählt und die Closure Quantities der Gruppe berechnet. Dieser Prozess wird solange wiederholt, bis keine neuen Werte entstehen, das heißt die Gruppe durch lineare Kombination der Rechnungen anderer Gruppen beschrieben werden kann. Alle relevanten Rechenprozesse werden in einer Matrix gespeichert, die der gesuchten Transformation entspricht.
-\begin{gather*}
-\begin{pmatrix}
-1&-1&0&1&0&0 \\
-1&0&-1&0&1&0 \\
-0&1&-1&0&0&1 \\
-\end{pmatrix}\\
-\end{gather*}
-Die Matrix hat 6 Spalten, da der Binomialkoeffizient (n über k) = n! / k! * (n-k)! für n = 4 und k =2 6 ergibt. Der Outputvektor ist eine Liste aller unterschiedlichen Closure Phases. Selbes gilt für Closure Amplitudes:
-\begin{gather*}
-\begin{pmatrix}
-1&-1&0&0&0&-1&0&1&0&0 \\
-0&-1&1&0&1&-1&0&0&0&0 \\
-1&-1&0&0&0&0&-1&0&1&0 \\
-0&-1&0&1&1&0&-1&0&0&0 \\
-1&0&-1&0&0&0&-1&0&0&1 \\
-\end{pmatrix}
-\end{gather*}
+&=f(d_{a,b},d_{b,c},d_{a,c})
+\end{align}
+Für die Closure Amplitudes lautet die gesuchte Funktion:
+\begin{align}
+f(d_{a, b},d_{a, c},d_{a, d},d_{b, c},d_{b, d},d_{c, d})\overset{!}{=}\frac{d_{a,b}\cdot d_{c,d}}{d_{a,c} \cdot d_{b,d}}
+\hspace{3mm}\text{bzw.}\hspace{3mm} \frac{d_{a,d}\cdot d_{b,c}}{d_{a,c} \cdot d_{b,d}}
+\end{align}
+Die Antennenpaare werden in Dreier- bzw. Vierergruppen aufgeteilt. Mann kann , in der die Spalten alle möglichen Antennenpaare darstellen und jede Zeile für eine der linearunabhängigen Möglichkeiten die Antennenpaare zu verknüpfen, eine Null bedeutet, dass das Antennenpaar nicht verwendet wird. Bei den Closure Phases stehen die Zahlen in der Matrix für das Vorzeichen, bei den Closure Amplitudes für den Vorzeichen des Exponents. Bei $n$ Antennen gibt es $\binom{n-1}{2}= \frac{1}{2}(n-1)\cdot(n-2)$ linear unabhängige Reihen in der Matrix.
+Daher hat die Closure Phase Matrix $\binom{4-1}{2}=3$ Reihen und sieht folgend aus.
+\begin{equation}
+\bordermatrix{
+~ &a,b&a,c&a,d&b,c&b,d&c,d\cr
+~&1&-1&0&1&0&0 \cr
+~&1&0&-1&0&1&0 \cr
+~&0&1&-1&0&0&1 \cr}
+\end{equation}
 
-Um am Ende ein Bild zu erzeugen, benötigen wir den Posterior des Bayes Theorem, welches uns ermöglicht, fehlende Daten durch wahrscheinlich passende zu ersetzt. Um auf diesen zu schließen, setzen wir ein:
+Um am Ende ein Bild zu erzeugen, benötigen wir den Posterior des Bayes Theorem, welcher uns ermöglicht, fehlende Daten durch wahrscheinliche zu ersetzen. Um diesen zu berechnen, setzen wir ein:
 
-\begin{displaymath}
+\begin{equation}
 P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
-\end{displaymath}
-\begin{displaymath}
-P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}
-\end{displaymath}
-Die Likelihood $P(d|\xi)$ besteht aus zwei Teilen: $P(dph|\xi)$, der Warscheinlichkeit der Closure Phases unter der Bedingung $\xi$ und $P(dam| \xi)$, der Wahrscheinlichkeit der Closure Amplitudes unter der Bedingung $\xi$.
+\end{equation}
+\begin{equation}
+P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}    
+\end{equation}
+Die Likelihood (1.12) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Warscheinlichkeit der Closure Phases unter der Bedingung $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der Closure Amplitudes unter der Bedingung $\xi$.
 \begin{align}
  -\log {P(\xi|d)} &=
  \mathcal{H} (\xi|d) = \mathcal{H} (d_{ph}|\xi)+\mathcal{H} (d_{amp}|\xi)+\mathcal{H} (\xi) \\
@@ -826,9 +827,9 @@ Die Likelihood $P(d|\xi)$ besteht aus zwei Teilen: $P(dph|\xi)$, der Warscheinli
 \\  & + \frac {1}{2}\cdot \Bigg[d_{amp} - f_{amp}(R(sky(\xi))) \Bigg]^\dagger N_{amp}^{-1}\Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]
 \\ & +  \frac {1}{2} \cdot \xi^\dagger \xi
 \end{align}
-Der Logarithmus, also $H(\xi|d)$ muss hier minimiert werden, um den Posterior, also die Wahrscheinlichkeit, dass der gewählte Parameter $\xi$ gut zu den gemessenen Daten passt, zu maximieren.
-Der Parameter $\xi$ wird im Folgenden Optimiert. Das geschieht dadurch, dass eine durch $\xi$ definierte (also simulierte) Normalverteilung über die errechneten Daten gelegt wird und so lange angepasst wird, bis der Unterschied möglichst gering resultiert (s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
-Dadurch erhält man am Ende folgendes Bild:
+Der Logarithmus(1.14), also $H(\xi|d)$ muss minimiert werden, um den Posterior, die Wahrscheinlichkeit, dass die Simulation durch gewählte Parameter $\xi$ gut zu den gemessenen Daten passt, zu maximieren.
+Der Parameter $\xi$ wird im Folgenden so optimiert, dass man eine durch $\xi$ definierte Normalverteilung eine möglichst kleine Differenz zu den errechneten Daten erreicht(s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
+Schlussendlich erhält man folgendes Bild:
 (Hier wird das Schwarze Loch Foto eingefügt)
 
 
