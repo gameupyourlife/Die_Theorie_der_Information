@@ -55,7 +55,7 @@
 \kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{example-image-a}
 
 \section{Git}
-\sectionauthor{Jonas Fiedler}
+\sectionauthor{Jonas Fiedler, (Clemens Ljungh)}
 
 Mit der Versionsmanagement-Software Git kann Kooperation zwischen mehreren Programmierern ermöglicht werden. Git beschäftigt sich hauptsächlich mit dem Verwalten von Versionen des Codes und der Zusammenführung von Code Änderungen. Dafür erstellt Git einen Versionsverlauf, welcher es ermöglicht, Versionen des Codes zurückrollen um Bugs zu identifizieren und das Nachverfolgen von Code-Änderungen von wichtigen Updates zu ermöglichen. Dabei wird zwischen lokaler Dateispeicherung und Speicherung im serverseitigen Bereich unterschieden. Der Server ermöglicht den Nutzern, Code herunterzuladen, ihn zu bearbeiten und letztendlich in überarbeiteter Version wieder an den Server zu übermitteln, wo dieser dann mit anderen Nutzern ausgetauscht werden kann.
 
@@ -66,7 +66,7 @@ In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Code
 Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool von vielen Software-Developern, sowie Unternehmen verwendet.
 
 \section{Programmierparadigmen}
-\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+\sectionauthor{Alexander Gitnik, Clemens Ljungh, (Jonas Fiedler, Aaron Gschwendt)}
 \subsection{Objektorientierte Programmierung}
 Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
 
@@ -89,7 +89,7 @@ Für unsere Kursarbeit verwenden wir oft funktionale Programmierung, da wir Date
 Insgesamt unterscheidet sich damit die objektorientierte Programmierung von der funktionalen Programmierung einerseits in ihrem Ansatz, realtitätsbezogen zu sein, wohingegen die während die funktionalen Programmierung lediglich an der Programmeffektivität orientiert ist. Die Umsetzung ist daher sehr verschieden, sodass in der objektorientierten Programmierung Klassen und globale Variablen gefordert werden, während die funktionale Programmierung ebendiese verbietet, und mittels puren Funktionen den Code in kleinstmögliche und unabhängige Abschnitte unterteilt.
 
 \section{Pytest}
-\sectionauthor{Finja Hoffmann}
+\sectionauthor{Finja Hoffmann, (Alexander Gitnik)}
 Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
 
 Das Überprüfen implmentiert man durch:
@@ -131,7 +131,7 @@ kennzeichnen. Hierbei werden einige typischerweise fehlerbringenden Eingaben get
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
 
 \section{NumPy}\label{k4.2.ch.NumPy}
-\sectionauthor{Cedric Balzer}
+\sectionauthor{Cedric Balzer, (Leo Bergmann)}
 
 Numerisches Python (kurz NumPy) ist eine in der Programmiersprache C geschriebene Libary für Python. Sie ermöglicht das effiziente Rechnen mit Matrizen, mehrdimensionalen Arrays und Vektoren in Python.
 
@@ -223,7 +223,7 @@ array([[18  4]
 NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes'sche Bildgebungsalgorithmen zu implementieren.
 
 \section{Conjugate Gradient}
-\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann}
+\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann, (Chuyang Wang, Cedric Balzer)}
 
 Um lineare Gleichungssysteme (LGS) effizient und exakt zu lösen, existiert ein Algorithmus namens Conjugate Gradient, welcher auch auf der Minimabestimmung basiert.
 
@@ -234,7 +234,7 @@ Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Resi
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
 
 \section{Eigenwertproblem}
-\sectionauthor{Lara Müller, Chuyang Wang}
+\sectionauthor{Lara Müller, Chuyang Wang, (Benjamin Knöbel del Olmo)}
 
 \subsection{Definitionen}\label{k4.2.eigen.def}
 
@@ -310,7 +310,7 @@ Eigenwerte und Eigenvektoren sind wichtig in der Mathematik. Ein Beispiel dafür
 
 
 \section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
-\sectionauthor{Lara Müller, Chuyang Wang}
+\sectionauthor{Lara Müller, Chuyang Wang, (Patricia Hackl)}
 Der folgende Abschnitt befasst sich mit den Grundlagen linearer algebraischer Berechungen und definiert in diesem Kontext lineare Abbildungen und zugehörige Vektorräume.
 
 \subsection{Grundlagen linearer Algebra}
@@ -369,7 +369,7 @@ Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowo
 Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektor dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen der Vektoren zueinander unverändert. Im Gegensatz zur Drehung, Scherung und Projektion sind Krümmungen bei einer linearen Abbildung nicht möglich. Daher werden diese Abbildungen auch als strukturerhaltende Abbildungen zwischen Vektorräumen bezeichnet.
 
 \section{Cox's Theorem}
-\sectionauthor{Mara Germann, Patricia Hackl}
+\sectionauthor{Mara Germann, Patricia Hackl, (Lara Müller)}
 Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
 
 
@@ -418,7 +418,7 @@ Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die es
 Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
 
 \section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
-\sectionauthor{Mara Germann, Patricia Hackl}
+\sectionauthor{Mara Germann, Patricia Hackl, (Natalie Teplitska)}
 
 Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
 \begin{displaymath}
@@ -450,7 +450,7 @@ Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So
 
 
 \section{Komplexe Zahlen}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
+\sectionauthor{Natalie Teplitska, Ole Fleck, (Mara Germann)}
 Da in der Radioastronomie die Messdaten komplexe Zahlen sind, hat sich unser Kurs auch mit diesen beschäftigt.
 
 Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$ für $a, b \in \mathbb{R}$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit und definiert über die Eigenschaft: $i^{2} = -1$. Für $b = 0$ erhalten wir die bereits bekannten reellen Zahlen. Man kann $\mathbb{C}$ somit als zweidimensionalen reellen Vektorraum interpretieren.
@@ -470,7 +470,7 @@ Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der 
 
 
 \section{Fourier-Transformation}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
+\sectionauthor{Natalie Teplitska, Ole Fleck, (Constantin Burmeister)}
 Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
 \begin{figure}[h!]
     \centering
@@ -494,7 +494,7 @@ Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierl
 
 
 \section{Radioastronomie}
-\sectionauthor{Constantin Burmeister, Ole Fleck}
+\sectionauthor{Constantin Burmeister, (Ole Fleck)}
 
 Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
 
@@ -531,7 +531,7 @@ Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das V
 
 
 \section{Computertomographie}\label{k4.2.comptomo.ct}
-\sectionauthor{Aaron Gschwendt}
+\sectionauthor{Aaron Gschwendt, (Finja Hoffmann)}
 \subsection{Tomographie}
 
 Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
