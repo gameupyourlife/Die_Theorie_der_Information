@@ -357,7 +357,7 @@ Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als linea
 \begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
 
 \subsection{Eigenschaften von Vektorräumen}
-Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.\\
+Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.
 
 \subsection{Darstellung linearer Abbildungen durch Matrizen}
 Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
@@ -538,25 +538,23 @@ Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das V
 
 
 
-
-[21:27] Aaron Gschwendt
-\section{Computertomographie}\label{k4.2.comptomo.ct}
+\section{Tomographie}\label{k4.2.comptomo.ct}
+\subsection{Einleitung}
 \sectionauthor{Aaron Gschwendt (Finja Hoffmann)}
-\subsection{Tomographie}
 
 Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
 
 $$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
 
-$s$ ist eine unbekannte Funkion die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt.
+$s$ ist eine unbekannte Funktion die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt.
 
 Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
-\subsection{Astronomie}
+\subsection{Radioastronomie}
 
 In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
-\subsection{CT}
+\subsection{Computertomografie}
 
 Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
 
@@ -565,13 +563,12 @@ Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abz
 Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
 
 \begin{wrapfigure}{r}{0.4\linewidth}
-  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
-  \caption{Sinogram}
-  \label{k4.2.tomo.ct.bp}
+ \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
+ \caption{Sinogram}
+ \label{k4.2.tomo.ct.bp}
 \end{wrapfigure}
 
 Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
-
 
 
 \subsection{CT in 3D}
@@ -592,6 +589,7 @@ wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \emph{Response}, $s \in \mathb
 \sectionauthor{Finja Hoffmann, Chuyang Wang}
 
 Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
+
 
 \subsection{Algorithmus von Siddon}
 
@@ -633,6 +631,46 @@ Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. d
 
 Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
+
+\subsection{Walnuss -Messdaten}\label{k4.2.ch.walnussct}
+\sectionauthor{Leo Bergmann, Cedric Balzer}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{k4.2/ctabbild.png}
+    \caption{Versuchsaufbau, welcher für das Generieren der Daten verwendet wurde. Die Detektorfläche ist auf der linken Seite die Röntgenquelle auf der rechten Seite. Die Walnuss ist mit einer computergesteuerten rotierbaren Plattform verbunden.}
+    \label{k4.2.fig.ctAbbild}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/geometry.png}
+    \caption{Aufbau des Versuchs mit geometrischen Daten.\\
+    FOD - Focus-to-object distance\\
+    FDD - Focus-to-detector distance\\
+    W - Width of the detector
+    }
+    \label{k4.2.fig.Geo}
+\end{figure}
+
+Das Ziel des Projekts ist es, einen Computertomographie-Scan (siehe \cref{k4.2.comptomo.ct}) einer Walnuss als Bild darzustellen. Durch die harte Schale und den weichen Kern stellt die Walnuss eine Herausforderung für den CT-Scan dar.
+Wir beziehen öffentlich zugängliche Daten von  \href{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}{zenodo.org}, die eine Schichtaufnahme einer Walnuss als Sinogram in unterschiedlichen Auflösungen in \verb|.mat|-Dateien beinhalten. 
+Es wurden 120 Projektionen der Strahlung auf einem Schirm gemessen und mit einer heruntergerechneten Pixelzahl in einer Matrix m gespeichert. Getestet haben wir Dateien mit 82 und 328 Pixel je Projektion. In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht. Damit das Sinogram in ein CT-Bild projiziert werden kann sind alle Start- und Endpunkte der Line of Sight notwendig. Diese werden ermittelt, indem der Standort der Quelle und die Position der einzelnen Pixel des Screens ermittelt wird. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/versuchsaufbau-skizze.png}
+    \caption{Skizze des Versuchsaufbau}
+    \label{k4.2.fig.skizze}
+\end{figure}
+Anstelle einer Drehung der Nuss gegen den Uhrzeigersinn rechnen wir, äquivalent dazu, mit einer kreisförmigen Rotation des Detektors (Screen) und der Strahlungsquelle (Source) um die Walnuss (Nut). Es bieten sich durch gegebene Winkel und Radii Polarkoordinaten an, um die Position der Quelle und des Detektors relativ zu Walnuss zu bestimmen, jedoch müssen alle Punkte für die Weiterverarbeitung im kartesischen Koordinatensystem angegeben und deshalb direkt in diesem berechnet werden. Da die Winkel und Abstandsmaße in Bezug auf die Walnuss angegeben sind, wird diese als Koordinatenursprung definiert. Ausgehend davon wird die Quelle zunächst an die Stelle \verb+(-110|0)+ gelegt (siehe \cref{k4.2.fig.Geo}). Dadurch wird die Startposition des Detektors festgelegt, der durch seinen Anfang ($Upper$) an Stelle \verb+(190|57,4)+ und seinen Endpunkt ($Lower$) an Stelle \verb+(190|-57,4)+ bestimmt wird. 
+Source' ist für jede Drehung der Nuss bzw. der Quelle und des Schirms um den Winkel Rad (im Bogenmaß) im Vergleich zur Startposition der Punkt an dem sich die Quelle nun befindet. Der Abstand zwischen Source' und Nut ist dabei immer 110mm. Der Versuchsaufbau kann somit als Einheitskreis mit Mittelpunkt Nut interpretiert werden, der um den Faktor 110mm gestreckt wurde. Dadurch ist im karthesischen Koordinatensystem die horizontale Koordinaten-Komponente von Source' gleich $cos(Rad) * 110mm$, die vertikale Komponente gleich $sin(Rad) * 110mm$.
+Der Winkel $\sphericalangle Upper-Nut-Lower$ hat eine Größe von etwa 34°, somit hat der Winkel $alpha = \sphericalangle Lower-Nut-SC$ eine Größe von 17°. Der Abstand von Nut zu $Lower$ kann mithilfe des Satzes von Pythagoras berechnet werden:
+\begin{align}
+d = \sqrt{(300mm - 110mm)^2+(114,8mm/2)^2} = 198,48mm
+\end{align}
+Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordinaten $alphas$ im Polarkoordinatensystem (Winkel werden im Bogenmaß verrechnet). Um $Upper'$ zu berechnen muss $alpha$ von Rad subtrahiert werden. Die entsprechenden karthesischen Koordinaten erhalten wir nun auf gleiche Weise bei Source'. Um die restlichen Pixel zu berechnen verwenden wir die Methode \verb+numpy.linspace()+. Wir setzen hier $Upper'$ als Startwert und $Lower'$ als Endwert ein und lassen uns die Menge der Anzahl an Pixeln auf dem Schirm ausgeben. 
+
+Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
 
 
 \section{Wiener Filter}\label{k4.2.wiener.filter}
@@ -794,86 +832,6 @@ Der Logarithmus(1.14), also $H(\xi|d)$ muss minimiert werden, um den Posterior, 
 Der Parameter $\xi$ wird im Folgenden so optimiert, dass man eine durch $\xi$ definierte Normalverteilung eine möglichst kleine Differenz zu den errechneten Daten erreicht(s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
 Schlussendlich erhält man folgendes Bild:
 (Hier wird das Schwarze Loch Foto eingefügt)
-
-
-
-\section{Walnuss CT}\label{k4.2.ch.walnussct}
-\sectionauthor{Leo Bergmann, Cedric Balzer}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\textwidth]{k4.2/ctabbild.png}
-    \caption{Versuchsaufbau welcher für das Generieren der Daten verwendet wurde. Die Detektor Fläche ist auf der linken Seite die Röntgenquelle auf der rechten Seite. Die Walnuss ist mit einer computergesteuerten rotierbaren Plattform verbunden.}
-    \label{k4.2.fig.ctAbbild}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\textwidth]{k4.2/geometry.png}
-    \caption{Aufbau des Versuchs mit geometrischen Daten.\\
-    FOD - Focus-to-object distance\\
-    FDD - Focus-to-detector distance\\
-    W - Width of the detector
-    }
-    \label{k4.2.fig.Geo}
-\end{figure}
-
-Das Ziel des Projekts ist es, einen Computertomographie-Scan (siehe \cref{k4.2.comptomo.ct}) einer Walnuss als Bild darzustellen. Durch die harte Schale und den weichen Kern stellt die Walnuss eine Herausforderung für den CT-Scan dar.
-Wir beziehen öffentlich zugängliche Daten von  \href{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}{zenodo.org}, die eine Schichtaufnahme einer Walnuss als Sinogram in unterschiedlichen Auflösungen in \verb|.mat|-Dateien beinhalten. 
-Es wurden 120 Projektionen der Strahlung auf einem Schirm gemessen und mit einer heruntergerechneten Pixelzahl in einer Matrix m gespeichert. Getestet haben wir Dateien mit 82 und 328 Pixel je Projektion. In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht. Damit das Sinogram in ein CT-Bild projiziert werden kann sind alle Start- und Endpunkte der Line of Sight notwendig. Diese werden ermittelt, indem der Standort der Quelle und die Position der einzelnen Pixel des Screens ermittelt wird.\\
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\textwidth]{k4.2/versuchsaufbau-skizze.png}
-    \caption{Skizze des Versuchsaufbau}
-    \label{k4.2.fig.skizze}
-\end{figure}
-Anstelle einer Drehung der Nuss gegen den Uhrzeigersinn rechnen wir, äquivalent dazu, mit einer kreisförmigen Rotation des Detektors (Screen) und der Strahlungsquelle (Source) um die Walnuss (Nut). Es bieten sich durch gegebene Winkel und Radii Polarkoordinaten an, um die Position der Quelle und des Detektors relativ zu Walnuss zu bestimmen, jedoch müssen alle Punkte für die Weiterverarbeitung im kartesischen Koordinatensystem angegeben und deshalb direkt in diesem berechnet werden. Da die Winkel und Abstandsmaße in Bezug auf die Walnuss angegeben sind, wird diese als Koordinatenursprung definiert. Ausgehend davon wird die Quelle zunächst an die Stelle \verb+(-110|0)+ gelegt (siehe \cref{k4.2.fig.Geo}). Dadurch wird die Startposition des Detektors festgelegt, der durch seinen Anfang ($Upper$) an Stelle \verb+(190|57,4)+ und seinen Endpunkt ($Lower$) an Stelle \verb+(190|-57,4)+ bestimmt wird. 
-Source' ist für jede Drehung der Nuss bzw. der Quelle und des Schirms um den Winkel Rad (im Bogenmaß) im Vergleich zur Startposition der Punkt an dem sich die Quelle nun befindet. Der Abstand zwischen Source' und Nut ist dabei immer 110mm. Der Versuchsaufbau kann somit als Einheitskreis mit Mittelpunkt Nut interpretiert werden, der um den Faktor 110mm gestreckt wurde. Dadurch ist im karthesischen Koordinatensystem die horizontale Koordinaten-Komponente von Source' gleich $cos(Rad) * 110mm$, die vertikale Komponente gleich $sin(Rad) * 110mm$.
-Der Winkel $\sphericalangle Upper-Nut-Lower$ hat eine Größe von etwa 34°, somit hat der Winkel $alpha = \sphericalangle Lower-Nut-SC$ eine Größe von 17°. Der Abstand von Nut zu $Lower$ kann mithilfe des Satzes von Pythagoras berechnet werden:
-\begin{align}
-d = \sqrt{(300mm - 110mm)^2+(114,8mm/2)^2} = 198,48mm
-\end{align}
-Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordinaten $alphas$ im Polarkoordinatensystem (Winkel werden im Bogenmaß verrechnet). Um $Upper'$ zu berechnen muss $alpha$ von Rad subtrahiert werden. Die entsprechenden karthesischen Koordinaten erhalten wir nun auf gleiche Weise bei Source'. Um die restlichen Pixel zu berechnen verwenden wir die Methode \verb+numpy.linspace()+. Wir setzen hier $Upper'$ als Startwert und $Lower'$ als Endwert ein und lassen uns die Menge der Anzahl an Pixeln auf dem Schirm ausgeben. 
-
-Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
-
-
-\section{Hierarchisches Modell für korrelierte Felder}
-\sectionauthor{Natalie Teplitska, Clemens Ljungh, Constantin Burmeister}
-Das Projekt \emph{Hierarchisches Modell für korrelierte Felder} beschäftigte sich mit der Bestimmung eines Priors $P(s)$ für korrelierte Felder. Diese Aufgabe wurde mit den Hilfsmitteln der Python-Bibliothek \emph{NIFTy8} gelöst.
-
-Ziel eines bildgebenden Verfahrens ist die Ermittlung der quantity of interest $s$. Dies kann bei der Radioastronomie die Helligkeit des Himmels oder bei der CT die Dichte des untersuchten Objektes sein. Da weder Helligkeit noch Dichte negativ sein kann, setzen wir $s \geq 0$ voraus. Damit lässt sich eine Normalverteilung für $P(s)$ bereits ausschließen, da eine solche in ganz $\mathbb{R}$ definiert wäre. Außerdem wird angenommen, dass die einzelnen Bildpunkte miteinander korreliert sind, also voneinander abhängen. Ist zum Beispiel ein Pixel schwarz, so ist es unwahrscheinlich, dass sich in direkter Nähe dazu weiße Pixel befinden. In unserem Fall gilt, dass die Abhängigkeit zunimmt, je näher sich die Pixel im Bild befinden. Daraus ergibt sich eine recht komplizierte Kovarianzmatrix, die die Korrelation der Pixel zueinander codiert.
-
-Die Annahme, die Korrelation zwischen Pixeln sei normalverteilt, stellt häufig eine gute Näherung dar. In unserem Fall ist es jedoch das Ziel, ein hierarchisches Modell zu erzeugen, um einen Prior mit besseren Näherungen zu verwenden.
-
-Dazu verwenden wir als Zufallsvariable nicht mehr $s$, sondern $\xi$, welches mit $P(\xi) = \mathbb{G}(\xi, \mathds{1})$ die langweiligste Wahrscheinlichkeitsverteilung annimmt. Diese ist in jedem Freiheitsgrad mit Erwartungswert 0 und Varianz 1 normalverteilt.
-
-Unsere Aufgabe bestand nun darin, eine Funktion $f$ so zu definieren und zu implementieren, sodass $P(f(\xi)) d \xi = P(s) ds$. Die Schwierigkeit liegt hierbei insbesondere in der oben erwähnten Komplexität der Kovarianzmatrix.
-
-Die \emph{Cholesky-Zerlegung} \href{https://www.uni-muenster.de/AMM/num/Vorlesungen/Numerik1_WS06/loesungen06/Prog_cholesky.pdf}{uni-muenster.de}
-stellt eine Möglichkeit dar, einen solchen Prior zu erzeugen, wobei nur eine Dreiecksmatrix mit halb so vielen Einträgen gespeichert werden muss. Dies geschieht, indem im übertragenen Sinn die Wurzel aus $S$ gezogen wird, sodass $S=A A^{\dagger}$. Auf diese Weise lässt sich eine Funktion definieren, die aus zufälligen Zahlen $\xi$ den Prior berechnet: $s = f(\xi) = A \cdot \xi$. Allerdings ist der Speicherverbrauch der Dreiecksmatrix für $\mathcal{O}(n) = 100 000$ Datenpunkte immer noch enorm.
-
-Ein alternatives Verfahren stellt das \emph{Wiener-Chintchin-Theorem} dar. Hier wird die Annahme über die Kovarianz zwischen Pixeln nur über deren Entfernung, nicht jedoch über die Position getroffen. Dabei gilt
-\begin{eqnarray}
-S= \mathcal{F}^{\dagger} diag(p(|k|)) \mathcal{F}
-\end{eqnarray}
-Mit $diag(p(|k|))$ wird nur die Diagonale einer Diagonalmatrix gespeichert, welche durch eine Hartley-Transformation\footnote{Variante der Fourier-Transformation, welche Real- und Imaginärteil im reellen Raum verrechnet} erzeugt wird. Sie arbeitet mit der power function $p(|k|)$, die die Kovarianz kodiert. Dabei repräsentiert der Betrag von $k$ die Entfernung zwischen einzelnen Pixeln. Dieses Verfahren ist effizienter, da die Menge der Zahlen, welche in der Diagonalmatrix gespeichert werden muss, linear skaliert und auch die Hartley-Transformation keine vollständige Matrix benötigt, um korrekt ausgeführt zu werden.
-
-Bisher haben wir mit einer vorgegebenen Kovarianz $S$ gearbeitet. Um aus Daten lernen zu können, dürfen wir uns allerdings nicht auf einen bestimmten Prior festlegen. Die Berechnung des Posteriors gestaltet sich wesentlich einfacher, wenn die power function - mit einigen vorausgesetzten Annahmen - über eine Menge von Parametern definiert wird. Diese können jeweils mit Bayes \cref{k4.2.bayes} immer weiter angepasst werden. Für unseren Fall arbeiteten wir mit drei Parametern %ref Bild
-.
-\begin{figure}[h] 
-    \centering
-    \includegraphics{power_function_bearbeitet.png}
-    \caption{100 beispielhafte power functions und ihre Parameter}
-\end{figure}
-\begin{itemize}
-    \item Der Parameter \emph{scale} steht für die Standardabweichung der power function und beschreibt somit, wie stark sie variieren kann.
-    \item Wir gehen von einer Funktion aus, die ab einem bestimmten Punkt eine Form annimmt, welche einem power-law folgt. Diesen Punkt bezeichnet man als \emph{cutoff}.
-    \item Schließlich bezeichnet \emph{loglogslope} die Steigung der Funktion in dem Intervall nach dem cutoff.
-\end{itemize}
-Alle drei Parameter werden über je zwei Zahlenwerte definiert: den Mittelwert der Erwartungen und seine vermutete Varianz. Im Grunde genommen arbeiten wir also mit sechs Zahlenwerten, die unter Einbezug von Daten immer weiter angepasst werden können.
-
-Damit haben wir es geschafft, einen Prior mittels Zufallszahlen zu generieren, der ein Lernen aus Daten mit kleinstmöglichem Rechen- und Speicheraufwand ermöglicht.
 
 
 % Bibliography
