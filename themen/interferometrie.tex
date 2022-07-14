@@ -2,44 +2,77 @@
 \section{Radiointerferometrie}
 \sectionauthor{Benjamin Knöbel del Olmo, Ole Fleck, Aaron Gschwendt, Mara Germann}
 \subsection{Kalibrierung der Radiointerferometriedaten}
-Die Aufgabe dieses Projektteils war es, Daten, die Teil A (Ref!) simuliert, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays (Gruppen aus mehreren Radioantennen) in verschiedensten Ländern (Chile, Spanien, Hawaii etc.), was den Vorteil hat, dass der Durchmesser der Beobachtung  ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
-Grundsätzlich möchten wir unsere Simulationsparameter so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
-Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch die Bremsung der Radiowelle eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
-Diese Störungen lassen sich durch die Formel
-$$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}{bt\lambda}d{abt\lambda} $$
-darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) steht und $\bar{g}{at\lambda}$,  $\bar{g}{bt\lambda}$ zwei für die jeweiligen Antennenstörung beschreibende komplexe Zahlen sind: Der reelle Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
-Um diese Effekte zu annullieren bestimmen wir die Closure Quantity, eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion
-\begin{equation}d^0_{t\lambda}=f(d_{abt\lambda}\forall a,b)\end{equation}
-gefunden werden, sodass die Transformationen
+Das Ziel dieses Projektteils ist es, Kalibrierungsfehler aus den Interferometriedaten herauszuprojizieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope (EHT) vermessen. Das EHT besteht aus Antennenstationen in verschiedensten Ländern (Chile, Spanien, Hawaii etc.). Der Abstand zwischen den Stationen ermöglicht es sehr kleine Winkel aufzulösen (Ref Radiointerferometrie wg Formel!).
+Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
+Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Dynamiken in der Atmosphäre führen zu Phasenverschiebungen und Temperaturschwankungen verursachen eine zeitabhängige Skalierung der Messdaten. Diese Störungen lassen sich durch die Formel
+$$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}_{bt\lambda}d_{abt\lambda}, \hspace{1cm} g_{at \lambda} \in \mathbb{C} \quad \forall a,t,\lambda $$
+darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) steht und $\bar{g}_{at\lambda}$,  $\bar{g}_{bt\lambda}$ zwei für die jeweiligen Antennenstörung beschreibende komplexe Zahlen sind: Der Abstandsbetrag spiegelt die Signalstärkenreduktion wider, während die komplexe Phase die Phasenverschiebung repräsentiert.
+Um diese Effekte herauszukürzen bestimmen wir die \emph{Closure Quantities}, eine bereinigte Form der gegebenen Daten. \emph{Closure Phases} behandeln die Phasenverschiebung der empfangenen Welle und \emph{Closure Amplitudes} die Änderung der Signalstärke. Daher muss eine Funktion
+\begin{equation}
+d^0_{t\lambda}=f_{y}(d_{ab\lambda},\quad \forall a,b)
+\end{equation}
+gefunden werden, die invariant unter
 \begin{align}
-d_{abt\lambda} &\rightarrow e^{i \phi at} e^{-i\pi bt} d_{abt\lambda }d(0)\\
+d_{abt\lambda} &\rightarrow e^{i \phi_{at}} e^{-i\phi_{bt}} d_{abt\lambda}d(0)\\
 d_{abt\lambda}&\rightarrow|g_{at\lambda}||g_{bt\lambda}|d_{abt\lambda}|
 \end{align}
-konstant sind, das heißt dass, die Störung keine Rolle mehr spielen. In der ersten Funktion werden die Verschiebungen in der Phase rausgekürtzt, in der zweiten die Amplitudenverschiebung.
-Für die Closure Phases lautet die gesuchte Funktion
+ist. In der ersten Funktion werden die Verschiebungen in der Phase rausgekürtzt, in der zweiten die Amplitudenverschiebung.
+Für die \emph{Closure Phases} lautet die gesuchte Funktion
 \begin{equation}f(d_{a,b},d_{b,c},d_{a,c})=d_{a,b}+d_{b,c}-d_{a,c}\end{equation}
-Unter der Anahme, dass $\psi_n = e^{i \phi_{n,t}}$ gilt, kann man zeigen, dass durch Einsetzen in die Funktion die Verschiebung der Daten herausgerechnet wird.
+Man kann zeigen dass durch Einsetzen in die Funktion die Verschiebung der Daten herausgerechnet wird.
+Lass $\psi_n = e^{i \phi_{nt}}$ sein.
 \begin{align}
 f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=\psi_1\bar{\psi_b}d_{a,b}+\psi_b\bar{\psi_c}d_{b,c}-\psi_a \bar{\psi_c} d_{a,c}\\
 &=e^{i \phi_{a,t}-i\phi_{b,t}}d_{a,b}+e^{i \phi_{b,t}-i\phi_{c,t}}d_{b,c}-e^{i \phi_{a,t}-i\phi_{c,t}}d_{a,c}\\
 &=d_{a,b}+d_{b,c}-d_{a,c}\\
 &=f(d_{a,b},d_{b,c},d_{a,c})
 \end{align}
-Für die Closure Amplitudes lautet die gesuchte Funktion:
+Für die \emph{Closure Amplitudes} lautet die gesuchte Funktion:
 \begin{align}
 f(d_{a, b},d_{a, c},d_{a, d},d_{b, c},d_{b, d},d_{c, d})\overset{!}{=}\frac{d_{a,b}\cdot d_{c,d}}{d_{a,c} \cdot d_{b,d}}
-\hspace{3mm}\text{bzw.}\hspace{3mm} \frac{d_{a,d}\cdot d_{b,c}}{d_{a,c} \cdot d_{b,d}}
+\hspace{3mm}\text \quad {bzw.} \quad \hspace{3mm} \frac{d_{a,d}\cdot d_{b,c}}{d_{a,c} \cdot d_{b,d}}
 \end{align}
-Die Antennenpaare werden in Dreier- bzw. Vierergruppen aufgeteilt. Mann kann , in der die Spalten alle möglichen Antennenpaare darstellen und jede Zeile für eine der linearunabhängigen Möglichkeiten die Antennenpaare zu verknüpfen, eine Null bedeutet, dass das Antennenpaar nicht verwendet wird. Bei den Closure Phases stehen die Zahlen in der Matrix für das Vorzeichen, bei den Closure Amplitudes für den Vorzeichen des Exponents. Bei $n$ Antennen gibt es $\binom{n-1}{2}= \frac{1}{2}(n-1)\cdot(n-2)$ linear unabhängige Reihen in der Matrix.
-Daher hat die Closure Phase Matrix $\binom{4-1}{2}=3$ Reihen und sieht folgend aus.
+Folgend werden die \emph{Closure Phases} für die verschiedenen Dreiergruppen bzw. die \emph{Closure Amplitudes} für die Vierergruppen aus Antennenpaaren berechnet. Da jedoch nicht alle Möglichkeiten unabhängig voneinander sind, können Redundanzen herausgerechnet werden.
+Dafür wird eine Matrix erstellt, in der die Spalten alle möglichen Antennenpaare darstellen und die Zeilen alle linear unabhängige Möglichkeiten die Antennepaare zu verknüpfen darstellt. Bei den  \emph{Closure Phases} stehen die Zahlen in der Matrix für das Vorzeichen, bei den \emph{Closure Amplitudes} für den Vorzeichen des Exponents. Folglich bedeuten Nullen, dass die Antennenpaare nicht verwendet werden.  Bei $n$ Antennen gibt es $\binom{n-1}{2}= \frac{1}{2}(n-1)\cdot(n-2)$ linear unabhängige Reihen in der Matrix.
+Daher hat die $n=4$ \emph{Closure Phase}Matrix $\binom{4-1}{2}=3$ Reihen:
 \begin{equation}
 \bordermatrix{
-~ &a,b&a,c&a,d&b,c&b,d&c,d\cr
+~ &(0,1)&(0,2)&(0,3)&(1,2)&(1,3)&(2,3)\cr
 ~&1&-1&0&1&0&0 \cr
 ~&1&0&-1&0&1&0 \cr
 ~&0&1&-1&0&0&1 \cr}
 \end{equation}
-
+Die \emph{Closure Amplitude} Matrix von $n$ Antennen hat $\frac{1}{2}n*(n-3)$ linear unabhängige Reihen. Die $n=4$ \emph{Closure Amplitude} Matrix sieht folgend aus:
+\begin{equation}
+\bordermatrix{
+~ &(0,1)&(0,2)&(0,3)&(1,2)&(1,3)&(2,3)\cr
+~&1&-1&0&0&-1&0 \cr
+~&0&-1&1&1&-1&0 \cr
+}
+\end{equation}
+Um die \emph{Closure Phase} Matrixen zu generieren verwendet wir die library \verb|numpy| mit folgender Funktion.
+\begin{verbatim}
+def genPhaseMatrix(n):
+    O=math.comb(n,2)
+    mat=np.empty(O,dtype=int)
+    pos=[(x,y) for x in range(n) for y in range(x+1,n)]
+    maxRank=math.comb(n-1,2)
+    for i in range(0,n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
+                row=np.zeros(O,dtype=int)
+                row[pos.index((i,j)),]=1
+                row[pos.index((i,k))]=-1
+                row[pos.index((j,k))]=1
+                newMat=np.vstack([mat,row])
+                rnk= np.linalg.matrix_rank(newMat)
+                if rnk>np.linalg.matrix_rank(mat):
+                    mat=newMat
+                    if rnk==maxRank:
+                        return mat[1:,:]
+\end{verbatim}
+Die Funktion nimmt als Parameter die Anzahl an Antennen. Zunächst erstellt sie eine leere Numpy Array mit einer Zeile für jedes mögliches Antennenpaar. In dem Array wird die Matrix Zeilenweise erzeugt. Dann werden alle möglichen Wege 3 Antennen miteinander Kombinieren durchlaufen. Ist die Kombination linear unabhängig zu dem Array, wird diese dem Array zugefügt. Dies wird so oft wiederholt, bis entweder alle Möglichkeiten durchgegangen oder die maximale Zeilenanzahl der Matrix erreicht wurde. Der Algorithmus zur \emph{Amplitude Phase} Matrix funktioniert analog.
+Nachdem die \emph{Closure Quantities} erstellt wurden, werden die Daten der Antennen für jeden Zeitintervall in Phase und Amplitude getrennt und mit den \emph{Closure Quantities} Matrixen multipliziert. Da nicht zu jedem Zeitpunkt gleich viele Antennen aktiv sind (z.B. weil sie im Schatten der Erde liegen) brauchen wir alle \emph{Closure} Matrixen bis $n=7$.
 Um am Ende ein Bild zu erzeugen, benötigen wir den Posterior des Bayes Theorem, welcher uns ermöglicht, fehlende Daten durch wahrscheinliche zu ersetzen. Um diesen zu berechnen, setzen wir ein:
 
 \begin{equation}
@@ -48,17 +81,16 @@ P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
 \begin{equation}
 P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}    
 \end{equation}
-Die Likelihood (1.12) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Warscheinlichkeit der Closure Phases unter der Bedingung $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der Closure Amplitudes unter der Bedingung $\xi$.
-\begin{align}
+Die Likelihood (1.12) besteht aus zwei Teilen: $P(d_{ph}|\xi)$, der Warscheinlichkeit der \emph{Closure Phases} unter der Bedingung $\xi$ und $P(d_{am}| \xi)$, der Wahrscheinlichkeit der \emph{ Closure Amplitudes} unter der Bedingung $\xi$.
+\begin{align} \label{k4.2.Posterior}
  -\log {P(\xi|d)} &=
  \mathcal{H} (\xi|d) = \mathcal{H} (d_{ph}|\xi)+\mathcal{H} (d_{amp}|\xi)+\mathcal{H} (\xi) \\
-&= \frac {1}{2}\cdot \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]^\dagger N^{-1}_{ph} \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]  
-\\  & + \frac {1}{2}\cdot \Bigg[d_{amp} - f_{amp}(R(sky(\xi))) \Bigg]^\dagger N_{amp}^{-1}\Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]
-\\ & +  \frac {1}{2} \cdot \xi^\dagger \xi
+&= \frac {1}{2}\cdot \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]^\dagger N^{-1}_{ph} \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]
+\\  & + \frac {1}{2}\cdot \Bigg[d_{amp} - f_{amp}(R(sky(\xi))) \Bigg]^\dagger N_{amp}^{-1}\Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg] \nonumber
+\\ & +  \frac {1}{2} \cdot \xi^\dagger \xi \nonumber  
 \end{align}
-Der Logarithmus(1.14), also $H(\xi|d)$ muss minimiert werden, um den Posterior, die Wahrscheinlichkeit, dass die Simulation durch gewählte Parameter $\xi$ gut zu den gemessenen Daten passt, zu maximieren.
-Der Parameter $\xi$ wird im Folgenden so optimiert, dass man eine durch $\xi$ definierte Normalverteilung eine möglichst kleine Differenz zu den errechneten Daten erreicht(s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
-Schlussendlich erhält man folgendes Bild:
+Der negative Logarithmus des Posteriors \cref{k4.2.Posterior}, erlaubt uns, Metric Gaussian Variational Inference, kurz MGVI \parencite{k4.2.mgvi} anzuwenden. Dabei wird der Parameter $\xi$ so optimiert, dass man mit einer durch $\xi$ definierte Normalverteilung eine möglichst kleine Differenz zur wahren Posterior erreicht(s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
+Dadurch erhält man folgendes Bild:
 (Hier wird das Schwarze Loch Foto eingefügt)
 
 
