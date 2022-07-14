@@ -52,10 +52,10 @@
 
 \tableofcontents
 
-\kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{example-image-a}
+\kurs{Die Theorie der Information}{Wie aus Daten Bilder werden}{k4.2/kurslogo.pdf}
 
 \section{Git}
-\sectionauthor{Jonas Fiedler}
+\sectionauthor{Jonas Fiedler, (Clemens Ljungh)}
 
 Mit der Versionsmanagement-Software Git kann Kooperation zwischen mehreren Programmierern ermöglicht werden. Git beschäftigt sich hauptsächlich mit dem Verwalten von Versionen des Codes und der Zusammenführung von Code Änderungen. Dafür erstellt Git einen Versionsverlauf, welcher es ermöglicht, Versionen des Codes zurückrollen um Bugs zu identifizieren und das Nachverfolgen von Code-Änderungen von wichtigen Updates zu ermöglichen. Dabei wird zwischen lokaler Dateispeicherung und Speicherung im serverseitigen Bereich unterschieden. Der Server ermöglicht den Nutzern, Code herunterzuladen, ihn zu bearbeiten und letztendlich in überarbeiteter Version wieder an den Server zu übermitteln, wo dieser dann mit anderen Nutzern ausgetauscht werden kann.
 
@@ -66,7 +66,7 @@ In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Code
 Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool von vielen Software-Developern, sowie Unternehmen verwendet.
 
 \section{Programmierparadigmen}
-\sectionauthor{Alexander Gitnik, Clemens Ljungh}
+\sectionauthor{Alexander Gitnik, Clemens Ljungh, (Jonas Fiedler, Aaron Gschwendt)}
 \subsection{Objektorientierte Programmierung}
 Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
 
@@ -131,7 +131,7 @@ kennzeichnen. Hierbei werden einige Eingaben getestet. Dazu werden die Eingabe u
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
 
 \section{NumPy}\label{k4.2.ch.NumPy}
-\sectionauthor{Cedric Balzer}
+\sectionauthor{Cedric Balzer, (Leo Bergmann)}
 
 Numerisches Python (kurz NumPy) ist eine in der Programmiersprache C geschriebene Libary für Python. Sie ermöglicht das effiziente Rechnen mit Matrizen, mehrdimensionalen Arrays und Vektoren in Python.
 
@@ -223,7 +223,7 @@ array([[18  4]
 NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes'sche Bildgebungsalgorithmen zu implementieren.
 
 \section{Conjugate Gradient}
-\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann}
+\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann, (Chuyang Wang, Cedric Balzer)}
 
 Um lineare Gleichungssysteme (LGS) effizient und exakt zu lösen, existiert ein Algorithmus namens Conjugate Gradient, welcher auch auf der Minimabestimmung basiert.
 
@@ -234,7 +234,7 @@ Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Resi
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
 
 \section{Eigenwertproblem}
-\sectionauthor{Lara Müller, Chuyang Wang}
+\sectionauthor{Lara Müller, Chuyang Wang, (Benjamin Knöbel del Olmo)}
 
 \subsection{Definitionen}\label{k4.2.eigen.def}
 
@@ -310,7 +310,7 @@ Eigenwerte und Eigenvektoren sind wichtig in der Mathematik. Ein Beispiel dafür
 
 
 \section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
-\sectionauthor{Lara Müller, Chuyang Wang}
+\sectionauthor{Lara Müller, Chuyang Wang, (Patricia Hackl)}
 Der folgende Abschnitt befasst sich mit den Grundlagen linearer algebraischer Berechungen und definiert in diesem Kontext lineare Abbildungen und zugehörige Vektorräume.
 
 \subsection{Grundlagen linearer Algebra}
@@ -369,7 +369,7 @@ Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowo
 Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektor dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen der Vektoren zueinander unverändert. Im Gegensatz zur Drehung, Scherung und Projektion sind Krümmungen bei einer linearen Abbildung nicht möglich. Daher werden diese Abbildungen auch als strukturerhaltende Abbildungen zwischen Vektorräumen bezeichnet.
 
 \section{Cox's Theorem}
-\sectionauthor{Mara Germann, Patricia Hackl}
+\sectionauthor{Mara Germann, Patricia Hackl, (Lara Müller)}
 Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
 
 
@@ -418,7 +418,7 @@ Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die es
 Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
 
 \section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
-\sectionauthor{Mara Germann, Patricia Hackl}
+\sectionauthor{Mara Germann, Patricia Hackl, (Natalie Teplitska)}
 
 Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
 \begin{displaymath}
@@ -450,7 +450,7 @@ Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So
 
 
 \section{Komplexe Zahlen}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
+\sectionauthor{Natalie Teplitska, Ole Fleck, (Mara Germann)}
 Da in der Radioastronomie die Messdaten komplexe Zahlen sind, hat sich unser Kurs auch mit diesen beschäftigt.
 
 Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$ für $a, b \in \mathbb{R}$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit und definiert über die Eigenschaft: $i^{2} = -1$. Für $b = 0$ erhalten wir die bereits bekannten reellen Zahlen. Man kann $\mathbb{C}$ somit als zweidimensionalen reellen Vektorraum interpretieren.
@@ -470,7 +470,7 @@ Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der 
 
 
 \section{Fourier-Transformation}
-\sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
+\sectionauthor{Natalie Teplitska, Ole Fleck, (Constantin Burmeister)}
 Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
 \begin{figure}[h!]
     \centering
@@ -494,7 +494,7 @@ Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierl
 
 
 \section{Radioastronomie}
-\sectionauthor{Constantin Burmeister, Ole Fleck}
+\sectionauthor{Constantin Burmeister, (Ole Fleck)}
 
 Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
 
@@ -530,21 +530,22 @@ Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das V
 
 
 
+[21:27] Aaron Gschwendt
 \section{Computertomographie}\label{k4.2.comptomo.ct}
-\sectionauthor{Aaron Gschwendt}
+\sectionauthor{Aaron Gschwendt (Finja Hoffmann)}
 \subsection{Tomographie}
 
 Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
 
 $$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
 
-$d$ ist das Linienintegral von jedem $s(p)$ entlang des Pfades $\gamma$. $d$ entspricht die Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt. \#Noch nicht gut formuliert%definition von anderen buchstaben
+$s$ ist eine unbekannte Funkion die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt.
 
-Gesucht ist die Funktion $s$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
+Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
 \subsection{Astronomie}
 
-In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Daraus kann man $s$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
+In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
 \subsection{CT}
 
@@ -555,12 +556,14 @@ Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abz
 Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
 
 \begin{wrapfigure}{r}{0.4\linewidth}
-  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
-  \caption{Sinogram}
-  \label{k4.2.tomo.ct.bp}
+  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
+  \caption{Sinogram}
+  \label{k4.2.tomo.ct.bp}
 \end{wrapfigure}
 
-Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
+
 
 \subsection{CT in 3D}
 \sectionauthor{Finja Hoffmann, Chuyang Wang}
@@ -716,26 +719,78 @@ Damit ein erstes Bild des Schwarzen Lochs generiert werden kann, ist es notwendi
 Aufgrund unvollständiger Informationen, die durch die Distanz der Antennen des Event-Horizon-Telescopes entstehen, muss zur Bilderstellung Bayes'sche Statistik angewandt werden.Im Gegensatz zu NumPy stellt NIFTy entsprechende Funktionen bereit, die dies ermöglichen. Um vom Signalraum $I$ (Signal des betrachteten Objekts) in den Datenraum $d$ (empfangene Daten) zu gelangen, nutzt man in NIFTy die Funktion $dirty2vis$ aus der Python-Bibliothek $ducc0$. Die adjungierte Abbildung $vis2dirty$ ermöglicht es, aus dem bekannten Datenraum auf den Signalraum zu schließen.\\
 Um diese Funktionen in NIFTy wiederholt anwenden zu können, werden sie in eine Klasse verpackt. Es handelt sich dabei um eine Klasse, die von \verb|ift.LinearOperator| - einem NIFTy-Operator - erbt. Dazu müssen unter Anderem \verb|domain| und \verb|target| initialisiert werden. Der Signalraum wird über \verb|domain| beschrieben, der Datenraum über \verb|target|. In der Klasse werden die Funktionen $dirty2vis$ und $vis2dirty$ durch die Methoden $TIMES$ und $ADJOINT \_ TIMES$ ersetzt.
 
-\section{Radio Gruppe B}
-\sectionauthor{Benjamin}
-Die Aufgabe diese Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 nämlich durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil mit sich zieht, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
 
+
+\section{Kalibrierung der Radiointerferometriedaten}
+\sectionauthor{Benjamin Knöbel del Olmo, Ole Fleck, Aaron Gschwendt, Mara Germann}
+Die Aufgabe dieses Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays (Cluster aus mehreren Radioantennen) aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil hat, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
 Grundsätzlich möchten wir unsere Parameter, mit der Gruppe A Daten simuliert hat, so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
-
-Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch eine langsamere Geschwindigkeit eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
-
-Diese Störungen lassen sich durch die Formel dabt$\lambda$$\to$gat$\lambda$ * g*bt$\lambda$ dab$\lambda$  t$\forall$                 darstellen, wobei a und b für ein betrachtetes Antennenpaar (also Antenne a und Antenne b) steht und g*at$\lambda$,  $g \cdot bt \lambda$ zwei für die jeweiligen Antennen Störung beschreibende komplexe Zahlen sind: Der reele Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
-
-Um diese Effekte zu annulieren bestimmen wir die Closure Quantitie eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion d(0)t$\lambda$=f(dabt$\lambda$$\forall$a,b) gefunden werden, sodass die Transformationd abt$\lambda$$\to$exp(i$\phi$at) exp($-i \phi$bt)dabt$\lambda$ d(0) invariant lässt (Phases) bzw invariant unter dabt$\lambda$$\to$|gat$\lambda$||gbt$\lambda$|dabt$\lambda$ sind (Amplitudes), das heißt, die Störung keine Rolle mehr spielt.
-Closure Phases:
-
-Formel
-
-Closure Amplitudes:
-
-Formel
-
+Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch die Bremsung der Radiowelle eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
+Diese Störungen lassen sich durch die Formel
+$$d_{abt\lambda}\rightarrow g_{at\lambda} \bar{g}{bt\lambda}d{abt\lambda} $$
+darstellen, wobei $a$ und $b$ für ein betrachtetes Antennenpaar (also Antenne $a$ und Antenne $b$) steht und $\bar{g}{at\lambda}$,  $\bar{g}{bt\lambda}$ zwei für die jeweiligen Antennenstörung beschreibende komplexe Zahlen sind: Der reelle Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
+Um diese Effekte zu annullieren bestimmen wir die Closure Quantity, eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion $$d^0_{t\lambda}=f(d_{abt\lambda}\forall a,b)$$ gefunden werden, sodass die Transformationen
+\begin{align*}
+d_{abt\lambda} &\rightarrow e^{i \phi at} e^{-i\pi bt} d_{abt\lambda } \\
+d_{abt\lambda}&\rightarrow|g_{at\lambda}||g_{bt\lambda}|d_{abt\lambda}|\\
+\end{align*}
+konstant sind, das heißt dass, die Störung keine Rolle mehr spielen.
+Die erste Funktion kürzt die Phasenverschiebungen heraus:
+\emph{Closure Phases}:
+$$\psi_n = e^{i \phi_{n,t}}$$
+\begin{align*}
+f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&\overset{!}{=}f(d_{a,b},d_{b,c},d_{a,c})\\
+f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=\psi_1\bar{\psi_b}d_{a,b}&&+\psi_b\bar{\psi_c}d_{b,c}&&-\psi_a \bar{\psi_c} d_{a,c}\\
+&=e^{i \phi_{a,t}-i\phi_{b,t}}d_{a,b}&&+e^{i \phi_{b,t}-i\phi_{c,t}}d_{b,c}&&-e^{i \phi_{a,t}-i\phi_{c,t}}d_{a,c}\\
+&=d_{a,b}+d_{b,c}-d_{a,c}\\
+\Rightarrow f(\psi_a\bar{\psi_b} d_{a,b},\psi_b\bar{\psi_c}d_{b,c},\psi_a \bar{\psi_c} d_{a,c})&=f(d_{a,b},d_{b,c},d_{a,c})
+\end{align*}
+Die zweite Funktion negiert die Amplitudenverschiebung:
+\emph{Closure Amplitudes}:
+\begin{align*}
+f(|z_a||z_b|d_{a, b}, |z_a||z_c|d_{a, c}, |z_a||z_d|d_{a, d}, |z_b||z_c|d_{b, c}, |z_b||z_d|d_{b, d}, |z_c||z_d|d_{c, d})\overset{!}{=}f(d_{a, b}, d_{a, b}, d_{a, b})
+\end{align*}
 Dabei ist wichtig, dass die Antennenpaarungen jeweils in dreier-/vierergruppen aufgeteilt werden. Die Vorgehensweise ist folgende: Es werden aus allen Antennen 3 bzw 4 gewählt und die Closure Quantities der Gruppe berechnet. Dieser Prozess wird solange wiederholt, bis keine neuen Werte entstehen, das heißt die Gruppe durch lineare Kombination der Rechnungen anderer Gruppen beschrieben werden kann. Alle relevanten Rechenprozesse werden in einer Matrix gespeichert, die der gesuchten Transformation entspricht.
+\begin{gather*}
+\begin{pmatrix}
+1&-1&0&1&0&0 \\
+1&0&-1&0&1&0 \\
+0&1&-1&0&0&1 \\
+\end{pmatrix}\\
+\end{gather*}
+Die Matrix hat 6 Spalten, da der Binomialkoeffizient (n über k) = n! / k! * (n-k)! für n = 4 und k =2 6 ergibt. Der Outputvektor ist eine Liste aller unterschiedlichen Closure Phases. Selbes gilt für Closure Amplitudes:
+\begin{gather*}
+\begin{pmatrix}
+1&-1&0&0&0&-1&0&1&0&0 \\
+0&-1&1&0&1&-1&0&0&0&0 \\
+1&-1&0&0&0&0&-1&0&1&0 \\
+0&-1&0&1&1&0&-1&0&0&0 \\
+1&0&-1&0&0&0&-1&0&0&1 \\
+\end{pmatrix}
+\end{gather*}
+
+Um am Ende ein Bild zu erzeugen, benötigen wir den Posterior des Bayes Theorem, welches uns ermöglicht, fehlende Daten durch wahrscheinlich passende zu ersetzt. Um auf diesen zu schließen, setzen wir ein:
+
+\begin{displaymath}
+P(\xi|d)= \frac {P(d|\xi)\cdot P(\xi)}{ P(d) }
+\end{displaymath}
+\begin{displaymath}
+P(d|\xi)=  {P(d_{ph}|\xi)\cdot P(d_{amp}|\xi)}
+\end{displaymath}
+Die Likelihood $P(d|\xi)$ besteht aus zwei Teilen: $P(dph|\xi)$, der Warscheinlichkeit der Closure Phases unter der Bedingung $\xi$ und $P(dam| \xi)$, der Wahrscheinlichkeit der Closure Amplitudes unter der Bedingung $\xi$.
+\begin{align}
+ -\log {P(\xi|d)} &=
+ \mathcal{H} (\xi|d) = \mathcal{H} (d_{ph}|\xi)+\mathcal{H} (d_{amp}|\xi)+\mathcal{H} (\xi) \\
+&= \frac {1}{2}\cdot \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]^\dagger N^{-1}_{ph} \Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]  
+\\  & + \frac {1}{2}\cdot \Bigg[d_{amp} - f_{amp}(R(sky(\xi))) \Bigg]^\dagger N_{amp}^{-1}\Bigg[d_{ph} - f_{ph}(R(sky(\xi))) \Bigg]
+\\ & +  \frac {1}{2} \cdot \xi^\dagger \xi
+\end{align}
+Der Logarithmus, also $H(\xi|d)$ muss hier minimiert werden, um den Posterior, also die Wahrscheinlichkeit, dass der gewählte Parameter $\xi$ gut zu den gemessenen Daten passt, zu maximieren.
+Der Parameter $\xi$ wird im Folgenden Optimiert. Das geschieht dadurch, dass eine durch $\xi$ definierte (also simulierte) Normalverteilung über die errechneten Daten gelegt wird und so lange angepasst wird, bis der Unterschied möglichst gering resultiert (s. Kullback-Leibler-Divergenz(hier kommt noch eine Referenz!)) % REF!!!
+Dadurch erhält man am Ende folgendes Bild:
+(Hier wird das Schwarze Loch Foto eingefügt)
+
+
 
 \section{Walnuss CT}\label{k4.2.ch.walnussct}
 \sectionauthor{Leo Bergmann, Cedric Balzer}
