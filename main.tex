@@ -356,24 +356,28 @@ In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Code
 
 Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool deshalb von äußerst vielen Programmierern verwendet.
 
-\section{Computertomographie}
-\sectionauthor{Aaron Gschwendt}
+\section{Tomographie}
 
-\subsection{Tomographie}
+\subsection{Einleitung}
+\sectionauthor{Aaron Gschwendt}
 
 Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu bestimmen, beobachtet man Strahlen, die durch das Objekt in einer Ebene gehen. Die Menge an Licht, die auf der Strecke absorbiert wurde, entspricht dem Linienintegral:
 
-$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
+\begin{equation}\label{k4.2.tomo.einl.linig}
+  d=\int_{\Gamma}{}s(p)dp(\gamma)
+\end{equation}
 
-$$p\in \mathbb{R}^2$$
+\begin{equation}
+  p\in \mathbb{R}^2
+\end{equation}
 
 $d$ ist hier die Menge an Licht die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt. Gesucht ist $s(p)$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Strecken im Bild, kann man mithilfe vom bayesschen Verfahren mit hoher Auflösung und Sicherheit $s(p)$ bestimmen.
 
-\subsection{Astronomie}
+\subsubsection{Staubtomographie}
 
 In der Astronomie wird die Tomographie verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz man kennt und um bzw. in der Wolke liegen beobachtet. Man vergleicht deren scheinbare Helligkeit mit deren zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. Daraus kann man $s(p)$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen
 
-\subsection{CT}
+\subsubsection{Computertomographie}\label{k4.2.comptomo.ct}
 
 Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie, kurz CT.
 
@@ -388,6 +392,65 @@ Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um de
 \end{wrapfigure}
 
 Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
+\subsection{CT in 3D}
+\sectionauthor{Finja Hoffmann, Chuyang Wang}
+Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
+
+\begin{equation}
+  \begin{aligned}
+    d = Rs + n,
+  \end{aligned}
+\end{equation}
+
+wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+% TODO: ref to Wiener Filter
+
+\subsection{Line-Of-Sight Response}
+\sectionauthor{Finja Hoffmann, Chuyang Wang}
+
+Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird. 
+
+\subsubsection{Algorithmus von Siddon}
+
+Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
+
+\begin{equation}
+  P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  P_{end} = \begin{pmatrix}x_{end} \\ y_{end} \\ z_{end}\end{pmatrix}
+\end{equation}
+
+Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit sei $x_{start} < x_{end}$. Man rundet die x-Koordinate des Startpunktes in die Richtung der Strecke auf und berechnet die Differenz $x^{\ast}$. Um die y- und z-Koordinaten dieses ersten Schnittpunkts herauszufinden, muss man noch die Steigungen gegenüber dieser beiden Achsen $m_{yx} = \frac{y_{end} - y_{start}}{x_{start} - x_{end}}$ und $m_{zx} = \frac{z_{end} - z_{start}}{x_{start} - x_{end}}$ berechnen. Somit erhält man den ersten Schnittpunkt
+
+\begin{equation}
+  S_{x,0} = \begin{pmatrix}
+    x_{start} + x^{\ast} \\
+    y_{start} + x^{\ast} \cdot m_{yx} \\
+    z_{start} + x^{\ast} \cdot m_{zx} \\
+  \end{pmatrix} 
+\end{equation}
+
+Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
+
+\begin{equation}
+  S_{x,i} = S_{x,i-1} + \begin{pmatrix}
+    1 \\
+    1 \cdot m_{yx} \\
+    1 \cdot m_{zx} \\
+  \end{pmatrix} 
+\end{equation}
+
+ Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog. 
+
+Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel. 
+
+Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null. 
+
+Sammelt man die Gewichtungen für alle Sichtlinien, so kann man aus den Zeilenvektoren $r_0$, $r_1$, ..., $r_N$ die Matrix $R$ bilden. Da viele Einträge in dieser Matrix null sind, ist es günstig, die Matrix als eine \enquote{sparse matrix} zu speichern. Dafür gibt es einen Datentyp \lstinline[language=Python]{scipy.sparse.csr_matrix}, welcher diese Matrix effizient speichern kann. 
+
 
 \section{NumPy}\label{k4.2.ch.NumPy}
 \sectionauthor{Cedric Balzer}
@@ -483,6 +546,8 @@ NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in 
 
 
 \section{Programmierparadigmen}
+
+\section{Objekt-Orientierte Programmierung}
 \sectionauthor{Alexander Gitnik, Clemens Ljungh}
 \subsection{Objektorientierte Programmierung}
 Die objektorientierte Programmierung ist eins der am weitesten verbreiteten Programmierparadigmen. Beim objektorientierten Programmieren ist das ausschlaggebende Kriterium, dass man den Code zu sinnvollen Strukturen zusammenfasst. Dies bedeutet konkret, dass man Klassen erstellt, welche oftmals reale Objekte repräsentieren.
