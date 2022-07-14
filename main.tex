@@ -246,14 +246,14 @@ Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Telesk
 \centering
 \includegraphics[width=.4\textwidth]{baselineunterschied.jpg}
 \caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
-\label{BILD_BASELINEUNTERSCHIED}
+\label{bild-baselineunterschied}
 \end{figure}
 
 Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um eine höhere Auflösung zu erzielen als es mit einer einzelnen Antenne möglich wäre.
 
 Dieses hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
 
-Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{BILD_BASELINEUNTERSCHIED}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
+Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{bild-baselineunterschied}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
 
 Für die Messung des Radiosignals gilt:
 \begin{eqnarray}
@@ -561,11 +561,11 @@ Eine weitere Möglichkeit besteht darin, den Posterior mit einem variativen Ansa
 \begin{eqnarray}
 KL(P,P_a) = \int P(s|d) ln \frac{P(s|d)}{P_a(s|d)}ds
 \end{eqnarray}
-Das Minimieren von KL(P, Pa) liefert die optimale Approximation an den Posterior.
+Das Minimieren von $KL(P, Pa)$ liefert die optimale Approximation an den Posterior.
 
 Die KL-Divergenz hat einige nennenswerte Eigenschaften. Dazu gehört unter anderem die Lokalität, die dazu führt, dass nur Stellen in die Fehlerberechnung einfließen, über welche die erste Verteilung $P$ eine Aussage trifft. Außerdem folgt die KL-Divergenz dem Konzept der Gescheitheit, welches besagt: "Wann immer möglich, wähle die zweite Verteilung $P_a$ so, dass diese mit der ersten übereinstimmt." Zuletzt ist zu erwähnen, dass die KL-Divergenz invariant unter Koordinatentransformationen ist und sich daher nicht verändert, wenn die Koordinatenachsen transformiert werden.
 
-Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei minimiert man jedoch nicht KL(P, Pa), sondern KL(Pa, P), da dieser Vorgang weniger rechenintensiv ist.
+Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei minimiert man jedoch nicht $KL(P, Pa)$, sondern $KL(Pa, P)$, da dieser Vorgang weniger rechenintensiv ist.
 
 \section{Radiointerferometrie-Response und Daten einlesen}
 \sectionauthor{Alexander Gitnik, Jonas Fiedler, Lara Müller, Patricia Hackl}
