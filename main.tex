@@ -586,12 +586,11 @@ wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \emph{Response}, $s \in \mathb
 % TODO: ref to Wiener Filter
 
 \subsection{Line-Of-Sight Response}
-\sectionauthor{Finja Hoffmann, Chuyang Wang}
 
 Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
 
 
-\subsection{Algorithmus von Siddon}
+\subsection{Algorithmus von Siddon}\label{k4.2.ct.siddon}
 
 Siddons Ansatz nach könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
 
@@ -632,7 +631,7 @@ Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. d
 Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
 
-\subsection{Walnuss -Messdaten}\label{k4.2.ch.walnussct}
+\subsection{Walnuss CT-Messdaten}\label{k4.2.ct.walnuss}
 \sectionauthor{Leo Bergmann, Cedric Balzer}
 
 \begin{figure}
@@ -671,6 +670,11 @@ d = \sqrt{(300mm - 110mm)^2+(114,8mm/2)^2} = 198,48mm
 Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordinaten $alphas$ im Polarkoordinatensystem (Winkel werden im Bogenmaß verrechnet). Um $Upper'$ zu berechnen muss $alpha$ von Rad subtrahiert werden. Die entsprechenden karthesischen Koordinaten erhalten wir nun auf gleiche Weise bei Source'. Um die restlichen Pixel zu berechnen verwenden wir die Methode \verb+numpy.linspace()+. Wir setzen hier $Upper'$ als Startwert und $Lower'$ als Endwert ein und lassen uns die Menge der Anzahl an Pixeln auf dem Schirm ausgeben. 
 
 Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
+
+
+\subsection{Rekonstruktion des Signals}
+
+
 
 
 \section{Wiener Filter}\label{k4.2.wiener.filter}
