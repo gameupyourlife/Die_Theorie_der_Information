@@ -245,6 +245,34 @@ Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge v
 Der Gegenvektor eines Vektors $a$ ist definiert als $z = -a$, sodass gilt $a + z = 0$. Eine skalare Vervielfachung bechreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ skaliert werden kann. Für $\lambda < 0$ wird zudem die Richtung des Vektors umgekehrt. Im Beispiel eines dreidimensionalen Vektors $\vec{a}$ ergibt sich dementsprechend:
 \[ a \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right) \]
 
+
+\subsubsection{Vektor-Matrix-Multiplikation}
+
+Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ und den Vektor $x \in \mathbb{R}^M$ wie folgt definiert:
+
+\begin{equation}
+  \begin{aligned}
+    Ax &= \begin{pmatrix}
+      a_{11} & a_{12} & ... & a_{1M} \\ 
+      a_{21} & a_{22} & ... & a_{2M} \\ 
+      ... & ... & ... & ... \\ 
+      a_{N1} & a_{N2} & ... & a_{NM} \\ 
+    \end{pmatrix}
+    \cdot 
+    \begin{pmatrix}
+      x_1 \\ x_2 \\ ... \\ x_M
+    \end{pmatrix} \\[2ex]
+    &=  \begin{pmatrix}
+      a_{11}x_1 + a_{12}x_2 +... + a_{1M}x_M \\ 
+      a_{21}x_1 + a_{22}x_2 + ... + a_{2M}x_M \\ 
+      ... + ... + ... + ... \\ 
+      a_{N1}x_1 + a_{N2}x_2 + ... + a_{NM}x_M \\ 
+    \end{pmatrix}
+  \end{aligned}
+\end{equation}
+
+Dabei wird jede Zeile der Matrix mit dem Vektor elementweise multipliziert. Die Summe der Produkte bildet die Komponente des resultierenden Vektors.  
+
 \subsection{Lineare Abbildungen}
 Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als lineare Abbildung definiert. Bezüglich der zwei $K$-Vektorräume $V$ und $W$ ist die Abbildung $f: V \rightarrow W$ linear, sofern gilt:
 \begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
