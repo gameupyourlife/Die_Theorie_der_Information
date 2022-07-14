@@ -111,7 +111,7 @@ Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahr
 {
 \begin{itemize}
  \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
- 
+
  \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
  \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
 \end{itemize}
@@ -120,8 +120,8 @@ Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrschei
 
 \subsection{Produktregel}
 
-Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$, 
-entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$, 
+Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
+entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
 multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
 
 \begin {displaymath}
@@ -138,13 +138,13 @@ Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 
 
 \subsection{Summenregel}
 \begin{displaymath}
-w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1 
+w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
 \end{displaymath}
 
-Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$ 
+Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
 und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
 
-% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen. 
+% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen.
 Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die essentiell für die Wahrscheinlichkeitsrechnung sind, aus einfachen Axiomen folgern.
 Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
 
@@ -155,7 +155,7 @@ Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeit
 \begin{displaymath}
 P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}.
 \end{displaymath}
-Obige Gleichung wird auch Satz von Bayes genannt. 
+Obige Gleichung wird auch Satz von Bayes genannt.
 
 Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
 \begin{displaymath}
@@ -267,43 +267,43 @@ Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das V
 
 \section{Pytest}
 \sectionauthor{Finja Hoffmann}
-Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.  
+Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase der Entwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese zu überprüfen, kann man einige Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
 
-Das Überprüfen implmentiert man durch: 
+Das Überprüfen implmentiert man durch:
 
 \begin{verbatim}
 assert f(A) == B
 \end{verbatim}
 
-Hierbei wird die Funktion f getestet. Als Eingabe definiert man A und b ist die Erwartete Ausgabe 
+Hierbei wird die Funktion f getestet. Als Eingabe definiert man A und b ist die Erwartete Ausgabe
 
-In einem konkreten Beispiel addiert eine Funktion den eigegebenen Wert mit 2. Hier wird 1 eingegeben und der Erwartungswert ist 3: 
+In einem konkreten Beispiel addiert eine Funktion den eigegebenen Wert mit 2. Hier wird 1 eingegeben und der Erwartungswert ist 3:
 
 \begin{verbatim}
 assert add_2(1) == 3
 \end{verbatim}
 
-Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das asset wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben. 
+Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das asset wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
 
-Die zu testende Methode beginnt mit test\_ . 
+Die zu testende Methode beginnt mit test\_ .
 
-Mit dem Dekorator @pytest.fixture vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.  
+Mit dem Dekorator @pytest.fixture vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.
 
-Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl: 
+Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl:
 
 \begin{verbatim}
 with pytest.raises({FehlerTyp})
 \end{verbatim}
 
-mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.  
+mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
 
-Zuletzt kann man noch mit eine Test-Methode durch den Dekorator  
+Zuletzt kann man noch mit eine Test-Methode durch den Dekorator
 
 \begin{verbatim}
 @pytest.mark.parametrize({Eingabe})
 \end{verbatim}
 
-kennzeichnen. Hierbei werden einige typischerweise fehlerbringenden Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben. 
+kennzeichnen. Hierbei werden einige typischerweise fehlerbringenden Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben.
 
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
 
@@ -586,7 +586,7 @@ Der WF kann verwndet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum
 \begin{eqnarray}
 d = Rs + n
 \end{eqnarray}
-In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen. Die Wahrscheinlichkeit die Daten $d$ für das Signal $s$ zu erhalten ist eine Gauß-Verteilung. 
+In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen. Die Wahrscheinlichkeit die Daten $d$ für das Signal $s$ zu erhalten ist eine Gauß-Verteilung.
 \begin{eqnarray}
 P(d|s) = \mathcal{G}(d-Rs,N)
 \end{eqnarray}
