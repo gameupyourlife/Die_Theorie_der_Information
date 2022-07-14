@@ -101,77 +101,82 @@ Eigenwerte und Eigenvektoren sind wichtige Werkzeuge für viele mathematische Re
 
 \section{Cox's Theorem}
 \sectionauthor{Mara Germann, Patricia Hackl}
-Wie berechnet man die Wahrscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zugrunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Das Cox's Theorem ist die logische Grundlage für diese.
+Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
 
 
-Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
-Aus dem Cox's Theorem lässt sich herleiten, dass man Wahrscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
+Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen und boolsche Logik über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
+Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
 Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
 
-
+{
 \begin{itemize}
-  \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf{universellen} Vergleich voneinander unabhängiger Plausibilitäten.
-
-  \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
-  \item[(3.)] Es müssen \textbf{alle} verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf{Konsistenz} gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
+ \item[(1.)] Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf {reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+ 
+ \item[(2.)] Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf {Verstandes} und durch logische Schlussfolgerungen erzielt.
+ \item[(3.)] Es müssen \textbf {alle }verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf {Konsistenz }gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
 \end{itemize}
+}
+Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten. Im Folgenden sind $A$, $B$ und $C$ drei Ereignisse.
 
-Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten, wobei $A$, $B$ und $C$ drei Ereignisse sind.
+\subsection{Produktregel}
 
-\subparagraph{Produktregel}
-
-Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
-entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
+Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$, 
+entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$, 
 multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
 
-\begin {equation}
-w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\})
-\end{equation}
+\begin {displaymath}
+w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
+\end{displaymath}
 
 \noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
-\begin {equation}
+\begin {displaymath}
 P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
-\end{equation}
+\end{displaymath}
 Unter $P(B \wedge C|A)$ versteht man die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
 
 Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses stehen.
 
-\subparagraph{Summenregel}
-\begin{equation}
-  w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
-\end{equation}
+\subsection{Summenregel}
+\begin{displaymath}
+w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1 
+\end{displaymath}
 
-Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
+Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$ 
 und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
 
-
-Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen. Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung
+% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen. 
+Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die essentiell für die Wahrscheinlichkeitsrechnung sind, aus einfachen Axiomen folgern.
+Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.
 
 \section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
 \sectionauthor{Mara Germann, Patricia Hackl}
 
-Die Bayes'sche Statistik beruht auf bedingten Wahrscheinlichkeiten. Darunter versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist.
-\begin{equation}
-  P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}
-\end{equation}
-Obige Gleichung wird auch Satz von Bayes genannt. Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
-\begin{equation}
-  \int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
-\end{equation}
+Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
+\begin{displaymath}
+P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}.
+\end{displaymath}
+Obige Gleichung wird auch Satz von Bayes genannt. 
 
-Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
-\begin{equation}
-  P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
-\end{equation}
+Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
+\begin{displaymath}
+\int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
+\end{displaymath}
+
+
+\subsection{Von Daten lernen}
+ Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
+\begin{displaymath}
+P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
+\end{displaymath}
 
 \begin{itemize}
-  \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
-  \item $P(d|I)$ ist der Normierungsparameter (Evidenz).
-  \item $P(d|s,I)$ beschreibt die Wahrscheinlichkeit für die Messdaten, mit gegebenem Prior (Likelihood).
-  \item $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters unter Einbezug der Daten und Informationen (Posterior).
+ \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
+ \item $P(d|I)$ ist der Normierungsparameter (Evidenz).
+ \item $P(d|s,I)$ beschreibt die Wahrscheinlichkeit für die Messdaten, mit gegebenem Parameter (Likelihood).
+ \item $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters unter Einbezug der Daten und Hintergrundinformationen (Posterior).
 \end{itemize}
 
-Das Experiment kann mehrfach wiederholt werden, dabei werden die Daten angepasst. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von Daten d und aktualisieren unser Wissen über s.
+Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von neuen Daten $d$ und aktualisieren unser Wissen über $s$.
 
 \section{Normalverteilung}
 \sectionauthor{Patricia Hackl, Lara Müller}
