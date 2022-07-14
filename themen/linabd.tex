@@ -1,0 +1,59 @@
+
+\section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
+\sectionauthor{Lara Müller, Chuyang Wang, (Patricia Hackl)}
+Der folgende Abschnitt befasst sich mit den Grundlagen linearer algebraischer Berechungen und definiert in diesem Kontext lineare Abbildungen und zugehörige Vektorräume.
+
+\subsection{Grundlagen linearer Algebra}
+Ein Vektorraum über dem Körper $K$ einer Zahlenmenge ist definiert als Menge von Vektoren $V$, die einen entsprechenden Vektorraum beschreiben. Für die Vektoren $a$, $b$ und $c$ eines linearen Vektorraums müssen folgende grundlegende Rechenregeln gelten:
+\begin{itemize}
+\item Kommutativgesetz: $a + b = b + a$
+\item Assoziativgesetz: $a + b + c = (a + b) + c = a + (b + c)$
+\item Distributivgesetz: $a \cdot (b + c) = a \cdot b + a \cdot c$
+\end{itemize}
+
+Der Gegenvektor eines Vektors $a$ ist definiert als $z = -a$, sodass gilt $a + z = 0$. Eine skalare Vervielfachung bechreibt allgemein die Multiplikation eines Vektors mit einer reellen Zahl $\lambda \in \mathbb{R}$, wodurch die Vektorlänge eines beliebigen Vektors $\vec{a}$ skaliert werden kann. Für $\lambda < 0$ wird zudem die Richtung des Vektors umgekehrt. Im Beispiel eines dreidimensionalen Vektors $\vec{a}$ ergibt sich dementsprechend:
+\[ a \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right) \]
+
+
+\subsection{Vektor-Matrix-Multiplikation}
+
+Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ und den Vektor $x \in \mathbb{R}^M$ wie folgt definiert:
+
+\begin{equation}
+  \begin{aligned}
+    Ax &= \begin{pmatrix}
+      a_{11} & a_{12} & ... & a_{1M} \\ 
+      a_{21} & a_{22} & ... & a_{2M} \\ 
+      ... & ... & ... & ... \\ 
+      a_{N1} & a_{N2} & ... & a_{NM} \\ 
+    \end{pmatrix}
+    \cdot 
+    \begin{pmatrix}
+      x_1 \\ x_2 \\ ... \\ x_M
+    \end{pmatrix} \\[2ex]
+    &=  \begin{pmatrix}
+      a_{11}x_1 + a_{12}x_2 +... + a_{1M}x_M \\ 
+      a_{21}x_1 + a_{22}x_2 + ... + a_{2M}x_M \\ 
+      ... + ... + ... + ... \\ 
+      a_{N1}x_1 + a_{N2}x_2 + ... + a_{NM}x_M \\ 
+    \end{pmatrix}
+  \end{aligned}
+\end{equation}
+
+Dabei wird jede Zeile der Matrix mit dem Vektor elementweise multipliziert. Die Summe der Produkte bildet die Komponente des resultierenden Vektors.  
+
+\subsection{Lineare Abbildungen}
+Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als lineare Abbildung definiert. Bezüglich der zwei $K$-Vektorräume $V$ und $W$ ist die Abbildung $f: V \rightarrow W$ linear, sofern gilt:
+\begin{center} $f(\lambda v + \mu w)=\lambda f(v) + \mu f(w) \quad \forall \; \lambda, \mu \in K \quad \forall \; v, w \in V$ \end{center}
+
+\subsection{Eigenschaften von Vektorräumen}
+Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.
+
+\subsection{Darstellung linearer Abbildungen durch Matrizen}
+Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
+\[x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right) \]
+
+Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A darstellen:
+\[ f(\vec{x}) = A \cdot \vec{x} \]
+
+Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen Vektor dar. Dabei bleiben Streckenverhältnisse und Lagebeziehungen der Vektoren zueinander unverändert. Im Gegensatz zur Drehung, Scherung und Projektion sind Krümmungen bei einer linearen Abbildung nicht möglich. Daher werden diese Abbildungen auch als strukturerhaltende Abbildungen zwischen Vektorräumen bezeichnet.

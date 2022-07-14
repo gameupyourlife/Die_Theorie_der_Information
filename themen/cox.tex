@@ -1,0 +1,49 @@
+
+\section{Cox's Theorem}
+\sectionauthor{Mara Germann, Patricia Hackl, (Lara Müller)}
+Wie berechnet man die Wahscheinlichkeit eines Ereignisses, dem ein anderes Ereignis zu Grunde liegt? Um diese Frage zu beantworten, bedarf es der Wahrscheinlichkeitsrechnung. Cox's Theorem liefert dafür eine Herleitung aus der Logik.
+
+
+Beim Cox's Theorem wird die Wahrscheinlichkeitsrechnung aus  der Logik hergeleitet. Im Grenzfall für absolute Sicherheit für das Eintreten beziehungsweise Nichteintreten von Ereignissen geht die Wahrscheinlichkeitsrechnung in wahr/falsch Aussagen und boolsche Logik über. Mit Cox's Theorem entsteht eine in sich konsistente (einheitliche) Theorie für die Wahrscheinlichkeitsrechnung.
+Aus dem Cox's Theorem lässt sich herleiten, dass man Wahscheinlichkeiten als Grad der Plausibilität interpretieren kann. Wir werden später sehen, dass die Plausibilität der Wahrscheinlichkeit entspricht.
+Das Cox's Theorem beruht auf 3 Axiomen, die die Begründung der Bayes'schen Wahrscheinlichkeitsrechnung sind.
+
+
+\begin{enumerate}
+ \item Der \textbf{Grad der Plausibilität} eines Ereignisses $\{b|a\}$ ($b$ unter der Bedingung, dass $a$ wahr ist) wird als \textbf{reelle Zahl} dargestellt. Für hohe Plausibilitäten werden hohe Zahlenwerte gewählt. Dies ermöglicht den \textbf {universellen} Vergleich voneinander unabhängiger Plausibilitäten.
+
+ \item Sinnvolle Ergebnisse werden unter qualitativem Miteinbezug des \textbf{Verstandes} und durch logische Schlussfolgerungen erzielt.
+ \item Es müssen \textbf{alle} verfügbaren Informationen miteinbezogen werden. An die Schlussfolgerungen wird die Anforderung der \textbf{Konsistenz} gestellt, sodass alle Sätze, die gleiches Wissen vermitteln auf gleiche Plausibilitäten hinführen müssen.
+\end{enumerate}
+
+Aus den Axiomen ergeben sich die Produktregel und die Summenregel für Wahrscheinlichkeiten. Im Folgenden sind $A$, $B$ und $C$ drei Ereignisse.
+
+\subsection{Produktregel}
+
+Die Plausibilität $w$ des Eintretens der Ereignisse $B$ und $C$ unter der Bedingung, dass $A$ wahr ist $w(BC|A)$,
+entspricht der Plausibilität des Eintretens von $B$ unter der Bedingung, dass $A$ eingetreten ist $w(B|A)$,
+multipliziert mit der Plausibilität des Eintretens von $C$ unter der Bedingung, dass $AB$ wahr ist $w(C|AB)$:
+
+\begin {displaymath}
+w(\{BC|A\})=w(\{B|A\})\cdot w(\{C|AB\}) .
+\end{displaymath}
+
+\noindent Die Produktregel kann auf bedingte Wahrscheinlichkeiten übertragen werden:
+\begin {displaymath}
+P(B \wedge C|A) = P(B|A)\cdot P(C|AB).
+\end{displaymath}
+Unter $P(B \wedge C|A)$ versteht man die Wahrscheinlichkeit für $B$ und $C$ unter der Bedingung $A$.
+
+Cox's Theorem erklärt zudem, warum 1 für die Wahrheit eines Ereignisses und 0 für die Unmöglichkeit eines Ereignisses stehen.
+
+\subsection{Summenregel}
+\begin{displaymath}
+w_{ges}=w(\{B|A\}) + w(\{\bar{B}|A\})= 1
+\end{displaymath}
+
+Die Gesamtplausibilität unter der Bedingung $A$ ist die Plausibilität von $B$ unter der Bedingung $A$
+und die Plausibilität des Gegenereignisses von $B$ ebenfalls unter der Bedingung $A$. Die Summe der beiden Wahrscheinlichkeiten ist 1.
+
+% Cox's Theorem liefert eine Herleitung für die Wahrscheinlichkeitsrechnung aus einfachen Axiomen.
+Aus Cox's Theorem lassen sich unter anderem die Summen- und Produktregel, die essentiell für die Wahrscheinlichkeitsrechnung sind, aus einfachen Axiomen folgern.
+Es verbindet die Logik mit der Wahrscheinlichkeitsrechnung.

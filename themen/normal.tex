@@ -1,0 +1,22 @@
+
+\section{Normalverteilung}
+\sectionauthor{Patricia Hackl, Lara Müller}
+
+Im Hinblick auf die Bayes'sche Wahrscheinlichkeitstheorie ist die Gauß'sche Normalverteilung (auch: Gauß'sche Glockenkurve) von Bedeutung.
+Es lässt sich zeigen, dass die Summe von identisch verteilten und voneinander unabhängigen Zufallszahlen im Limes (Anzahl Wiederholungen $\rightarrow \infty$) zur Normalverteilung konvergiert.
+Die einem Zufallsexperiment zugehörige Gauß'sche Normalverteilung ist vollständig definiert über ihren Erwartungswert $\bar{x}$ und die Varianz $\sigma^{2}$:
+\[ \mathcal{G} (x - \bar{x}, \sigma^{2}) = \displaystyle\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp \left(- \displaystyle\frac{1}{2} \cdot (x - \bar{x}) \cdot (\sigma^{2})^{-1} \cdot (x - \bar{x}) \right) \]
+Analog zur Summenregel gilt auch für das Integral über die Normalverteilung:
+\begin{center} $\int_{- \infty}^{\infty} \mathcal{G} (x - \bar{x}, \sigma _x ^{2}) dx = 1$ \end{center}
+
+\subsection{Erwartungswert}
+Der Erwartungswert selbst ist definiert als die gewichtete Summe aus den Wahrscheinlichkeiten für die Zufallsvariable $x _i$ und bestimmt in spezifischen Fall der Normalverteilung, an welcher Stelle das Maximum auftritt (Verschiebung der Glockenkurve entlang der x-Achse). Dieser Wert muss nicht zwangsweise realisierbar sein. In der Formel entspricht $\chi$ dem Raum, auf dem $P(x)$ definiert ist:
+\begin{center} $\mathbb{E} _{P(x)} [x] = \sum x _i P(x _i) = \int_{\chi} x P(x) dx$ \end{center}
+
+\subsection{Varianz und Standardabweichung}
+Genauer betrachtet stellt die Varianz die Streuung um den Erwartungswert dar und entspricht somit der Abweichung vom Mittelwert. Diese ist immer strikt positiv.
+\begin{center} $\mathrm{Var} _{P(x)} [x] = \mathbb{E} _{P(x)} [x^{2}] - (\mathbb{E} _{P(x)} [x])^{2} = \int_ {\chi} (x - \mathbb{E} _{P(x)} [x])^{2} P(x) dx \geq 0$ \end{center}
+Für die Standardabweichung $\sigma$, die das Maß der Streubreite beschreibt, ergibt sich folgende Formel, wodurch eine direkte Abhängigkeit von der Varianz deutlich wird:
+\begin{center} $\sigma _{P(x)} [x] = \sqrt{\mathrm{Var} _{P(x)} [x]}$ \end{center}
+
+Mithilfe der Gauß'schen Glockenkurve lassen sich nun vielfältige Zufallsexperimente beschreiben und entsprechende Wahrscheinlichkeitsverteilungen konstruieren. In Bezug auf den Wiener Filter wird die Normalverteilung nicht nur als Prior, sondern auch als Likelihood benötigt, um Datenlücken zu füllen, die aufgrund des Abstands der Antennen des Radioteleskops auftreten. Zudem ist das Rauschen, also die Ungenauigkeit in den Messdaten, normalverteilt und kann so aus den Daten extrahiert werden.

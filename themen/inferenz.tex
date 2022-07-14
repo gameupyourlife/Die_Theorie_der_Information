@@ -1,0 +1,20 @@
+
+\section{Inferenz - Lernen aus Daten}
+\sectionauthor{Natalie Teplitska, Clemens Ljungh, Constantin Burmeister}
+Mit dem Wiener Filter \cref{k4.2.wiener.filter} besitzen wir ein Werkzeug, unser Wissen über die Welt aufgrund von Daten beständig anzupassen. Allerdings gilt der Wiener Filter nur für den Spezialfall, dass $d=Rs+n, P(s)=\mathcal{G}(s,S), P(n) = \mathcal{G}(n,N)$ gilt.
+
+Unser Ziel ist es nun, aus den Daten das ursprüngliche Signal, welches diese Daten verursachte, zu rekonstruieren. Dazu müssen wir - bildlich gesprochen - die Formel $d=Rs+n$ invertieren und so die quantity of interest $s$ bestimmen. Aus diesem Grund wird die Fragestellung als inverses Problem bezeichnet.
+
+Betrachten wir es aus der Bayes'schen Perspektive. Der Posterior ist zwar durch Messgleichung, $P(s)$, $P(n)$ und $R$ vollständig definiert, doch seine Berechnung ist insbesondere bei großen Datenmengen, wenn der Posterior nicht analytisch lösbar ist, viel zu rechenintensiv und somit teuer. Zur Bewältigung dieser Herausforderung existieren zwei Lösungsansätze.
+
+Das Verfahren Markov-Chain-Monte-Carlo basiert darauf, dass aus $P(s|d)$ lediglich Stichproben gezogen werden und dadurch eine optimale Lösung gefunden wird. Leider ist auch diese Methode noch zu rechenintensiv, weswegen wir sie nicht nutzen.
+
+Eine weitere Möglichkeit besteht darin, den Posterior mit einem variativen Ansatz anzunähern. Dieser benötigt ein Maß für die Quantifizierung des Approximationsfehlers, welches mit der sogenannten Kullback-Leibler-Divergenz (KL-Divergenz) wie folgt definiert ist:
+\begin{eqnarray}
+\text{KL}(P,P_a) = \int P(s|d) ln \frac{P(s|d)}{P_a(s|d)}ds
+\end{eqnarray}
+Das Minimieren von $\text{KL}(P, Pa)$ liefert die optimale Approximation an den Posterior.
+
+Die KL-Divergenz hat einige nennenswerte Eigenschaften. Dazu gehört unter anderem die Lokalität, die dazu führt, dass nur Stellen in die Fehlerberechnung einfließen, über welche die erste Verteilung $P$ eine Aussage trifft. Außerdem folgt die KL-Divergenz dem Konzept der Gescheitheit, welches besagt: \enquote{Wann immer möglich, wähle die zweite Verteilung $P_a$ so, dass diese mit der ersten übereinstimmt.} Zuletzt ist zu erwähnen, dass die KL-Divergenz invariant unter Koordinatentransformationen ist und sich daher nicht verändert, wenn die Koordinatenachsen transformiert werden.
+
+Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei minimiert man jedoch nicht $\text{KL}(P, P_a)$, sondern $\text{KL}(P_a, P)$, da diese Optimierung weniger rechenintensiv ist.

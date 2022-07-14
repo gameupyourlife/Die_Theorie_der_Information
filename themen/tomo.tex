@@ -1,0 +1,135 @@
+
+\section{Tomographie}\label{k4.2.comptomo.ct}
+\subsection{Einleitung}
+\sectionauthor{Aaron Gschwendt (Finja Hoffmann)}
+
+Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
+
+$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
+
+$s$ ist eine unbekannte Funktion die jedem Punkt im Raum eine optische Dichte zuordnet. $d$ ist das Linienintegral von $s(p)$ entlang dem Pfad $\gamma$. $d$ entspricht der Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt.
+
+Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
+
+\subsection{Radioastronomie}
+
+In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
+
+\subsection{Computertomografie}
+
+Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
+
+Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projeziert. Der Nachteil dieser Methode ist, dass sich Teile vom Objekt überlagern können und nicht erkannt werden kann, ob es sich um ein Objekt mit hoher Absorption oder mehrer Objekte mit geringer Absorption handelt.
+
+Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
+
+\begin{wrapfigure}{r}{0.4\linewidth}
+ \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
+ \caption{Sinogram}
+ \label{k4.2.tomo.ct.bp}
+\end{wrapfigure}
+
+Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
+
+
+\subsection{CT in 3D}
+\sectionauthor{Finja Hoffmann, Chuyang Wang}
+
+Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\emph{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
+
+\begin{equation}
+  \begin{aligned}
+    d = Rs + n,
+  \end{aligned}
+\end{equation}
+
+wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \emph{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+% TODO: ref to Wiener Filter
+
+\subsection{Line-Of-Sight Response}
+
+Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
+
+
+\subsection{Algorithmus von Siddon}\label{k4.2.ct.siddon}
+
+Siddons Ansatz nach könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
+
+\begin{equation}
+  P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+  P_{end} = \begin{pmatrix}x_{end} \\ y_{end} \\ z_{end}\end{pmatrix}
+\end{equation}
+
+Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit sei $x_{start} < x_{end}$. Man rundet die x-Koordinate des Startpunktes in die Richtung der Strecke auf und berechnet die Differenz $x^{\ast}$. Um die y- und z-Koordinaten dieses ersten Schnittpunkts herauszufinden, muss man noch die Steigungen gegenüber dieser beiden Achsen $m_{yx} = \frac{y_{end} - y_{start}}{x_{start} - x_{end}}$ und $m_{zx} = \frac{z_{end} - z_{start}}{x_{start} - x_{end}}$ berechnen. Somit erhält man den ersten Schnittpunkt
+
+\begin{equation}
+  S_{x,0} = \begin{pmatrix}
+    x_{start} + x^{\ast} \\
+    y_{start} + x^{\ast} \cdot m_{yx} \\
+    z_{start} + x^{\ast} \cdot m_{zx} \\
+  \end{pmatrix}
+\end{equation}
+
+Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
+
+\begin{equation}
+  S_{x,i} = S_{x,i-1} + \begin{pmatrix}
+    1 \\
+    1 \cdot m_{yx} \\
+    1 \cdot m_{zx} \\
+  \end{pmatrix}
+\end{equation}
+
+ Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog.
+
+Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel.
+
+Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null.
+
+Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
+
+
+\subsection{Walnuss CT-Messdaten}\label{k4.2.ct.walnuss}
+\sectionauthor{Leo Bergmann, Cedric Balzer}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{k4.2/ctabbild.png}
+    \caption{Versuchsaufbau, welcher für das Generieren der Daten verwendet wurde. Die Detektorfläche ist auf der linken Seite die Röntgenquelle auf der rechten Seite. Die Walnuss ist mit einer computergesteuerten rotierbaren Plattform verbunden.}
+    \label{k4.2.fig.ctAbbild}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/geometry.png}
+    \caption{Aufbau des Versuchs mit geometrischen Daten.\\
+    FOD - Focus-to-object distance\\
+    FDD - Focus-to-detector distance\\
+    W - Width of the detector
+    }
+    \label{k4.2.fig.Geo}
+\end{figure}
+
+Das Ziel des Projekts ist es, einen Computertomographie-Scan (siehe \cref{k4.2.comptomo.ct}) einer Walnuss als Bild darzustellen. Durch die harte Schale und den weichen Kern stellt die Walnuss eine Herausforderung für den CT-Scan dar.
+Wir beziehen öffentlich zugängliche Daten von  \href{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}{zenodo.org}, die eine Schichtaufnahme einer Walnuss als Sinogram in unterschiedlichen Auflösungen in \verb|.mat|-Dateien beinhalten. 
+Es wurden 120 Projektionen der Strahlung auf einem Schirm gemessen und mit einer heruntergerechneten Pixelzahl in einer Matrix m gespeichert. Getestet haben wir Dateien mit 82 und 328 Pixel je Projektion. In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht. Damit das Sinogram in ein CT-Bild projiziert werden kann sind alle Start- und Endpunkte der Line of Sight notwendig. Diese werden ermittelt, indem der Standort der Quelle und die Position der einzelnen Pixel des Screens ermittelt wird. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/versuchsaufbau-skizze.png}
+    \caption{Skizze des Versuchsaufbau}
+    \label{k4.2.fig.skizze}
+\end{figure}
+Anstelle einer Drehung der Nuss gegen den Uhrzeigersinn rechnen wir, äquivalent dazu, mit einer kreisförmigen Rotation des Detektors (Screen) und der Strahlungsquelle (Source) um die Walnuss (Nut). Es bieten sich durch gegebene Winkel und Radii Polarkoordinaten an, um die Position der Quelle und des Detektors relativ zu Walnuss zu bestimmen, jedoch müssen alle Punkte für die Weiterverarbeitung im kartesischen Koordinatensystem angegeben und deshalb direkt in diesem berechnet werden. Da die Winkel und Abstandsmaße in Bezug auf die Walnuss angegeben sind, wird diese als Koordinatenursprung definiert. Ausgehend davon wird die Quelle zunächst an die Stelle \verb+(-110|0)+ gelegt (siehe \cref{k4.2.fig.Geo}). Dadurch wird die Startposition des Detektors festgelegt, der durch seinen Anfang ($Upper$) an Stelle \verb+(190|57,4)+ und seinen Endpunkt ($Lower$) an Stelle \verb+(190|-57,4)+ bestimmt wird. 
+Source' ist für jede Drehung der Nuss bzw. der Quelle und des Schirms um den Winkel Rad (im Bogenmaß) im Vergleich zur Startposition der Punkt an dem sich die Quelle nun befindet. Der Abstand zwischen Source' und Nut ist dabei immer 110mm. Der Versuchsaufbau kann somit als Einheitskreis mit Mittelpunkt Nut interpretiert werden, der um den Faktor 110mm gestreckt wurde. Dadurch ist im karthesischen Koordinatensystem die horizontale Koordinaten-Komponente von Source' gleich $cos(Rad) * 110mm$, die vertikale Komponente gleich $sin(Rad) * 110mm$.
+Der Winkel $\sphericalangle Upper-Nut-Lower$ hat eine Größe von etwa 34°, somit hat der Winkel $alpha = \sphericalangle Lower-Nut-SC$ eine Größe von 17°. Der Abstand von Nut zu $Lower$ kann mithilfe des Satzes von Pythagoras berechnet werden:
+\begin{align}
+d = \sqrt{(300mm - 110mm)^2+(114,8mm/2)^2} = 198,48mm
+\end{align}
+Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordinaten $alphas$ im Polarkoordinatensystem (Winkel werden im Bogenmaß verrechnet). Um $Upper'$ zu berechnen muss $alpha$ von Rad subtrahiert werden. Die entsprechenden karthesischen Koordinaten erhalten wir nun auf gleiche Weise bei Source'. Um die restlichen Pixel zu berechnen verwenden wir die Methode \verb+numpy.linspace()+. Wir setzen hier $Upper'$ als Startwert und $Lower'$ als Endwert ein und lassen uns die Menge der Anzahl an Pixeln auf dem Schirm ausgeben. 
+
+Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
+
+\subsection{Rekonstruktion des Signals}

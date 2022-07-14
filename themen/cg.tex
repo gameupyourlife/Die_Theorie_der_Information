@@ -1,0 +1,11 @@
+
+\section{Conjugate Gradient}
+\sectionauthor{Benjamin Knöbel del Olmo, Leo Bergmann, (Chuyang Wang, Cedric Balzer)}
+
+Um lineare Gleichungssysteme (LGS) effizient und exakt zu lösen, existiert ein Algorithmus namens Conjugate Gradient, welcher auch auf der Minimabestimmung basiert.
+
+Ein LGS hat die Formel $Ax = b$, wobei A eine $ n \times n $-Matrix (invariant unter Transposition) und $ b,x $ Vektoren sind. Eine quadratische Funktion $ f(x) = 1/2xAx-bx+c $ wird definiert, (mit selben A,b und x), dessen komponentenweise Ableitung genau dann null ist, wenn das ursprüngliche LGS nach x gelöst ist, da gilt: $f'(x) = Ax-b = 0$. Daher ist das Optimieren der dem LGS entsprechenden Funktion äquivalent zum Lösen ebenjenes.
+
+Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Residuum (der dem Gradienten entgegengesetzte Vektor, $ r = b-Ax $) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate, def.: $x^TAy = 0, x,y$ A-orthogonal) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal $n$-Schritten am Ziel ankommen, da wir dann alle $n$ Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Abbruchbedingungen, zum einen, wenn $n$ Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also dass $ f''(x) = 0 $ gilt, klein genug ist.
+
+Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
