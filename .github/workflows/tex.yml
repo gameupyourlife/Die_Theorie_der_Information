@@ -18,3 +18,13 @@ jobs:
         with:
           name: docs
           path: "main.pdf"
+        
+      - name: Push to build branch
+        run: |
+          git config --global user.name 'ChuangSheep'
+          git config --global user.email '44814054+ChuangSheep@users.noreply.github.com'
+          git checkout build 2>/dev/null || git checkout --orphan build
+          git reset
+          git add dist -f
+          git commit -m "bot: automated build"
+          git push origin build --force
