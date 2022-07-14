@@ -360,7 +360,7 @@ Jede Abbildung, deren Additivität und Homogenität gegeben sind, wird als linea
 Darüber hinaus bezeichnet die Menge der Vektoren, die auf den Nullvektor $\vec{o}$ abgebildet werden, als Kern der zugehörigen linearen Abbildung. Der Kern $\mathrm{ker}(f):= \{v \in V \; \big\vert \; f(v) \} = 0$ entspricht demnach einem Vektor aus dem Vektorraum $V$ ($\mathrm{ker}(f) \subseteq V$), in dem auch der Nullvektor enthalten ist ($0 \in \mathrm{ker}(f)$). Vektorräume können unendlichdimensonal sein und somit beispielsweise als reeller ($V \in \mathbb{R}$) oder komplexer ($V \in \mathbb{C}$) Vektorraum auftreten. Die jeweilige Dimension eines endlichdimensionalen Vektorraums $K^n$ kann über die zur Darstellung zwingend notwendige Mindestanzahl an Basisvektoren bestimmt werden. Diese sind so definiert, dass sich jeder andere Vektor über Linearkombinationen der Basisvektoren beschreiben lässt. Es lässt sich beweisen, dass die Anzahl an Dimensionen, die mithilfe eines Vektors beschrieben werden, für jede Basis eines gegebenen Vektorraums gleich sein muss.\\
 
 \subsection{Darstellung linearer Abbildungen durch Matrizen}
-Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K²$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
+Lineare Abbildungen lassen sich auch über Matrizen darstellen. Beispielsweise gilt für eine lineare Abbildung in dem zweidimensionaen Vektorraum $K^2$, der über die Basisvektoren $\vec{u}$ und $\vec{v}$ dargestellt werden kann:
 \[x \cdot \left(\begin{array}{c} u_1 \\ u_2 \end{array}\right) + y \cdot \left(\begin{array}{c} v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c} u_1 x + v_1 y \\ u_2 x + v_2 y \end{array}\right) = \left( \begin{array}{rr} u_1 & v_1 \\ u_2 & v_2 \end{array}\right) \cdot \left(\begin{array}{c} x \\ y \end{array}\right) \]
 
 Die resultierende $2$x$2$-Matrix beinhaltet entsprechend der Matrix-Spalten sowohl das Bild des ersten, als auch das des zweiten Basisvektors. Allgemein lassen sich lineare Abbildungen $f(\vec{x})$ über eine zugehörige Matrix A darstellen:
@@ -634,23 +634,24 @@ Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. d
 
 Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
+
+
 \section{Wiener Filter}\label{k4.2.wiener.filter}
 \sectionauthor{Constantin Burmeister, Clemens Ljungh, Natalie Teplitska}
 
-Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das unterliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Genauigkeit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen nicht vermeiden; zudem sind die Daten unvollständig. Die damit gegebene Unsicherheit soll minimiert werden. Eine dafür verwendete Methode ist der Wiener Filter.
+Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das zugrundeliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Sicherheit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen sowie eine gewisse Ungenauigkeit in der Messung nicht vermeiden; zudem sind die Daten unvollständig. Um solche Probleme zu lösen, brauchen wir den Wiener Filter.
 Dieses mathematische Verfahren basiert auf dem Bayes'schen Theorem
 (\ref{k4.2.bayes})
-, welches mathematisch beschreibt wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl Prior als auch Likelihood Gauß-Verteilungen sind.
+, welches mathematisch beschreibt, wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl der Prior als auch die Likelihood normalverteilt sind.
 
-Der WF kann verwndet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
+Der Wiener Filter kann verwendet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Aus der Normalverteilung des Rauschens sowie unter Einbezug der Messgleichung ergibt sich auch eine Normalverteilung für die Likelihood. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
 \begin{eqnarray}
 d = Rs + n
 \end{eqnarray}
-In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Simulation der Messung unter optimalen Bedingungen. Die Wahrscheinlichkeit die Daten $d$ für das Signal $s$ zu erhalten ist eine Gauß-Verteilung.
+In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Abbildung des Signals in den Datenraum. Die Wahrscheinlichkeit, die Daten $d$ für das Signal $s$ zu erhalten, ist eine Gauß-Verteilung.
 \begin{eqnarray}
 P(d|s) = \mathcal{G}(d-Rs,N)
 \end{eqnarray}
-%Als Letztes bezeichnet $n$ die Ungenauigkeit bzw. das Rauschen in den Daten. Für dieses Rauschen wird eine Normalverteilung $P(n) = \mathcal{G}(n,N)$ angenommen.
 Setzen wir $P(s)$ und $P(d|s)$ in Bayes ein \cref{k4.2.bayes} erhalten wir:
 \begin{eqnarray}
 P(s|d) = \mathcal{G}(s-m,D)
@@ -659,8 +660,11 @@ mit:
 \begin{eqnarray}
 D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
-Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter hat einige vorteilhafte Eigenschaften. Unter andrem kann er beliebige Datenmengen verarbeiten und ist dabei auch noch stets konsistent, da er auch grobe Fehler ausgleichen kann.
-
+und
+\begin{eqnarray}
+m = D R^{\dagger} N^{-1}d
+\end{eqnarray}
+Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter ist insofern vorteilhaft, als dass er mit beliebig wenigen Daten fehlerfrei funktioniert, und ist daher eine wichtige Methode der IFT.
 
 
 \section{Normalverteilung}
