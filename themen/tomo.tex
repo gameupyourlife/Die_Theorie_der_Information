@@ -167,3 +167,22 @@ Also kann man $s$ mit einer logarithmisch parametrisierten Normalverteilung $\ma
 Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man auch die Evidenz als Normierungsfaktor. Diese ist jedoch zu komplex zu berechnen. Dafür kann man die Kullback-Leibler-Divergenz (vgl. \cref{k4.2.kldiv}) verwenden und eine Annäherung von dem Posterior zu bestimmen. 
 
 
+\subsection{Endergebnis}
+
+Implementiert man das obige Verfahren, so erhält man am Ende die Wahrscheinlichkeitsverteilung für das Signal $P(s|d)$ unter den gegebenen Daten $d$. Zieht man den Erwartungswert oder einen beliebigen Sample dafür, erhält man das Bild von der Walnuss in \cref{k4.2.fig.ct.mean}. An der Standardabweichung \cref{k4.2.fig.ct.std} sieht man, dass die absolute Unsicherheit an den Stellen der Walnuss höher ist im Vergleich zu der allgemein kleinen Unsicherheit.  
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{k4.2/ct-walnuss-mean.png}
+  \caption{Erwartungswert des Posteriors.}
+  \label{k4.2.fig.ct.mean}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\textwidth]{k4.2/ct-walnuss-std.png}
+  \caption{Standardabweichung des Posteriors.}
+  \label{k4.2.fig.ct.std}
+\end{figure}
+
+An manchen Stellen wie z.B. $(10|17)$ und $(22|20)$ der \cref{k4.2.fig.ct.mean} fällt auf, dass unscharfe Kante sowie teilw. Rauschen vorkommen. Diese Fehler bei dem Modell könnten daran liegen, dass den Optimum von der Kullback-Leibler-Divergenz nur annäherungsweise erreicht ist oder der Response-Operator noch Fehler enthält, welche zu fehlerhaften Datensätzen führen. 
