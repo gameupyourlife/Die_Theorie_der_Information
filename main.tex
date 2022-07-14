@@ -539,6 +539,25 @@ D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
 Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter hat einige vorteilhafte Eigenschaften. Unter andrem kann er beliebige Datenmengen verarbeiten und ist dabei auch noch stets konsistent, da er auch grobe Fehler ausgleichen kann.
 
+\section{Inferenz - Lernen aus Daten}
+\sectionauthor{Natalie Teplitska, Clemens Ljungh, Constantin Burmeister}
+\subsection{Kullback-Leibler-Divergenz}
+Mit dem Wiener Filter \cref{k4.2.wiener.filter} besitzen wir ein Werkzeug, unser Wissen über die Welt aufgrund von Daten beständig anzupassen. Allerdings gilt der Wiener Filter nur für den Spezialfall, dass $d=Rs+n, P(s)=\mathcal{G}(s,S), P(n) = \mathcal{G}(n,N)$ gilt.
+
+Unser Ziel ist es nun, aus den Daten das ursprüngliche Signal, welches diese Daten verursachte, zu rekonstruieren. Mit der Formel $d=Rs+n$ ist dies als inverses Problem aufzufassen, denn uns interessiert die quantity of interest $s$. Bei der Radioastronomie ist dies z. B. die Helligkeit an bestimmten Punkten des Himmels. Betrachten wir es aus der Bayes'schen Perspektive. Der Posterior ist zwar durch Messgleichung, $P(s)$, $P(n)$ und $R$ vollständig definiert, doch seine Berechnung ist insbesondere bei großen Datenmengen, wenn der Posterior nicht analytisch lösbar ist, viel zu rechenintensiv und somit teuer. Zur Bewältigung dieser Herausforderung existieren zwei Lösungsansätze.
+
+Das Verfahren Markov-Chain-Monte-Carlo basiert darauf, dass aus $P(d,s)$ lediglich Stichproben gezogen werden und dadurch eine optimale Lösung gefunden wird. Leider ist auch diese Methode noch zu rechenintensiv, weswegen wir sie nicht nutzen.
+
+Eine weitere Möglichkeit besteht darin, den Posterior mit einem variativen Ansatz anzunähern. Dieser benötigt ein Maß für die Quantifizierung des Approximationsfehlers, welches mit der sogenannten Kullback-Leibler-Divergenz (KL-Divergenz) wie folgt definiert ist:
+\begin{eqnarray}
+KL(P,P_a) = \int P(s|d) ln \frac{P(s|d)}{P_a(s|d)}ds
+\end{eqnarray}
+Das Minimieren von KL(P, Pa) liefert die optimale Approximation an den Posterior.
+
+Die KL-Divergenz hat einige nennenswerte Eigenschaften. Dazu gehört unter anderem die Lokalität, die dazu führt, dass nur Stellen in die Fehlerberechnung einfließen, über welche die erste Verteilung $P$ eine Aussage trifft. Außerdem folgt die KL-Divergenz dem Konzept der Gescheitheit, welches besagt: "Wann immer möglich, wähle die zweite Verteilung $P_a$ so, dass diese mit der ersten übereinstimmt." Zuletzt ist zu erwähnen, dass die KL-Divergenz invariant unter Koordinatentransformationen ist und sich daher nicht verändert, wenn die Koordinatenachsen transformiert werden.
+
+Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei minimiert man jedoch nicht KL(P, Pa), sondern KL(Pa, P), da dieser Vorgang weniger rechenintensiv ist.
+
 % Bibliography
 \printbibliography{}
 \end{document}
