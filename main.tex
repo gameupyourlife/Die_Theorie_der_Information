@@ -246,7 +246,7 @@ Der Gegenvektor eines Vektors $a$ ist definiert als $z = -a$, sodass gilt $a + z
 \[ a \cdot \lambda = \left(\begin{array}{c} a_1 \\ a_2 \\ a_3 \end{array}\right)\cdot \lambda=\left(\begin{array}{c} a_3 \lambda \\ a_2 \lambda \\ a_1 \lambda \end{array}\right) \]
 
 
-\subsubsection{Vektor-Matrix-Multiplikation}
+\subsection{Vektor-Matrix-Multiplikation}
 
 Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ und den Vektor $x \in \mathbb{R}^M$ wie folgt definiert:
 
@@ -263,10 +263,10 @@ Das Vektor-Matrix-Produkt wird für die Matrix $A \in \mathbb{R}^{N \times M}$ u
       x_1 \\ x_2 \\ ... \\ x_M
     \end{pmatrix} \\[2ex]
     &=  \begin{pmatrix}
-      a_{11}x_1 + a_{12}x_2 +... + a_{1M}x_M \\ 
-      a_{21}x_1 + a_{22}x_2 + ... + a_{2M}x_M \\ 
-      ... + ... + ... + ... \\ 
-      a_{N1}x_1 + a_{N2}x_2 + ... + a_{NM}x_M \\ 
+      &a_{11}x_1 + &a_{12}x_2 + &... + &a_{1M}x_M \\ 
+      &a_{21}x_1 + &a_{22}x_2 + &... + &a_{2M}x_M \\ 
+      &...  &...  &...  &... \\ 
+      &a_{N1}x_1 + &a_{N2}x_2 + &... + &a_{NM}x_M \\ 
     \end{pmatrix}
   \end{aligned}
 \end{equation}
@@ -466,7 +466,6 @@ wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mat
 
 Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
 
-\subsubsection{Algorithmus von Siddon}
 
 Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
 
