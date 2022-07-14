@@ -234,32 +234,36 @@ Bei einer linearen Abbildung stellt $f(\vec{x})$ selbst auch stets wieder einen 
 \section{Radioastronomie}
 \sectionauthor{Constantin Burmeister, Ole Fleck}
 
-Radioastronomie dient der Beobachtung von Ereignissen und astrophysikalischen Prozessen, welche Wellen außerhalb des Frequenzbereichs des sichtbaren Lichts aussenden. Diese Signale werden mit Radiointerferometrie nachbehandelt und zusammengefügt.
+Radioastronomie dient der Beobachtung von astrophysikalischen Prozessen, die Radiowellen, also Wellen langer Wellenlänge, aussenden. Um hohe Auflösungen zu erreichen, werden Radiointerferometer verwendet, welche Signale mehrerer Antennen so zusammenfügen, als würde es sich um eine Antenne handeln.
 
-\subsection{Teleskope}
-
-Die Radioastronomie verwendet Radioteleskope, um Daten über astrophysikalische Prozesse aufzunehmen.
-Der minimal auflösbare Bildwinkel $\delta\theta$ ist abhängig von der Wellenlänge $\lambda$, welche gemessen werden soll, und dem Spiegeldurchmesser $D$ des Teleskops mit $\delta\theta\approx1,22\frac{\lambda}{D}$.
-Da die Radioastronomie große Wellenlängen im $cm-km$ Bereich verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich. Zur Erhöhung der Auflösung von Teleskopen können mehrere Antennen gleichzeitig verwendet werden.
+Allgemein ist der minimal auflösbare Bildwinkel $\delta\theta$ eines Teleskops abhängig von der Wellenlänge $\lambda$, des beobachteten Lichts, und dem Spiegeldurchmesser $D$ des Teleskops mit \begin{eqnarray}
+\delta\theta\approx1,22\frac{\lambda}{D}
+\end{eqnarray}
+Da die Radioastronomie große Wellenlängen verwendet, sind hier auch bei Teleskopen mit großen Spiegeldurchmessern von über $100m$ nur geringe Auflösungen möglich.
 
 \subsection{Radiointerferometrie}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.4\textwidth]{k4.2/baselineunterschied.png}
-  \caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
-  \label{k4.2.radioastro.interfero.bild.baselineunterschied}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.4\textwidth]{baselineunterschied.jpg}
+\caption{Gangdifferenzen von Radiowellen bei Antennenarrays}
+\label{BILD_BASELINEUNTERSCHIED}
 \end{figure}
 
-Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um hieraus ein Signal zu erzeugen. Dieses Signal soll dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre, möglichst ähnlich sehen.
+Radiointerferometrie ist ein Verfahren zur Überlagerung von Radiowellen, welche von mehreren Antennen aufgezeichnet wurden, um eine höhere Auflösung zu erzielen als es mit einer einzelnen Antenne möglich wäre.
 
-Werden mehrere Teleskope in einem Verbund synchronisiert, ist nur die Laufzeitdifferenz im Vergleich zum Wellenberg bekannt, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \cref{k4.2.radioastro.interfero.bild.baselineunterschied}, bei gleichen Abständen nicht zwischen den Gangdifferenzen $mod \lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt. Daher werden bei Antennengruppen möglichst unterschiedliche Abstände verwendet.
+Dieses hieraus resultierende Signal ist vergleichbar mit dem Signal, welches von einer Antenne mit dem Spiegeldurchmesser entsprechend des Antennenabstandes erzeugt worden wäre.
 
-Dieses Verfahren wurde beispielsweise auch \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung mehrerer Teleskope, wobei deren Abstand bis zu $10000km$ beträgt. Mit diesem Teleskop wurde das erste Foto eines Schwarzen Lochs erstellt.
+Ein Interferometer kann nur die Laufzeitdifferenz im Vergleich zum Wellenberg bestimmen, da die einzelnen Wellenberge nicht unterschieden werden können. So können, wie im Beispiel  \ref{BILD_BASELINEUNTERSCHIED}, bei gleichen Abständen zwischen den Teleskopen A,B und C nicht zwischen den Gangdifferenzen $modulo$ der Wellenlänge $\lambda$ unterschieden werden. In diesem Beispiel ist aus den Messwerten nicht ersichtlich, ob es sich tatsächlich um $2\cdot \lambda +1$ Gangunterschied handelt, sondern jedes $x$ in $x\cdot\lambda+1$ ist möglich. Werden Antennen mit unterschiedlichen Abständen verwendet, sinkt die Anzahl der Kombinationen der Gangunterschiede, für welche sich eine solche Gleichung lösen lässt, wie im Beispiel, wo die Ergebnisse der Gleichung für das untere Bild kongruent zu 3 $modulo\,2$ sein müssen. Daher werden bei Antennengruppen möglichst viele unterschiedliche Abstände verwendet.
 
-Die Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Nur dieses Verfahren ermöglicht die Ursprungsbestimmung eines Radiowellen Signals.
+Für die Messung des Radiosignals gilt:
+\begin{eqnarray}
+d_{uv\lambda} =\int\int I(l,m)e^{-2\pi i \frac{1}{\lambda}(lu-mv)dldm}
+\end{eqnarray}
+Es wird die Intensität in bestimmten Bereichen des Himmels bestimmt, wobei l die Nord-Süd-Achse und m die Ost-West-Achse bezeichnet.
 
-\subsection{Zusammenfassung}
-Die Radioastronomie erstellt mithilfe von Teleskopen und Antennenarrays Bilder des Weltraums. Die Radiointerferometrie verarbeitet das Signal der Teleskope in Bilder.
+Dieses Verfahren wurde beispielsweise auch beim \emph{Event Horizon Telescope} verwendet. Das \emph{Event Horizon Telescope} besteht aus einer Verschaltung mehrerer Teleskope, wobei deren Abstand bis zu $10000\,km$ beträgt. Mit diesem Teleskop wurde das erste Mal der Schatten eines Schwarzen Lochs beobachtet.
+
+Radiointerferometrie ist also ein essenzieller Bestandteil der Astronomie. Das Verfahren ermöglicht die Ursprungsbestimmung eines Radiosignals von astrophysikalischen Prozessen bei hoher Auflösung.
 
 \section{Pytest}
 \sectionauthor{Finja Hoffmann}
