@@ -173,6 +173,28 @@ Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man ge
 
 Das Experiment kann mehrfach wiederholt werden, dabei werden die Daten angepasst. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von Daten d und aktualisieren unser Wissen über s.
 
+\section{Normalverteilung}
+\sectionauthor{Patricia Hackl, Lara Müller}
+
+Im Hinblick auf die Bayes'sche Wahrscheinlichkeitstheorie ist die sogenannte Gauß'sche Glockenkurve von Bedeutung. Diese wird in der Literatur auch als Normalverteilung oder Gauß-Verteilung bezeichnet.
+Allgemein lässt sich zeigen, dass die Summe von identisch verteilten und voneinander unabhängigen Zufallszahlen im Limes ($Anzahl$ $Wiederholungen \rightarrow \infty$) zur Normalverteilung konvergiert.
+Die einem Zufallsexperiment zugehörige Gauß'sche Glockenkurve ist vollständig definiert über den Erwartungswert, also den Mittelwert $\bar{x}$ eines spezifischen Ereignisses und die Varianz, bzw. Standardabweichung $\sigma_x^{2}$, die im grafischen Sinne als Breite der Glockenkurve veranschaulicht wird:
+\[ \mathcal{G} (x - \bar{x}, \sigma_x^{2}) = \displaystyle\frac{1}{\sqrt{|2 \pi \sigma_x^{2}|}} exp[- \displaystyle\frac{1}{2} \cdot (x - \bar{x}) \cdot (\sigma_x^{2})^{-1} \cdot (x - \bar{x})] \]
+Analog zur Summenregel gilt auch für das Integral über die Normalverteilung:
+\[ \int_{- \infty}^{\infty} \mathcal{G} (x - \bar{x}, \sigma _x ^{2}) dx = 1\]
+
+\subsection{Erwartungswert}
+Der Erwartungswert selbst ist definiert als die gewichtete Summe aus den Wahrscheinlichkeiten für die Zufallsvariable $x _i$ und bestimmt somit, an welcher Stelle das Maximum der Normalverteilung auftritt (Verschiebung der Glockenkurve entlang der x-Achse). Dieser Wert muss nicht zwangsweise realisierbar sein, sodass z.B. der Erwartungswert eines Würfelwurfs (ungezinkter Würfel) bei 3,5 liegt. In der Formel entspricht $\chi$ dem Raum, auf dem $P(x)$ definiert ist:
+\[ \mathbb{E} _{P(x)} [x] = \sum x _i P(x _i) = \int_{\chi} x P(x) dx \]
+
+\subsection{Varianz und Standardabweichung}
+Genauer betrachtet stellt die Varianz die Streuung um den Erwartungswert dar und entspricht somit der Abweichung vom Mittelwert. Diese ist immer strikt positiv.
+\[ Var _{P(x)} [x] = \mathbb{E} _{P(x)} [x^{2}] - (\mathbb{E} _{P(x)} [x])^{2} = \int_ {\chi} (x - \mathbb{E} _{P(x)} [x])^{2} P(x) dx \geq 0 \]
+Für die Standardabweichung $\sigma$, die das Maß der Streubreite beschreibt, ergibt sich folgende Formel, wodurch eine direkte Abhängigkeit von der Varianz deutlich wird:
+\[ \sigma _{P(x)} [x] = \sqrt{Var _{P(x)} [x]} \]
+
+Mithilfe der Gauß'schen Glockenkurve lassen sich nun vielfältige Zufallsexperimente beschreiben und entsprechende Wahrscheinlichkeitsverteilungen konstruieren.
+
 \section{Lineare Abbildungen zwischen Vektorräumen}\label{k4.2.ch.linalg}
 \sectionauthor{Lara Müller, Chuyang Wang}
 Der folgende Abschnitt wird sich mit den Grundlagen linearer algebraischer Berechnungen befassen und in diesem Kontext lineare Abbildungen und zugehörige Vektorräume definieren.
