@@ -19,7 +19,7 @@ Durch Äquivalenzumformung erhält man
   \end{aligned}
 \end{equation}
 
-Die \emph{Determinante} einer Matrix ist ein skalarer Wert, welche die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x = 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
+Die \emph{Determinante} einer Matrix ist ein skalarer Wert, welcher die Lösbarkeit dieser Matrix beschreibt. Dieses lineare Gleichungssystem aus \cref{k4.2.eigen.def.lgs} hat genau dann nicht-triviale Lösungen ($x \neq 0$), wenn die Determinante von $B$ gleich $0$ ist. Also gilt $\det (B) = \det (A - \lambda E) = 0$.
 
 Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwerte zu finden.
 
@@ -28,7 +28,7 @@ Bei dem Eigenwertproblem gilt es, diese Vektoren sowie die zugehörigen Eigenwer
 
 Im Allgemeinen wird das charakteristische Polynom der Matrix $A$ definiert als $\chi_A (\lambda) = \det(A - \lambda E)$. Aus \cref{k4.2.eigen.def} folgt, dass man die Nullstellen dieses Polynoms finden muss, um den Eigenwert zu berechnen.
 
-Betrachtet man nun beispielsweise das Problem in 2D. Sei $A = \begin{pmatrix}
+Betrachtet man nun beispielsweise das Problem in 2D und sei $A = \begin{pmatrix}
     a & b \\
     c & d
   \end{pmatrix}$, so gilt
@@ -58,7 +58,7 @@ Eine allgemeine Lösung für \cref{k4.2.eigen.charac.2d} kann dann mithilfe der 
 
 \subsection{Power Iteration}\label{k4.2.eigen.powerit}
 
-Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da es eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad ist es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem
+Für $2 \times 2$ Matrizen lässt sich das Eigenwertproblem relativ gut lösen, da eine allgemeine Formel (vgl. pq-Formel / abc-Formel) für das charakteristische Polynom existiert. Ab dem 5. Grad ist es jedoch unmöglich, eine allgemeine Formel herzuleiten \parencite{k4.2.ramond}. % Abel Ruffini Theorem
 Mit dem Power-Iteration-Algorithmus versucht man, eine Annäherung an den höchsten Eigenwert zu berechnen. Der iterative Algorithmus wählt am Anfang einen willkürlichen Wert für $b_0 \in \mathbb{R}^n$. Bei jeder Iteration aktualisiert man diesen Vektor $b$ wie folgt:
 
 \begin{equation}
