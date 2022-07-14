@@ -509,7 +509,7 @@ Ein LGS wird durch die Formel $Ax = b$ dargestellt, wobei A eine $ n \times n $-
 Algorithmisch: Conjugate Gradient läuft das Residuum (welches der Vektor ist, der entgegengesetzt zum oben erwähnten Gradienten, also additiv invers verläuft) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal n-Schritten am Ziel ankommen, da wir dann alle n Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Endbedingungen, zum einen, wenn n Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also das $ f'(x) = 0 $ gilt, klein genug ist.
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung  $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
 
-\section{Wiener Filter}
+\section{Wiener Filter}\label{k4.2.wiener.filter}
 \sectionauthor{Constantin Burmeister, Clemens Ljungh, Natalie Teplitska}
 
 Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das unterliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Genauigkeit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen nicht vermeiden; zudem sind die Daten unvollständig. Die damit gegebene Unsicherheit soll minimiert werden. Eine dafür verwendete Methode ist der Wiener Filter.
