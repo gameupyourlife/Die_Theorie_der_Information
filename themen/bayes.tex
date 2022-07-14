@@ -1,30 +1,33 @@
-
 \section{Wahrscheinlichkeitstheorie}\label{k4.2.bayes}
-\sectionauthor{Mara Germann, Patricia Hackl, (Natalie Teplitska)}
+\sectionauthor{Patricia Hackl, Mara Germann, (Natalie Teplitska)}
 
-Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist
-\begin{displaymath}
+Die Bayes'sche Statistik beruht auf dem Rechnen mit bedingten Wahrscheinlichkeiten. Unter bedingten Wahrscheinlichkeiten versteht man die Wahrscheinlichkeit, dass ein bestimmtes Ereignis $B$ eintritt, unter der Bedingung, dass ein Ereignis $A$ bereits eingetreten ist. Diese Gleichung wird Satz von Bayes genannt:
+\begin{equation}
 P(B|A) = \frac{P(A \wedge B)}{P(A)} = \frac{P(B|A)\cdot P(A)}{P(B)}.
-\end{displaymath}
-Obige Gleichung wird auch Satz von Bayes genannt.
+\end{equation}
+%Obige Gleichung wird auch Satz von Bayes genannt. 
 
-Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Weil alle Wahrscheinlichkeiten in Summe 1 ergeben müssen, gilt für die Fläche unter der gesamten Funktion, wobei x alle möglichen Ereignisse beschreibt:
-\begin{displaymath}
+Bei unendlich vielen Ereignissen kann nicht jedem Ereignis eine bestimmte Wahrscheinlichkeit zugeordnet werden. Daher gibt man die Wahrscheinlichkeitsdichte an. Dabei beschreibt $x$ alle möglichen Ereignisse. Weil alle Wahrscheinlichkeiten in Summe $1$ ergeben müssen, gilt für die Fläche unter der gesamten Funktion:
+\begin{equation}
 \int_{- \infty }^ {+ \infty} P(x) \,\mbox{d}x = 1.
-\end{displaymath}
+\end{equation}
+
+Den Satz von Bayes wird verwendet, um aus Daten $d$, die aus einem Experiment gewonnen wurden, das Signal $s$ zu berechnen. Wenn $d$ eine verrauschte Tonaufnahme wäre, dann wäre $s$ das Tonsignal ohne Rauschen. Die Hintergrundinformation $I$ definiert das Modell. 
 
 
-\subsection{Von Daten lernen}
- Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells. Nach dem Satz von Bayes gilt:
-\begin{displaymath}
-P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}
-\end{displaymath}
+ %Die Hintergrundinformation $I$ definiert das Modell, in dem wir arbeiten. Man gewinnt durch ein Experiment die Daten $d$. Diese benötigt man um das Signal $s$ aus den Daten zu berechnen.
+ % $P(s|I)$ beschreibt die Wahrscheinlichkeitsverteilung des Parameters $s$ des Modells vor der Messung.
+ 
+ $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters $s$ an und wird Posterior genannt. Nach dem Satz von Bayes gilt:
+ 
+\begin{equation}
+P(s|d,I) = \frac{P(d|s,I)\cdot P(s|I)}{P(d|I)}.
+\end{equation}
 
 \begin{itemize}
  \item $P(s|I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters vor dem Einbeziehen der Daten an (Prior).
  \item $P(d|I)$ ist der Normierungsparameter (Evidenz).
  \item $P(d|s,I)$ beschreibt die Wahrscheinlichkeit für die Messdaten, mit gegebenem Parameter (Likelihood).
- \item $P(s|d,I)$ gibt die Wahrscheinlichkeitsverteilung des Parameters unter Einbezug der Daten und Hintergrundinformationen (Posterior).
 \end{itemize}
 
-Das Experiment kann mehrfach wiederholt werden, dabei gewinnt man neue Daten. So dient der Posterior bei erneuter Durchführung als Prior und wir lernen sukzessive von neuen Daten $d$ und aktualisieren unser Wissen über $s$.
+Das Experiment kann mehrfach wiederholt werden, dabei werden neue Daten gewonnen. So dient der Posterior bei erneuter Durchführung als Prior. Wir lernen sukzessive von  den neuen Daten $d$ und aktualisieren unser Wissen über Signal $s$.
