@@ -356,100 +356,39 @@ In Git gibt es verschiedene Stadien, der \enquote{Codeverarbeitung} um eine Code
 
 Aufgrund der diversen Verwaltungsoptionen und der Möglichkeit kollaborativ in Git zu arbeiten, wird dieses Tool deshalb von äußerst vielen Programmierern verwendet.
 
-\section{Tomographie}
-
-\subsection{Einleitung}
+\section{Computertomographie}\label{k4.2.comptomo.ct}
 \sectionauthor{Aaron Gschwendt}
+\subsection{Tomographie}
 
-Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu bestimmen, beobachtet man Strahlen, die durch das Objekt in einer Ebene gehen. Die Menge an Licht, die auf der Strecke absorbiert wurde, entspricht dem Linienintegral:
+Die Tomographie ist ein bildgebendes Verfahren, in dem ein Objekt schichtweise untersucht wird. Um diese Schichten zu vermessen, beobachtet man Strahlen, die das Objekt schneiden und auf einer Ebene liegen. Die Menge an Licht, die auf der Strecke absorbiet wurde, entspricht dem Linienintegral:
 
-\begin{equation}\label{k4.2.tomo.einl.linig}
-  d=\int_{\Gamma}{}s(p)dp(\gamma)
-\end{equation}
+$$d=\int_{\Gamma}{}s(p)dp(\gamma)$$
 
-\begin{equation}
-  p\in \mathbb{R}^2
-\end{equation}
+$d$ ist das Linienintegral von jedem $s(p)$ entlang des Pfades $\gamma$. $d$ entspricht die Menge an Licht, die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimental bestimmt. \#Noch nicht gut formuliert%definition von anderen buchstaben
 
-$d$ ist hier die Menge an Licht die zwischen dem Sender und dem Empfänger absorbiert wird und wird experimentell bestimmt. Gesucht ist $s(p)$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Strecken im Bild, kann man mithilfe vom bayesschen Verfahren mit hoher Auflösung und Sicherheit $s(p)$ bestimmen.
+Gesucht ist die Funktion $s$, die die optische Dichte von jedem Punkt in der Ebene darstellt. Die Gleichung lässt sich nicht analytisch bestimmen. Kennt man jedoch $d$ von vielen Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
-\subsubsection{Staubtomographie}
+\subsection{Astronomie}
 
-In der Astronomie wird die Tomographie verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz man kennt und um bzw. in der Wolke liegen beobachtet. Man vergleicht deren scheinbare Helligkeit mit deren zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. Daraus kann man $s(p)$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen
+In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Daraus kann man $s$ abschätzen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
-\subsubsection{Computertomographie}\label{k4.2.comptomo.ct}
+\subsection{CT}
 
-Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie, kurz CT.
+Häufig verwendet wird die Tomographie auch in der Medizin, bekannt als Computertomographie(CT).
 
-Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projektiert. Der Nachteil dieser Methode ist das sich Teile vom Objekt überlagern können und man nicht erkennen kann, ob es sich um ein Objekt mit hoher Absorption oder mehrere Objekte mit geringer Absorption handelt.
+Bei herkömmlichen Röntgenuntersuchungen werden Röntgenstrahlung durch das abzubildende Objekt auf einen Röntgenfilm oder einer Sensorplatte geleitet. Das 3d-Objekt wird dabei auf eine 2d-Fläche projeziert. Der Nachteil dieser Methode ist, dass sich Teile vom Objekt überlagern können und nicht erkannt werden kann, ob es sich um ein Objekt mit hoher Absorption oder mehrer Objekte mit geringer Absorption handelt.
 
-Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nimmt dabei in kleinen Abständen Messpunkte auf. Dieses wird für einige Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl ist breit genug damit bei jedem Messpunkt die ganze breite des Körperteils in einem Streifen ergriffen wird aber sehr dünn, um die vertikale Auflösung zu erhöhen.
+Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um den Patienten und nehmen dabei in kleinen Abständen Messpunkte auf. Dies wird für mehrere Schichten entlang des zu untersuchenden Körperteils ausgeführt. Der Röntgenstrahl und Detektor ist breit genug, dass bei jedem Messpunkt die ganze Breite des Körperteils in einem Streifen ergriffen wird.
 
 \begin{wrapfigure}{r}{0.4\linewidth}
-  \includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
-  \caption{Sinogram}
-  \label{k4.2.tomo.ct.bp}
+
+\includegraphics[width=0.4\textwidth]{k4.2/backprojektion.png}
+
+\caption{Sinogram}
+
 \end{wrapfigure}
 
-Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
-
-\subsection{CT in 3D}
-\sectionauthor{Finja Hoffmann, Chuyang Wang}
-Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\textit{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
-
-\begin{equation}
-  \begin{aligned}
-    d = Rs + n,
-  \end{aligned}
-\end{equation}
-
-wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
-% TODO: ref to Wiener Filter
-
-\subsection{Line-Of-Sight Response}
-\sectionauthor{Finja Hoffmann, Chuyang Wang}
-
-Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird. 
-
-\subsubsection{Algorithmus von Siddon}
-
-Um diese Gewichtungen zu berechnen, könnte man die Schnittpunkte einer Sichtlinie mit den x-, y- und z-Achsenebenen jeweils einzeln bestimmen und in sortierte Listen $A$, $B$ und $C$ speichern. Sei jeweils
-
-\begin{equation}
-  P_{start} = \begin{pmatrix}x_{start} \\ y_{start} \\ z_{start}\end{pmatrix}
-\end{equation}
-
-\begin{equation}
-  P_{end} = \begin{pmatrix}x_{end} \\ y_{end} \\ z_{end}\end{pmatrix}
-\end{equation}
-
-Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit sei $x_{start} < x_{end}$. Man rundet die x-Koordinate des Startpunktes in die Richtung der Strecke auf und berechnet die Differenz $x^{\ast}$. Um die y- und z-Koordinaten dieses ersten Schnittpunkts herauszufinden, muss man noch die Steigungen gegenüber dieser beiden Achsen $m_{yx} = \frac{y_{end} - y_{start}}{x_{start} - x_{end}}$ und $m_{zx} = \frac{z_{end} - z_{start}}{x_{start} - x_{end}}$ berechnen. Somit erhält man den ersten Schnittpunkt
-
-\begin{equation}
-  S_{x,0} = \begin{pmatrix}
-    x_{start} + x^{\ast} \\
-    y_{start} + x^{\ast} \cdot m_{yx} \\
-    z_{start} + x^{\ast} \cdot m_{zx} \\
-  \end{pmatrix} 
-\end{equation}
-
-Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
-
-\begin{equation}
-  S_{x,i} = S_{x,i-1} + \begin{pmatrix}
-    1 \\
-    1 \cdot m_{yx} \\
-    1 \cdot m_{zx} \\
-  \end{pmatrix} 
-\end{equation}
-
- Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog. 
-
-Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel. 
-
-Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null. 
-
-Sammelt man die Gewichtungen für alle Sichtlinien, so kann man aus den Zeilenvektoren $r_0$, $r_1$, ..., $r_N$ die Matrix $R$ bilden. Da viele Einträge in dieser Matrix null sind, ist es günstig, die Matrix als eine \enquote{sparse matrix} zu speichern. Dafür gibt es einen Datentyp \lstinline[language=Python]{scipy.sparse.csr_matrix}, welcher diese Matrix effizient speichern kann. 
+Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
 
 
 \section{NumPy}\label{k4.2.ch.NumPy}
