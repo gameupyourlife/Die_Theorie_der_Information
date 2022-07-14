@@ -585,6 +585,27 @@ Um diese Funktionen in NIFTy wiederholt anwenden zu können, werden sie in eine 
 
 Aufbauend auf diesen Grundlagen werden nun weitere Funktionen in NIFTy implementiert, mithilfe derer die Rekonstruktion eines Bildes des Schwarzen Lochs M87* möglich wird.
 
+\section{Radio Gruppe B}
+\sectionauthor{Benjamin}
+Die Aufgabe diese Projektteils war es, Daten, die Teil A (Ref!) simulierte, zu korrigieren. Im Gegensatz zu Beobachtungen durch einzelne Antennenarrays wurde das Schwarze Loch M87 nämlich durch das Event Horizon Telescope vermessen. Das EHT besteht aus Arrays aus verschiedensten Ländern (Chile, Spanien, Hawai etc.), was den Vorteil mit sich zieht, dass der Durchmesser der Beobachtung immens ansteigt und es den Forschern so ermöglicht, kleinere Winkel zu unterscheiden (Ref Radiointerferometrie wg Formel!).
+
+Grundsätzlich möchten wir unsere Parameter, mit der Gruppe A Daten simuliert hat, so an die wirklichen Daten anpassen, dass der Unterschied zwischen beiden minimiert wird. Beim EHT kommt nun die Besonderheit der unterschiedlichen Wetterlagen an den verschiedenen Standorten ins Spiel.
+
+Es ist mit heutigen Methoden nicht möglich, den Effekt der interferierenden Quellen ausreichend zu bestimmen. Zwei Effekte treten auf: Zum einen entsteht durch eine langsamere Geschwindigkeit eine Phasenverschiebung, zum anderen wird die Signalstärke reduziert.
+
+Diese Störungen lassen sich durch die Formel dabt$\lambda$$\to$gat$\lambda$ * g*bt$\lambda$ dab$\lambda$  t$\forall$                 darstellen, wobei a und b für ein betrachtetes Antennenpaar (also Antenne a und Antenne b) steht und g*at$\lambda$,  $g \cdot bt \lambda$ zwei für die jeweiligen Antennen Störung beschreibende komplexe Zahlen sind: Der reele Teil spiegelt die Signalstärkenreduktion wieder, während der imaginäre Teil die Phasenverschiebung repräsentiert.
+
+Um diese Effekte zu annulieren bestimmen wir die Closure Quantitie eine bereinigte Form der gegebenen Daten. Closure Phases behandeln die Phasenverschiebung der empfangenen Welle und Closure Amplitudes die Änderung der Signalstärke. Daher muss eine Funktion d(0)t$\lambda$=f(dabt$\lambda$$\forall$a,b) gefunden werden, sodass die Transformationd abt$\lambda$$\to$exp(i$\phi$at) exp($-i \phi$bt)dabt$\lambda$ d(0) invariant lässt (Phases) bzw invariant unter dabt$\lambda$$\to$|gat$\lambda$||gbt$\lambda$|dabt$\lambda$ sind (Amplitudes), das heißt, die Störung keine Rolle mehr spielt.
+Closure Phases:
+
+Formel
+
+Closure Amplitudes:
+
+Formel
+
+Dabei ist wichtig, dass die Antennenpaarungen jeweils in dreier-/vierergruppen aufgeteilt werden. Die Vorgehensweise ist folgende: Es werden aus allen Antennen 3 bzw 4 gewählt und die Closure Quantities der Gruppe berechnet. Dieser Prozess wird solange wiederholt, bis keine neuen Werte entstehen, das heißt die Gruppe durch lineare Kombination der Rechnungen anderer Gruppen beschrieben werden kann. Alle relevanten Rechenprozesse werden in einer Matrix gespeichert, die der gesuchten Transformation entspricht.
+
 % Bibliography
 \printbibliography{}
 \end{document}
