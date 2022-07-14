@@ -376,7 +376,7 @@ Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des S
   \end{aligned}
 \end{equation}
 
-wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jedes Element von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \textit{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
 % TODO: ref to Wiener Filter
 
 \subsection{Line-Of-Sight Response}
@@ -416,11 +416,13 @@ Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man j
   \end{pmatrix} 
 \end{equation}
 
- Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,i} \ | \ i \in \{0\} \cup \mathbb{N}_{< (\llcorner x_{end} - x_{start} \lrcorner)} ]$. Die Listen $B$ und $C$ berechnet man analog. 
+ Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog. 
 
 Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel. 
 
-Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. 
+Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null. 
+
+Sammelt man die Gewichtungen für alle Sichtlinien, so kann man aus den Zeilenvektoren $r_0$, $r_1$, ..., $r_N$ die Matrix $R$ bilden. Da viele Einträge in dieser Matrix null sind, ist es günstig, die Matrix als eine \enquote{sparse matrix} zu speichern. Dafür gibt es einen Datentyp \lstinline[language=Python]{scipy.sparse.csr_matrix}, welcher diese Matrix effizient speichern kann. 
 
 
 \section{Objekt-Orientierte Programmierung}
