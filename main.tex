@@ -300,46 +300,42 @@ Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist de
 
 \section{Fourier-Transformation}
 \sectionauthor{Natalie Teplitska, Ole Fleck, Constantin Burmeister}
-
-% Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur †bersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.6\textwidth]{k4.2/fourier.png}
-  \caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: \url{www.nti-audio.com})}
+Bei der Fourier-Transformation handelt es sich um eine mathematische Methode zur Übersetzung eines Signals in ein Frequenzspektrum. Aufgrund vieler unterschiedlichere Varianten findet sie sowohl Anwendung in mathematischen Bereichen, aber auch in der Physik, wie beispielsweise in unserem Kurs bei der Verarbeitung von Radiosignalen.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{k4.4/fourier.png}
+    \caption{Anschauliche Darstellung der Fourier-Transformation (Quelle: www.nti-audio.com)}
+    \label{k4.4.fourier}
 \end{figure}
+Ein anschauliches Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der \cref{k4.4.fourier} links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der \cref{k4.4.fourier} rechts), wodurch man das Frequenzspektrum erhält.
 
-Ein häufiges Beispiel ist die Spektralanalyse von Schallwellen. Die Daten (in der Abbildung links), die man beispielsweise mit einem Mikrofon aufnimmt, bestehen aus Schallwellen unterschiedlicher Wellenlängen. Mithilfe der Fourier-Transformation wird das Signal auf Schwingungen mit verschiedenen Wellenl\"angen aufgeteilt (in der Abbildung rechts), wodurch man das Frequenzspektrum erhält.
+Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden geht man bei der Anwendung der Fourier-Transformation unterschiedlich vor.
 
-Abhängig von der Art der Rohdaten und der gewünschten Ausgabe finden verschiedene Varianten der Fourier-Transformation Anwendung.
+Die kontinuierliche Fourier-Transformation (FT) benötigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)\ dt$ integriert wird. Diese Transformation lässt sich nur auf kontinuierliche Funktionen anwenden und gibt eine kontinuierliche Funktion aus.
 
-Die kontinuierliche Fourier-Transformation (FT) bestätigt als Eingabe eine Funktion, über die mit $\mathcal{F}(x)(s)=\int_{-\infty}^{\infty}e^{-ist}x(t)dt$ integriert wird. Diese Berechnung lässt sich nur auf kontinuierliche Werte anwenden und gibt eine kontinuierliche Funktion aus.
+Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da die Eingabesignale meinstens aus einzelnen Datenpunkten und nicht aus kontinuierlichen Funktionen bestehen. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Die DFT ist mit einer quadratischen Laufzeit allerdings vergleichsweise rechenintensiv. Stattdessen wird in der Signalverarbeitung meist die Fast Fourier Transformation (FFT) verwendet, welche mit Hilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
 
-Die diskrete Fourier-Transformation (DFT) kommt mit diskreten Werten aus und ist daher am Besten für digitale Signalverarbeitung geeignet, da Computer grundsätzlich mit einzelnen Datenpunkten und nicht mit kontinuierlichen Werten arbeiten. Die Formel dazu ist entsprechend kein Integral, sondern eine Summe aller gegebenen Datenpunkte: $\hat a_k = \sum\limits_{j=0}^{N-1}e^{-2\pi i\cdot\frac{jk}{N}}\cdot a_j$. Da die Laufzeit der DFT quadratisch ist, wurde die Fast Fourier Transformation (FFT) entwickelt, welche mithilfe des \emph{Divide and Conquer} (Teile-und-Herrsche) Prinzips in der Lage ist, die Rechenzeit drastisch zu reduzieren.
+Manche Probleme, welche im Wertebereich, den eigentlichen Signalen, nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich, dem durch die Fourier-Analyse berechneten Frequenzspektrum, mit wenigen einfachen Operationen gel\"ost werden. Dazu wendet man die Fourier-Analyse auf die Daten an, führt die notwendigen Operationen im Bildbereich aus und transformiert die Lösung zurück in den Wertebereich. Möchte man beispielsweise eine Tonaufnahme von Störsignalen bereinigen, wendet man die FFT an, löscht die unerwünschten Frequenzen im Bildbereich und übersetzt das Ergebnis zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen, da an einer Tonaufnahme über der Zeit nicht direkt das Störsignal ablesbar ist.
 
-Manche Probleme, welche im Wertebereich nur durch viele komplizierte Operationen l\"osbar sind, k\"onnen im Bildbereich mit wenigen einfachen Operationen gel\"ost werden. Dazu transformiert man die Daten, führt die notwendigen Operationen im Bildbereich aus und transformiert die Lösung zurück in den Wertebereich. Mächte man beispielsweise eine Tonaufnahme von Störsignalen bereinigen, wendet man die FFT an, bearbeitet das Frequenzspektrum im Bildbereich und übersetzt es zurück in Musik oder Sprache. Diese Aufgabe w\"are im Wertebereich erheblich rechenintensiver gewesen.
-
-Das \enquote{Rückübersetzen} der Signale erfolgt mit der inversen (kontinuierlichen oder diskreten) Fourier-Transformation (IFT). Diese erzeugt die Funktion, welche aus einem gegebenen Spektrum entsteht. Dazu werden dieselben Operationen wie bei der Berechnung des Spektrums rückwärts angewandt.
+Das "Rückübersetzen" der Signale erfolgt mit der inversen (kontinuierlichen oder diskreten) Fourier-Transformation (IFT). Diese erzeugt die Funktion oder eine Menge von Datenpunkten, welche aus einem gegebenen Spektrum entsteht. Dazu werden dieselben Operationen wie bei der Berechnung des Spektrums lediglich mit anderen Faktoren angewandt.
 
 \section{Komplexe Zahlen}
 \sectionauthor{Natalie Teplitska, Ole Fleck, Mara Germann}
+Da in der Radioastronomie die Messdaten komplexe Zahlen sind, hat sich unser Kurs auch mit diesen beschäftigt.
 
-Da bei der Radioastronomie komplexe Zahlen eine Rolle spielen, hat sich unser Kurs auch mit diesen beschäftigt.
+Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$ für $a, b \in \mathbb{R}$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit und definiert über die Eigenschaft: $i^{2} = -1$. Für $b = 0$ erhalten wir die bereits bekannten reellen Zahlen. Man kann $\mathbb{C}$ somit als zweidimensionalen reellen Vektorraum interpretieren.
 
-Die Menge $\mathbb{C}$ ist die Menge aller Zahlen $z=a+b\cdot i$. Dabei wird $a$ als Realteil und $b$ als Imaginärteil bezeichnet. Weiterhin ist $i$ die imagin\"are Einheit mit $i^{2} = -1$. Ist $b = 0$, fällt der Imaginärteil weg und wir erhalten die bereits bekannten reellen Zahlen. $\mathbb{C}$ ist somit die Menge aus $\mathbb{R}$ und den imaginären Zahlen.
+Die komplex konjugierte von $z=a+b\cdot i$ ist definiert als $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
 
-Die konjugierte komplexe Zahl von $z=a+b\cdot i$ ist definiert über $\bar{z}=a-b\cdot i$. Das Produkt aus $z$ und $\bar{z}$ hat die Eigenschaft, dass $z\cdot \bar{z}=(a+b\cdot i)\cdot (a-b\cdot i)=a^2-b\cdot i^2=a^2+b^2$ eine reelle Zahl ist.
+Zwei komplexe Zahlen werden addiert, indem ihre Real- und Imaginärteile separat addiert bzw. subtrahiert werden. Auch die Multiplikation funktioniert ähnlich wie in $\mathbb{R}$, nur sollte man stets daran denken, dass $i\cdot i=-1$.Die Division von komplexen Zahlen gestaltet sich etwas komplizierter. Hier hilft es oft, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck sich so erheblich vereinfacht.
 
-Bei der Addition und Subtraktion von komplexen Zahlen gibt es keine Besonderheiten zu beachten, die imaginäre Einheit i wird wie eine Konstante mitgenommen. Auch die Multiplikation verläuft wie gewohnt, nur sollte man stets daran denken, dass $i\cdot i=-1$.
-Die Division von komplexen Zahlen gestaltet sich etwas komplizierter, v. a. weil das Kürzen des Bruches meist nicht ohne Weiteres möglich ist. Oft hilft es aber, mit der konjugierten komplexen Zahl des Nenners zu erweitern, sodass im Nenner kein Imaginärteil mehr vorkommt und der Ausdruck erheblich vereinfacht wird. Mit diesem Wissen ist es uns möglich, mathematische Operationen auf die komplexen Zahlen anzuwenden.
-
-Die Menge $\mathbb{C}$ lässt sich geometrisch in einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a \\b
-  \end{pmatrix}$.
+Die Menge $\mathbb{C}$ lässt sich geometrisch in ein einem kartesischen Koordinatensystem darstellen, wobei die x-Achse für a und die y-Achse für b steht. Jede komplexe Zahl $z=a+b\cdot i$ entspricht dann genau einem Vektor $\begin{pmatrix} a\\b
+\end{pmatrix}$.
 Bisher haben wir mit den komplexen Zahlen in kartesischen Koordinaten gerechnet. Sie lassen sich aber auch als Polarform angeben:
-\begin{equation}
-  z=r\cdot e^{i\cdot\phi}.
-\end{equation}
-Viele Operationen mit Vektoren kann man so viel einfacher ausführen. Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Eine konjugierte komplexe Zahl ist äquivalent zur Spiegelung des Vektors an der reellen Achse.
+\begin{displaymath}
+z=r\cdot e^{i\cdot\phi}.
+\end{displaymath}
+Dabei ist $\phi$ der Winkel des Vektors zur x-Achse und r seine Länge. Bei der Multiplikation solcher Vektoren werden Winkel addiert und Längen multipliziert. Eine konjugierte komplexe Zahl ist dadurch äquivalent zur Spiegelung des Vektors an der reellen Achse.
 
 \section{Git}
 \sectionauthor{Jonas Fiedler}
