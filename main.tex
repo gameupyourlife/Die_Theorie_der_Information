@@ -537,7 +537,7 @@ array([[18  4]
 
 \end{itemize}
 
-NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes‘sche Bildgebungsalgorithmen zu implementieren.
+NumPy ist also die Standardbibliothek für effiziente Matrix-Vektor-Rechnung in Python. Sie liefert die Grundlagen für viele wissenschaftliche Arbeiten, so auch für unser Projekt, um Bayes'sche Bildgebungsalgorithmen zu implementieren.
 
 
 \section{Programmierparadigmen}
@@ -570,7 +570,7 @@ Um lineare Gleichungssysteme (LGS) effizient und exakt zu lösen, existiert ein 
 
 Ein LGS hat die Formel $Ax = b$, wobei A eine $ n \times n $-Matrix (invariant unter Transposition) und $ b,x $ Vektoren sind. Eine quadratische Funktion $ f(x) = 1/2xAx-bx+c $ wird definiert, (mit selben A,b und x), dessen komponentenweise Ableitung genau dann null ist, wenn das ursprüngliche LGS nach x gelöst ist, da gilt: $f'(x) = Ax-b = 0$. Daher ist das Optimieren der dem LGS entsprechenden Funktion äquivalent zum Lösen ebenjenes.
 
-Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Residuum (der dem Gradienten entgegengesetzte Vektor, $ r = b-Ax $) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate, def.: $x^TAy = 0, x,y$ A-orthogonal) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal $n$-Schritten am Ziel ankommen, da wir dann alle $n$ Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Abbruchbedingungen, zum einen, wenn $n$ Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also dass $ f'‘(x) = 0 $ gilt, klein genug ist.
+Der Algorithmus funktioniert folgendermaßen: Conjugate Gradient läuft das Residuum (der dem Gradienten entgegengesetzte Vektor, $ r = b-Ax $) ab, aber korrigiert die „Abstiegsrichtung“ in Betrachtung aller vorher gegangenen Residuen so, dass diese A-orthogonal (engl. conjugate, def.: $x^TAy = 0, x,y$ A-orthogonal) zu allen vorherigen ist. Daraus folgt, dass wir nach maximal $n$-Schritten am Ziel ankommen, da wir dann alle $n$ Dimensionen der $ n \times n $-Matrix optimal abgegangen sind. Der Algorithmus hat also zwei Abbruchbedingungen, zum einen, wenn $n$ Iterationen erreicht sind, oder wenn die Differenz zum Endergebnis, also dass $ f''(x) = 0 $ gilt, klein genug ist.
 
 Gradient Descent und Conjugate Gradient ermöglicht es uns also, lineare Gleichungssysteme zu lösen und dadurch Daten, die in Matrizen gespeichert sind, weiterzuverarbeiten. Ein Beispiel wäre die Lösung der Gleichung $ D^{-1} m = j $, auf die im Kapitel \enquote{Wiener Filter} eingegangen wird.
 
@@ -660,6 +660,44 @@ Closure Amplitudes:
 Formel
 
 Dabei ist wichtig, dass die Antennenpaarungen jeweils in dreier-/vierergruppen aufgeteilt werden. Die Vorgehensweise ist folgende: Es werden aus allen Antennen 3 bzw 4 gewählt und die Closure Quantities der Gruppe berechnet. Dieser Prozess wird solange wiederholt, bis keine neuen Werte entstehen, das heißt die Gruppe durch lineare Kombination der Rechnungen anderer Gruppen beschrieben werden kann. Alle relevanten Rechenprozesse werden in einer Matrix gespeichert, die der gesuchten Transformation entspricht.
+
+\section{Walnuss CT}\label{k4.2.ch.walnussct}
+\sectionauthor{Leo Bergmann, Cedric Balzer}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{k4.2/ctabbild.png}
+    \caption{Versuchsaufbau welcher für das Generieren der Daten verwendet wurde. Die Detektor Fläche ist auf der linken Seite die Röntgenquelle auf der rechten Seite. Die Walnuss ist mit einer computergesteuerten rotierbaren Plattform verbunden.}
+    \label{k4.2.fig.ctAbbild}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/geometry.png}
+    \caption{Aufbau des Versuchs mit geometrischen Daten.\\
+    FOD - Focus-to-object distance\\
+    FDD - Focus-to-detector distance\\
+    W - Width of the detector
+    }
+    \label{k4.2.fig.Geo}
+\end{figure}
+
+Das Ziel des Projekts ist es, einen Computertomographie-Scan (siehe \cref{k4.2.comptomo.ct}) einer Walnuss als Bild darzustellen. Durch die harte Schale und den weichen Kern stellt die Walnuss eine Herausforderung für den CT-Scan dar.
+Wir beziehen öffentlich zugängliche Daten von  \href{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}{zenodo.org}, die eine Schichtaufnahme einer Walnuss als Sinogram in unterschiedlichen Auflösungen in \verb|.mat|-Dateien beinhalten. 
+Es wurden 120 Projektionen der Strahlung auf einem Schirm gemessen und mit einer heruntergerechneten Pixelzahl in einer Matrix m gespeichert. Getestet haben wir Dateien mit 82 und 328 Pixel je Projektion. In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht. Damit das Sinogram in ein CT-Bild projiziert werden kann sind alle Start- und Endpunkte der Line of Sight notwendig. Diese werden ermittelt, indem der Standort der Quelle und die Position der einzelnen Pixel des Screens ermittelt wird.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{k4.2/versuchsaufbau-skizze.png}
+    \caption{Skizze des Versuchsaufbau}
+    \label{k4.2.fig.skizze}
+\end{figure}
+Anstelle einer Drehung der Nuss gegen den Uhrzeigersinn rechnen wir, äquivalent dazu, mit einer kreisförmigen Rotation des Detektors (Screen) und der Strahlungsquelle (Source) um die Walnuss (Nut). Es bieten sich durch gegebene Winkel und Radii Polarkoordinaten an, um die Position der Quelle und des Detektors relativ zu Walnuss zu bestimmen, jedoch müssen alle Punkte für die Weiterverarbeitung im kartesischen Koordinatensystem angegeben und deshalb direkt in diesem berechnet werden. Da die Winkel und Abstandsmaße in Bezug auf die Walnuss angegeben sind, wird diese als Koordinatenursprung definiert. Ausgehend davon wird die Quelle zunächst an die Stelle \verb+(-110|0)+ gelegt (siehe \cref{k4.2.fig.Geo}). Dadurch wird die Startposition des Detektors festgelegt, der durch seinen Anfang ($Upper$) an Stelle \verb+(190|57,4)+ und seinen Endpunkt ($Lower$) an Stelle \verb+(190|-57,4)+ bestimmt wird. 
+Source' ist für jede Drehung der Nuss bzw. der Quelle und des Schirms um den Winkel Rad (im Bogenmaß) im Vergleich zur Startposition der Punkt an dem sich die Quelle nun befindet. Der Abstand zwischen Source' und Nut ist dabei immer 110mm. Der Versuchsaufbau kann somit als Einheitskreis mit Mittelpunkt Nut interpretiert werden, der um den Faktor 110mm gestreckt wurde. Dadurch ist im karthesischen Koordinatensystem die horizontale Koordinaten-Komponente von Source' gleich $cos(Rad) * 110mm$, die vertikale Komponente gleich $sin(Rad) * 110mm$.
+Der Winkel $\sphericalangle Upper-Nut-Lower$ hat eine Größe von etwa 34°, somit hat der Winkel $alpha = \sphericalangle Lower-Nut-SC$ eine Größe von 17°. Der Abstand von Nut zu $Lower$ kann mithilfe des Satzes von Pythagoras berechnet werden:
+\[ d = \sqrt{\mathbb{(300mm - 110mm)}^2+\mathbb{(114,8mm/2)}^2} = 198,48mm \]
+Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordinaten $alphas$ im Polarkoordinatensystem (Winkel werden im Bogenmaß verrechnet). Um $Upper'$ zu berechnen muss $alpha$ von Rad subtrahiert werden. Die entsprechenden karthesischen Koordinaten erhalten wir nun auf gleiche Weise bei Source'. Um die restlichen Pixel zu berechnen verwenden wir die Methode \verb+numpy.linspace()+. Wir setzen hier $Upper'$ als Startwert und $Lower'$ als Endwert ein und lassen uns die Menge der Anzahl an Pixeln auf dem Schirm ausgeben. 
+
+Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
 
 % Bibliography
 \printbibliography{}
