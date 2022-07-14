@@ -11,7 +11,7 @@ $s$ ist eine unbekannte Funktion die jedem Punkt im Raum eine optische Dichte zu
 
 Gesucht ist die Funktion $s$, diese lässt sich jedoch nicht analytisch bestimmen. Kennt man aber $d$ von genug Linien in $s$, kann man mithilfe des Satzes von Bayes mit hoher Auflösung und Sicherheit $s$ bestimmen.
 
-\subsection{Radioastronomie}
+\subsection{Staubtomografie}
 
 In der Astronomie wird die Tomographie z.B. verwendet, um die Form von kosmischen Wolken zu ermitteln. Dafür werden Sterne, deren absolute Helligkeit und Distanz bekannt ist beobachtet. Man vergleicht ihre scheinbare Helligkeit mit der zu erwartende Helligkeit und ermittelt so $d$ für alle Strecken zwischen der Erde und den beobachteten Sternen. $d$ entspricht in dem Fall die Menge an Staub zwischen dem Stern und der Erde. Aus vielen (Distanz, Helligkeit)-Paaren kann man $s$ lernen und Aussagen über die dichte-Verteilung und Form der Wolke treffen.
 
@@ -32,23 +32,24 @@ Beim CT drehen sich im $180^\circ$ Winkel eine Röntgenröhre und Detektor um de
 Daraus entsteht für jede Schicht ein Sinogram \cref{k4.2.tomo.ct.bp} bei der eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; ihr Abstand vom Mittelpunkt entspricht der Amplitude und ihr Winkel im vergleich zum Startpunkt der Phasenverschiebung der Sinuskurve. Mit dem bayeschen Verfahren  kann man ein Bild von der Schicht mit hoher Genauigkeit rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering des Objekts.
 
 
-\subsection{CT in 3D}
+\subsection{CT in 3D}\label{k4.2.ct.3d}
 \sectionauthor{Finja Hoffmann, Chuyang Wang}
 
 Im Rahmen der Projektarbeit soll aus den gemessenen Daten $d$ die Funktion des Signals $s(p)$ (\emph{quantity of interest}) in Abhängigkeit von einem 3D-Punkt $p \in \mathbb{R}^3$ rekonstruiert werden, welche die Dichte eines Objekts in einem diskreten 3-dimensionalen Raum beschreibt. Generell lässt sich der Datenvektor $d \in \mathbb{R}^N$ wie folgt berechnen:
 
 \begin{equation}
+  \label{k4.2.ct.3d.datamodel}
   \begin{aligned}
     d = Rs + n,
   \end{aligned}
 \end{equation}
 
-wobei jeweils $R \in \mathbb{R}^{N \times M}$ das \emph{Response}, $s \in \mathbb{R}^M$ die Signale und $n \in \mathbb{R}^N$ das Rauschen beschreiben. Jede Komponente von $d$ entspricht einem Linienintegral aus \cref{k4.2.tomo.einl.linig}.
+wobei $R \in \mathbb{R}^{N \times M}$ die \emph{Response}, $s \in \mathbb{R}^M$ das Signal und $n \in \mathbb{R}^N$ das Rauschen beschreiben. 
 % TODO: ref to Wiener Filter
 
-\subsection{Line-Of-Sight Response}
+\subsection{Line-Of-Sight Response}\label{k4.2.ct.resp}
 
-Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da die Signale in Form von diskreten Datenwürfel angegeben sind, ist $R$ also eine Gewichtung der gegebenen Signale. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
+Angenommen, die Start- und Endpunkte der Messungen seien bereits gegeben und bilden jeweils die Strecken. Aus diesen Daten kann man die Matrix $R$ konstruieren. Anders gesagt repräsentiert $R$ die Start- und Endpunkten. Da das Signal (die Dichtenverteilung) in Form von diskreten 3D-Pixel angegeben sind, ist $R$ eine Matrix der Gewichte der gegebenen Komponenten des Signals. Als Gewichtung eines Datenwürfels gilt der euklidischen Abstand zwischen den beiden Schnittpunkten der Strecke mit den Seiten des Würfels. \textcite{k4.2.siddon} hat dafür einen effizienten Algorithmus geliefert, dessen Ansatz hier umgesetzt wird.
 
 
 \subsection{Algorithmus von Siddon}\label{k4.2.ct.siddon}
@@ -70,26 +71,24 @@ Betrachtet man zunächst die x-Achsenebene. Ohne Beschränkung der Allgemeinheit
     x_{start} + x^{\ast} \\
     y_{start} + x^{\ast} \cdot m_{yx} \\
     z_{start} + x^{\ast} \cdot m_{zx} \\
-  \end{pmatrix}
+  \end{pmatrix}.
 \end{equation}
 
-Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert, also nämlich
+Die weiteren Schnittpunkte $S_{x,i}$ kann man rekursiv konstruieren, indem man jeweils eine Einheit in die x-Richtung geht und die Änderungsrate gegenüber der y- und z-Achsen jeweils aufaddiert
 
 \begin{equation}
   S_{x,i} = S_{x,i-1} + \begin{pmatrix}
     1 \\
     1 \cdot m_{yx} \\
     1 \cdot m_{zx} \\
-  \end{pmatrix}
+  \end{pmatrix}.
 \end{equation}
 
- Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$. Die Listen $B$ und $C$ berechnet man analog.
+ Die Liste $A$ besteht aus allen Schnittpunkten $[S_{x,0}, S_{x,1}, ..., S_{x,n}]$ mit x-Ebenen. Die Listen $B$ und $C$ berechnet man analog.
 
 Anschließend muss man die drei Listen in eine einzelne sortierte Liste $\mathbf{S}$ zusammenführen. Diese geschieht, indem man alle Schnittpunkte aus $A$, $B$ und $C$ nach den x-Koordinaten aufsteigend sortiert. Sollte $x_{start} = x_{end}$ sein, dann nutzt man die y- oder z-Achse als den Sortierschlüssel.
 
-Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem Datenwürfel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Datenwürfel im 3D-Raum durchgeht. Also sind die meisten Gewichtungen für diese Sichtlinie null.
-
-Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Achse (hier Y-Achse) das Absorptionsprofil und die andere (hier X-Achse) dem Winkel entspricht. Jede Stelle im Objekt bildet eine Sinuskurve; Ihr Abstand zum Mittelpunkt entspricht der Amplitude und ihr Winkel die Phasenverschiebung. Mithilfe vom Satz von Bayes kann man ein Bild von der Schicht rekonstruieren. Macht man dies für jede Schicht erhält man ein 3d-Rendering.
+Hat man alle sortierten Schnittpunkte, so kann man auch die Gewichtungen, i.e. die Abstände zwischen den jeweiligen Punkten, einfach berechnen. Jede dieser Gewichtungen wird einem 3D-Pixel zugeordnet, durch den diese Teilstrecke durchdringt. Für diese Sichtlinie kann dann ein Zeilenvektor $r_i$ erstellt werden, welcher diese Zuordnung von Gewichtungen speichert. Man beobachte, dass jede Sichtlinie nur wenige Pixeln im 3D-Raum durchgeht. Die meisten Gewichte für die diskretisierte Dichtenverteilung entlang einer Sichtlinie sind null.
 
 
 \subsection{Walnuss CT-Messdaten}\label{k4.2.ct.walnuss}
@@ -132,4 +131,39 @@ Der Winkel $alpha$ addiert mit Rad ergibt zusammen mit der Länge $d$ die Koordi
 
 Die erhaltenen Start und Endpunkte, in Kombination mit den im Datenset gelieferten Helligkeitswerten kann nun in ein vollständing rüchprojeziertes CT Schichtbild verwandelt werden.
 
+
 \subsection{Rekonstruktion des Signals}
+\sectionauthor{Chuyang Wang}
+
+Das endgültige Ziel der CT ist, das Signal aus den gemessenen Daten zu berechnen. Mit Bayes' Formel aus \cref{k4.2.bayes} kann man das gesuchte Posterior $P(s|d)$ mit dem Likelihood $P(d|s)$ und Prior $P(s)$ wie folgt konstruieren:
+
+\begin{equation}
+  P(s|d) \propto P(d|s)P(s)
+\end{equation}
+
+Für den Likelihood gilt:
+
+\begin{equation}
+  \begin{aligned}
+    && P(d|s) &= \int P(d,n|s) \,dn  \\
+    &&  &= \int P(d|s,n) P(n|s) \,dn \\
+    && &= \int P(d|s,n) P(n) \,dn
+  \end{aligned}
+\end{equation}
+
+Es gilt außerdem das Datenmodell \cref{k4.2.ct.3d.datamodel}. Da bei $P(d|s,n)$ $s$ und $n$ bereits bekannt sind, ist $d$ fest bestimmt. Es ist davon auszugehen, dass das Rauschen $P(n) = \mathcal{G}(n,N)$ normalverteilt ist. Man kann zeigen, dass folgende Gleichung gilt:
+
+% delta Distribution
+\begin{equation}
+  \begin{aligned}
+    &\Rightarrow& P(d|s) &= P_n(n-(d-Rs)) \\ 
+    && &= \mathcal{G}(d-Rs,N)
+  \end{aligned}
+\end{equation}
+
+Die Daten $d$ sind bei dem Experiment zu messen (vgl. \cref{k4.2.ct.walnuss}). Die Response $R$ beschreibt das Experiment (vgl. \cref{k4.2.ct.resp}) und kann vorberechnet werden. Es bleibt also noch das Signal $s$ übrig, welches man dem hierarchischem Modell (vgl. \cref{k4.2.hmodel}) darstellen kann. Dafür nutzt man die Beobachtung aus, dass $s$ streng positiv sein muss. % streng?
+Also kann man $s$ mit einer logarithmisch parametrisierten Normalverteilung $\mathcal{G}(a,S)$ beschreiben, sodass $s = \exp(\mathcal{G}(a,S))$ gilt. Diese Gleichung kann man noch mit der Fourier-Transformation (vgl. \cref{k4.2.fourier}) weiter vereinfachen. Am Ende muss man nur eine Normalverteilung eingeben, deren Kovarianzmatrix nur aus einer Diagonalmatrix besteht. 
+
+Um den Posterior $P(s|d) = \frac{P(d|s)P(s)}{P(d)}$ zu berechnen, benötigt man auch die Evidenz als Normierungsfaktor. Diese ist jedoch zu komplex zu berechnen. Dafür kann man die Kullback-Leibler-Divergenz (vgl. \cref{k4.2.kldiv}) verwenden und eine Annäherung von dem Posterior zu bestimmen. 
+
+
