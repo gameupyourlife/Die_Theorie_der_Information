@@ -603,7 +603,6 @@ Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartung
 
 \section{Inferenz - Lernen aus Daten}
 \sectionauthor{Natalie Teplitska, Clemens Ljungh, Constantin Burmeister}
-\subsection{Kullback-Leibler-Divergenz}
 Mit dem Wiener Filter \cref{k4.2.wiener.filter} besitzen wir ein Werkzeug, unser Wissen über die Welt aufgrund von Daten beständig anzupassen. Allerdings gilt der Wiener Filter nur für den Spezialfall, dass $d=Rs+n, P(s)=\mathcal{G}(s,S), P(n) = \mathcal{G}(n,N)$ gilt.
 
 Unser Ziel ist es nun, aus den Daten das ursprüngliche Signal, welches diese Daten verursachte, zu rekonstruieren. Mit der Formel $d=Rs+n$ ist dies als inverses Problem aufzufassen, denn uns interessiert die quantity of interest $s$. Bei der Radioastronomie ist dies z. B. die Helligkeit an bestimmten Punkten des Himmels. Betrachten wir es aus der Bayes'schen Perspektive. Der Posterior ist zwar durch Messgleichung, $P(s)$, $P(n)$ und $R$ vollständig definiert, doch seine Berechnung ist insbesondere bei großen Datenmengen, wenn der Posterior nicht analytisch lösbar ist, viel zu rechenintensiv und somit teuer. Zur Bewältigung dieser Herausforderung existieren zwei Lösungsansätze.
@@ -620,7 +619,7 @@ Die KL-Divergenz hat einige nennenswerte Eigenschaften. Dazu gehört unter ander
 
 Die KL-Divergenz wendet man beim Verfahren der variativen Inferenz an. Dabei minimiert man jedoch nicht $KL(P, Pa)$, sondern $KL(Pa, P)$, da dieser Vorgang weniger rechenintensiv ist.
 
-\section{Radiointerferometrie-Response und Daten einlesen}
+\section{Radiointerferometrie-Response und Daten einlesen}% Radio Gruppe A
 \sectionauthor{Alexander Gitnik, Jonas Fiedler, Lara Müller, Patricia Hackl}
 
 Zur Rekonstruktion eines Bildes des Schwarzen Lochs M87* muss basierend auf den Daten des Event Horizon Telescopes zunächst eine Response-Funktion implementiert werden, um diese vom Signal- in den Datenraum zu transferieren $s \mapsto d$. Mit der entsprechenden Implementierung wird sich der nachfolgende Abschnitt befassen.\\
