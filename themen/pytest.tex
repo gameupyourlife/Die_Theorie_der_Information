@@ -1,6 +1,6 @@
 \section{Pytest}
 \sectionauthor{Finja Hoffmann, (Alexander Gitnik)}
-Pytest ist ein Testing-Framework für Python. Mit diesem Framework lässt sich die Fehlerbehebung und allgemeine Testphase in der Softwareentwicklung automatisieren. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese manuell zu überprüfen, kann man Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
+Pytest ist ein Testing-Framework für Python, mit welchem sich die Fehlerbehebung und allgemeine Testphase in der Softwareentwicklung automatisieren lässt. Anstatt sich immer mal wieder an ausgewählten Stellen Werte ausgeben zu lassen und diese manuell zu überprüfen, kann man Test-Methoden schreiben, um so automatisiert Fehler zu erkennen. Pytest überprüft mit synthetischen Eingaben die zu testende Funktion und vergleicht die Ausgabe mit dem eingegebenen Erwartungswert.
 
 Das Überprüfen implementiert man durch:
 
@@ -16,26 +16,26 @@ In einem konkreten Beispiel addiert eine Funktion den eingegebenen Wert mit 2. H
 assert add_2(1) == 3
 \end{verbatim}
 
-Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das \texttt{assert} wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
+Pytest führt nun die zu testende Methode mit den eingegebenen Werten aus. Durch das \texttt{assert}-statement wird automatisch die Ausgabe überprüft. Sollte die erwartete Ausgabe nicht mit der tatsächlichen Ausgabe übereinstimmen wird eine Fehlermeldung angezeigt. Es wird zudem angezeigt, welche Eingabe und Code-Zeile zur Fehlermeldung geführt haben.
 
 Die zu testende Methode beginnt mit \texttt{test\_}.
 
 Mit dem Dekorator \texttt{@pytest.fixture} vor einer Funktion lässt sich die Eingabe von zu testenden Methoden global definieren und dessen Spezifikationen automatisieren.
 
-Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob falsche Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl
+Auch kann man Parameter eingeben, bei denen man eine Fehlermeldung erwartet. Es wird überprüft, ob nicht erwartete Eingaben wirklich als Fehler erkannt werden. Dafür gibt es den Befehl
 
 \begin{verbatim}
 with pytest.raises({FehlerTyp})
 \end{verbatim}
 
-mit dem überprüft wird, dass die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
+mit dem überprüft wird, ob die Funktion wirklich die erwartete Fehlermeldung zurückgibt.
 
-Zuletzt kann man noch mit einer Test-Methode durch den Dekorator
+Weiterhin kann man Funktionen mit einer Test-Methode durch den Dekorator
 
 \begin{verbatim}
 @pytest.mark.parametrize({Eingabe})
 \end{verbatim}
 
-kennzeichnen. Hierbei werden einige Eingaben getestet. Dazu werden die Eingabe und Ausgabewerte Paarweise in Klammern untereinandergeschrieben.
+kennzeichnen. In diesem Fall werden die Ein- und Ausgabewerte paarweise in Klammern untereinandergeschrieben.
 
 Wenn die automatisierten Test-Methoden ohne Fehlermeldung durchlaufen, so ist der Algorithmus scheinbar fehlerfrei. Dabei können Fehler aber nicht vollständig ausgeschlossen werden, da die Testung immer nur so gut ist wie die Ideen-Vielfalt zu potenziellen Fehlerquellen. Nicht bekannte, ungetestete Fehler können nicht vermieden werden.
