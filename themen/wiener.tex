@@ -4,26 +4,26 @@
 Für unseren Kurs benötigen wir eine Möglichkeit, aus Rohdaten auf das zugrundeliegende physikalische Signal zurückzuschließen. Allerdings können Messungen nur mit einer endlichen Sicherheit erfolgen, was bildgebende Verfahren vor Probleme stellt. So lässt sich Rauschen sowie eine gewisse Ungenauigkeit in der Messung nicht vermeiden; zudem sind die Daten unvollständig. Um solche Probleme zu lösen, brauchen wir den Wiener Filter.
 Dieses mathematische Verfahren basiert auf dem Bayes'schen Theorem
 (\ref{k4.2.bayes})
-, welches mathematisch beschreibt, wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden. Der Wiener Filter kann nur verwendet werden, wenn sowohl der Prior als auch die Likelihood normalverteilt sind.
+, welches mathematisch beschreibt, wie Wissen optimal verändert werden muss, nachdem Daten erhoben wurden.
 
-Der Wiener Filter kann verwendet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Aus der Normalverteilung des Rauschens sowie unter Einbezug der Messgleichung ergibt sich auch eine Normalverteilung für die Likelihood. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
+Der Wiener Filter kann nur verwendet werden, wenn die zwei folgenden Annahmen erfüllt sind. Zum Einen setzt man voraus, dass a priori das untersuchte Signal Gauß-verteilt ist: $P(s) = \mathcal{G}(s,S)$. Zum Anderen ist das Rauschen normalverteilt mit $P(n) = \mathcal{G}(n,N)$ und additiv. Aus der Normalverteilung des Rauschens sowie unter Einbezug der Messgleichung ergibt sich auch eine Normalverteilung für die Likelihood. Der Messoperator $R$ muss linear sein. Insgesamt ergibt sich folgende Messgleichung:
 \begin{eqnarray}
 d = Rs + n
 \end{eqnarray}
-In der Formel beschreibt $d$ die Daten und $s$ die Quantity of Interest, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Abbildung des Signals in den Datenraum. Die Wahrscheinlichkeit, die Daten $d$ für das Signal $s$ zu erhalten, ist eine Gauß-Verteilung.
+In der Formel beschreibt $d$ die Daten und $s$ die \emph{Quantity of Interest}, also das ursprüngliche Signal. $R$ ist die Response, das heißt die Abbildung des Signals in den Datenraum. Die Wahrscheinlichkeit, die Daten $d$ für das Signal $s$ zu erhalten, ist eine Gauß-Verteilung.
 \begin{eqnarray}
 P(d|s) = \mathcal{G}(d-Rs,N)
 \end{eqnarray}
-Setzen wir $P(s)$ und $P(d|s)$ in Bayes ein \cref{k4.2.bayes} erhalten wir:
+Setzen wir $P(s)$ und $P(d|s)$ in Bayes (siehe \cref{k4.2.bayes}) ein, erhalten wir
 \begin{eqnarray}
 P(s|d) = \mathcal{G}(s-m,D)
 \end{eqnarray}
-mit:
+mit
 \begin{eqnarray}
 D^{-1} = R^{\dagger} N^{-1}R + S^{-1}
 \end{eqnarray}
 und
 \begin{eqnarray}
-m = D R^{\dagger} N^{-1}d
+m = D R^{\dagger} N^{-1}d.
 \end{eqnarray}
-Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Der Wiener Filter ist insofern vorteilhaft, als dass er mit beliebig wenigen Daten fehlerfrei funktioniert, und ist daher eine wichtige Methode der IFT.
+Der Posterior $P(s|d)$ ist also auch eine Gauß-Verteilung und hat den Erwartungswert $m$. Die Anwendung des Wiener Filters ist für beliebige Datenmengen möglich. Er ist somit eine wichtige Methode der IFT.
