@@ -103,7 +103,7 @@ Daraus entsteht für jede Schicht ein Sinogram (Abbildung 1.1), bei dem eine Ach
 \end{figure}
 
 Das Ziel des Projekts ist es ein Bild einer Walnuss, anhand von CT-Scandaten (siehe \cref{k4.2.comptomo.ct}), zu rekonstruieren. Die Herausforderung besteht darin die Unsicherheit in der DIchteverteilung des zu vermessenden Objekts zu quantifiziern. Aus ein Bayes'schen Perspektive (siehe \cref{k4.2.bayes}) quantifiziert der Postirior die Unsichertheit. Die präzise Beschreibung ist bei medizinischer Bildgebung wichtig.
-Die öffentlich zugänglichen Daten verfügbar unter \ml{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}, auf welchen unser Projekt beruht, enthalten Sinogramm und Schichtaufnahme einer Walnuss, welche in \verb|.mat|-Dateien gespeichert sind.
+Die öffentlich zugänglichen Daten verfügbar unter \url{https://zenodo.org/record/1254206#.Ys6OHnZBw7c}, auf welchen unser Projekt beruht, enthalten Sinogramm und Schichtaufnahme einer Walnuss, welche in \verb|.mat|-Dateien gespeichert sind.
 In dem Versuch wurde eine Walnuss zwischen eine punktförmige Strahlungsquelle und einen flachen Schirm positioniert (\cref{k4.2.fig.ctAbbild}). Nach jeder Messung wurde die Nuss um 3° gegen den Uhrzeigersinn gedreht.
 Es wurde 120 Messungen durchgeführt, welche von dem ebenen Detektor aufgenommen wurden. Diese Daten wurden auf 328 Pixel herunterskaliert und in einer Matrix \verb|m| gespeichert.
  Damit das Sinogramm in ein Bild der Dichteverteilung zurückprojeziert werden kann sind alle Start- und Endpunkte der Sichtline notwendig. Diese errechnen sich aus der Position der Quelle und der Position der einzelnen Pixel des Screens.\\
